@@ -79,7 +79,6 @@
 
     <div class="container mx-auto max-w-5xl px-4 py-12">
 
-        <!-- Cabeçalho -->
         <header class="text-center mb-16 fade-in-section">
             <h1 class="text-5xl md:text-6xl font-bold text-white">João Moura</h1>
             <h2 class="text-2xl text-cyan-400 mt-2">Desenvolvedor de Software</h2>
@@ -105,15 +104,13 @@
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 20h9"></path><path d="M12 4h9"></path>
                     <path d="M4 9h16"></path><path d="M4 15h16"></path>
-    </svg>
-    Currículo
-</a>
-
+                </svg>
+                Currículo
+            </a>
             </div>
         </header>
 
         <main>
-            <!-- Seção de Habilidades -->
             <section class="mb-16 fade-in-section">
                 <h2 class="text-3xl font-bold text-white text-center mb-8">Principais Habilidades</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
@@ -150,13 +147,11 @@
                 </div>
             </section>
             
-            <!-- Seção de Projetos -->
             <section class="fade-in-section">
                 <h2 class="text-3xl font-bold text-white text-center mb-10">Projetos em Destaque</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                    <!-- Projeto 1 -->
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Vigilancia+Solidaria" alt="Vigilância Solidária" class="rounded-md mb-4 aspect-video object-cover">
                         <h3 class="text-2xl font-bold text-white mb-2">Vigilância Solidária – Monitoramento Comunitário</h3>
@@ -173,7 +168,6 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 2 -->
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                          <img src="https://placehold.co/600x400/112240/64FFDA?text=Sistema+de+Locadora" alt="Sistema de Locadora" class="rounded-md mb-4 aspect-video object-cover">
                         <h3 class="text-2xl font-bold text-white mb-2">Sistema de Locadora – Banco de Dados</h3>
@@ -188,7 +182,6 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 3 -->
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Labirinto+Recursivo" alt="Labirinto com Recursão" class="rounded-md mb-4 aspect-video object-cover">
                         <h3 class="text-2xl font-bold text-white mb-2">Labirinto – Simulação com Recursão</h3>
@@ -203,7 +196,6 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 4 -->
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                          <img src="https://placehold.co/600x400/112240/64FFDA?text=Linux+e+Containers" alt="Ambientes com Linux e Containers" class="rounded-md mb-4 aspect-video object-cover">
                         <h3 class="text-2xl font-bold text-white mb-2">Ambientes com Linux e Containers</h3>
@@ -219,204 +211,138 @@
                     </div>
                 </div>
             </section>
-
-             <!-- Seção de Formação & Certificados -->
-            <section class="mt-16 fade-in-section">
-                <h2 class="text-3xl font-bold text-white text-center mb-8">Formação & Certificados</h2>
-                <div class="max-w-3xl mx-auto bg-gray-800 rounded-lg p-6">
-                    <ul class="space-y-4 text-gray-400 list-disc list-inside">
-                        <li><strong>Análise e Desenvolvimento de Sistemas</strong> – Faculdade UNISINOS</li>
-                        <li><strong>Segurança Ofensiva: Análise e Anatomia de Ataques Cibernéticos</strong> – Plataforma LabTools</li>
-                        <li><strong>Desenvolvimento Pessoal: Comunicação Não Violenta</strong> – Plataforma LabTools</li>
-                        <li><strong>Empreendedorismo: Problemas, Ideias e Oportunidades</strong> – Plataforma LabTools</li>
-                        <li><strong>Empreendedorismo: Autoconhecimento Empreendedor e Rede</strong> – Plataforma LabTools</li>
-                        <li><strong>Inglês: Participação em Reuniões</strong> – Plataforma LabTools</li>
-                        <li><strong>Inglês: E-mails</strong> – Plataforma LabTools</li>
-                    </ul>
-                </div>
-            </section>
-
         </main>
+        
+        <div id="resume-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
 
-        <!-- Rodapé -->
+            <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
+                <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
+                    <h3 class="text-2xl font-bold text-white">Meu Currículo</h3>
+                    <div class="flex items-center gap-3">
+                        <a href="curriculo.pdf" download class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded transition">
+                            Baixar PDF
+                        </a>
+                        <button id="close-resume-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">
+                            &times;
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-8 p-6 overflow-y-auto flex-1">
+                    <div>
+                        <h1 class="text-4xl font-bold text-white">JOÃO LUAN MENDOÇA MOURA</h1>
+                        <p class="text-gray-400 text-sm mt-2">
+                            Novo Hamburgo - RS &bull; +55 51 98571-1759 &bull; joao.luan@hotmail.com &bull; 
+                        </p>
+                    </div>
+
+                    <div class="border-t border-gray-700 pt-6">
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">RESUMO PROFISSIONAL</h2>
+                        <p class="text-gray-400">
+                            Sou estudante de Análise e Desenvolvimento de Sistemas e sempre tive paixão por tecnologia desde a adolescência. Atualmente, desenvolvo projetos práticos em Node.js, Express, jQuery e Bootstrap, incluindo uma aplicação de monitoramento comunitário integrada ao Home Assistant. Tenho mais de 15 anos de experiência em gestão e liderança no setor de alimentação, o que me trouxe habilidades de organização, trabalho em equipe e resolução de problemas. Estou em transição de carreira para a área de TI e busco uma oportunidade de estágio para aplicar meus conhecimentos, crescer profissionalmente e contribuir de forma efetiva para a equipe.
+                        </p>
+                    </div>
+
+                    <div class="border-t border-gray-700 pt-6">
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">EXPERIÊNCIA PROFISSIONAL</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Gerente Geral – SS Reis LTDA</h3>
+                                <p class="text-gray-500 italic">Jun. 2025 - Atual</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                    <li>Gestão de equipe, incluindo contratação, treinamento e acompanhamento de desempenho.</li>
+                                    <li>Controle de qualidade, assegurando padrão elevado em todas as etapas do serviço.</li>
+                                    <li>Gestão de estoque e fornecedores, com foco em redução de custos e eficiência na operação.</li>
+                                    <li>Análise de indicadores, aplicando estratégias para aumento de receita e fidelização de clientes.</li>
+                                    <li>Planejamento e execução de campanhas promocionais e gestão de presença digital.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Gerente de Restaurante – America Steak House</h3>
+                                <p class="text-gray-500 italic">Abr. 2023 – Abr. 2025</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                    <li>Gerenciamento de base de dados com mais de 10 mil clientes.</li>
+                                    <li>Captação, fidelização e atendimento personalizado.</li>
+                                    <li>Gestão de equipe: contratação, treinamento e liderança operacional.</li>
+                                    <li>Controle de estoque, compras e relacionamento com fornecedores.</li>
+                                    <li>Coordenação de sistemas de reservas e fluxo de salão.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Gerente – Croasonho / Habib’s / Newport</h3>
+                                <p class="text-gray-500 italic">Abr. 2015 – Dez. 2019</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                    <li>Gestão de pessoas e treinamento de equipe.</li>
+                                    <li>Controle de estoque, custos e indicadores de desempenho.</li>
+                                    <li>Atendimento ao cliente e operações administrativas.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white">Sócio/Administrador – Restaurante</h3>
+                                <p class="text-gray-500 italic">Empreendimentos Moura Aquino, SSA/BA | Dez. 2009 – Mai. 2015</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                    <li>Administração geral, controle financeiro e gestão de estoque.</li>
+                                    <li>Atendimento ao cliente e coordenação de equipe.</li>
+                                    <li>Desenvolvimento de cardápio e estratégias de operação.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-700 pt-6">
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">FORMAÇÃO</h2>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Análise e Desenvolvimento de Sistemas</h3>
+                            <p class="text-gray-500 italic">UNISINOS | Previsão de conclusão: 2026</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-700 pt-6">
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">CERTIFICADOS</h2>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li>Segurança Ofensiva: Análise e Anatomia de Ataques Cibernéticos – Plataforma LabTools</li>
+                            <li>Desenvolvimento Pessoal: Comunicação Não Violenta – Plataforma LabTools</li>
+                            <li>Empreendedorismo: Problemas, Ideias e Oportunidades – Plataforma LabTools</li>
+                            <li>Empreendedorismo: Autoconhecimento Empreendedor e Rede – Plataforma LabTools</li>
+                            <li>Inglês: Participação em Reuniões – Plataforma LabTools</li>
+                            <li>Inglês: E-mails – Plataforma LabTools</li>
+                        </ul>        
+                    </div>
+
+                    <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-cyan-400 mb-3">HABILIDADES TÉCNICAS</h2>
+                            <h4 class="font-bold text-white mt-2">Programação:</h4>
+                            <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
+                            <h4 class="font-bold text-white mt-2">Frameworks e Bibliotecas:</h4>
+                            <p class="text-gray-400">Express, Bootstrap, jQuery</p>
+                            <h4 class="font-bold text-white mt-2">Banco de Dados:</h4>
+                            <p class="text-gray-400">JSON, noções de SQL e integração de dados</p>
+                            <h4 class="font-bold text-white mt-2">Ferramentas:</h4>
+                            <p class="text-gray-400">Git/GitHub, VS Code, Linux (containers e terminal)</p>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-cyan-400 mb-3">COMPETÊNCIAS</h2>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <li>Gestão de processos digitais e organização de dados.</li>
+                                <li>Análise de indicadores de desempenho e custos.</li>
+                                <li>Criação de fluxos de trabalho e padronização.</li>
+                                <li>Atendimento ao cliente e gestão de conflitos.</li>
+                            </ul>
+                            <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">IDIOMAS</h2>
+                            <p class="text-gray-400">Inglês - Nível C1 (Avançado)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="text-center text-gray-500 mt-16 fade-in-section">
             <p>&copy; 2025 João Moura. Todos os direitos reservados.</p>
         </footer>
-<!-- Modal do Currículo -->
-<div id="resume-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-    <!-- Overlay -->
-    <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
 
-    <!-- Conteúdo do Modal -->
-    <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
-        <!-- Cabeçalho fixo -->
-        <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
-            <h3 class="text-2xl font-bold text-white">Meu Currículo</h3>
-            <div class="flex items-center gap-3">
-                <!-- Botão de download fixo -->
-                <a href="curriculo.pdf" download class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded transition">
-                    Baixar PDF
-                </a>
-                <!-- Botão de fechar -->
-                <button id="close-resume-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">
-                    &times;
-                </button>
-            </div>
-        </div>
-
-        <!-- Corpo do Currículo com rolagem -->
-        <div class="space-y-8 p-6 overflow-y-auto flex-1">
-            <!-- Informações pessoais -->
-            <div>
-                <h1 class="text-4xl font-bold text-white">JOÃO LUAN MENDOÇA MOURA</h1>
-                <p class="text-gray-400 text-sm mt-2">
-                    Novo Hamburgo - RS &bull; +55 51 98571-1759 &bull; joao.luan@hotmail.com &bull; 
-                </p>
-            </div>
-
-            <!-- Resumo Profissional -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">RESUMO PROFISSIONAL</h2>
-                <p class="text-gray-400">
-                    Sou estudante de Análise e Desenvolvimento de Sistemas e sempre tive paixão por tecnologia desde a adolescência. Atualmente, desenvolvo projetos práticos em Node.js, Express, jQuery e Bootstrap, incluindo uma aplicação de monitoramento comunitário integrada ao Home Assistant. Tenho mais de 15 anos de experiência em gestão e liderança no setor de alimentação, o que me trouxe habilidades de organização, trabalho em equipe e resolução de problemas. Estou em transição de carreira para a área de TI e busco uma oportunidade de estágio para aplicar meus conhecimentos, crescer profissionalmente e contribuir de forma efetiva para a equipe.
-                </p>
-            </div>
-
-            <!-- Experiência Profissional -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">EXPERIÊNCIA PROFISSIONAL</h2>
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-semibold text-white">Gerente Geral – SS Reis LTDA</h3>
-                        <p class="text-gray-500 italic">Jun. 2025 - Atual</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                            <li>Gestão de equipe, incluindo contratação, treinamento e acompanhamento de desempenho.</li>
-                            <li>Controle de qualidade, assegurando padrão elevado em todas as etapas do serviço.</li>
-                            <li>Gestão de estoque e fornecedores, com foco em redução de custos e eficiência na operação.</li>
-                            <li>Análise de indicadores, aplicando estratégias para aumento de receita e fidelização de clientes.</li>
-                            <li>Planejamento e execução de campanhas promocionais e gestão de presença digital.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white">Gerente de Restaurante – America Steak House</h3>
-                        <p class="text-gray-500 italic">Abr. 2023 – Abr. 2025</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                            <li>Gerenciamento de base de dados com mais de 10 mil clientes.</li>
-                            <li>Captação, fidelização e atendimento personalizado.</li>
-                            <li>Gestão de equipe: contratação, treinamento e liderança operacional.</li>
-                            <li>Controle de estoque, compras e relacionamento com fornecedores.</li>
-                            <li>Coordenação de sistemas de reservas e fluxo de salão.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white">Gerente – Croasonho / Habib’s / Newport</h3>
-                        <p class="text-gray-500 italic">Abr. 2015 – Dez. 2019</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                            <li>Gestão de pessoas e treinamento de equipe.</li>
-                            <li>Controle de estoque, custos e indicadores de desempenho.</li>
-                            <li>Atendimento ao cliente e operações administrativas.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white">Sócio/Administrador – Restaurante</h3>
-                        <p class="text-gray-500 italic">Empreendimentos Moura Aquino, SSA/BA | Dez. 2009 – Mai. 2015</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                            <li>Administração geral, controle financeiro e gestão de estoque.</li>
-                            <li>Atendimento ao cliente e coordenação de equipe.</li>
-                            <li>Desenvolvimento de cardápio e estratégias de operação.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formação -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">FORMAÇÃO</h2>
-                <div>
-                    <h3 class="text-xl font-semibold text-white">Análise e Desenvolvimento de Sistemas</h3>
-                    <p class="text-gray-500 italic">UNISINOS | Previsão de conclusão: 2026</p>
-                </div>
-            </div>
-
-            <!-- Habilidades e Competências -->
-            <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">HABILIDADES TÉCNICAS</h2>
-                    <h4 class="font-bold text-white mt-2">Programação:</h4>
-                    <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
-                    <h4 class="font-bold text-white mt-2">Frameworks e Bibliotecas:</h4>
-                    <p class="text-gray-400">Express, Bootstrap, jQuery</p>
-                    <h4 class="font-bold text-white mt-2">Banco de Dados:</h4>
-                    <p class="text-gray-400">JSON, noções de SQL e integração de dados</p>
-                    <h4 class="font-bold text-white mt-2">Ferramentas:</h4>
-                    <p class="text-gray-400">Git/GitHub, VS Code, Linux (containers e terminal)</p>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">COMPETÊNCIAS</h2>
-                    <ul class="list-disc list-inside text-gray-400 space-y-1">
-                        <li>Gestão de processos digitais e organização de dados.</li>
-                        <li>Análise de indicadores de desempenho e custos.</li>
-                        <li>Criação de fluxos de trabalho e padronização.</li>
-                        <li>Atendimento ao cliente e gestão de conflitos.</li>
-                    </ul>
-                    <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">IDIOMAS</h2>
-                    <p class="text-gray-400">Inglês - Nível C1 (Avançado)</p>
-                </div>
-            </div>
-
-            <!-- Visualização do PDF -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">Visualização do PDF</h2>
-                <iframe src="curriculo.pdf" class="w-full h-[50vh] rounded-lg border border-gray-700" frameborder="0"></iframe>
-            </div>
-        </div>
     </div>
-            </div>
-
-            <!-- Formação -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">FORMAÇÃO</h2>
-                <div>
-                    <h3 class="text-xl font-semibold text-white">Análise e Desenvolvimento de Sistemas</h3>
-                    <p class="text-gray-500 italic">UNISINOS | Previsão de conclusão: 2026</p>
-                </div>
-            </div>
-
-            <!-- Habilidades e Competências -->
-            <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">HABILIDADES TÉCNICAS</h2>
-                    <h4 class="font-bold text-white mt-2">Programação:</h4>
-                    <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
-                    <h4 class="font-bold text-white mt-2">Frameworks e Bibliotecas:</h4>
-                    <p class="text-gray-400">Express, Bootstrap, jQuery</p>
-                    <h4 class="font-bold text-white mt-2">Banco de Dados:</h4>
-                    <p class="text-gray-400">JSON, noções de SQL e integração de dados</p>
-                    <h4 class="font-bold text-white mt-2">Ferramentas:</h4>
-                    <p class="text-gray-400">Git/GitHub, VS Code, Linux (containers e terminal)</p>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">COMPETÊNCIAS</h2>
-                    <ul class="list-disc list-inside text-gray-400 space-y-1">
-                        <li>Gestão de processos digitais e organização de dados.</li>
-                        <li>Análise de indicadores de desempenho e custos.</li>
-                        <li>Criação de fluxos de trabalho e padronização.</li>
-                        <li>Atendimento ao cliente e gestão de conflitos.</li>
-                    </ul>
-                    <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">IDIOMAS</h2>
-                    <p class="text-gray-400">Inglês - Nível C1 (Avançado)</p>
-                </div>
-            </div>
-
-            <!-- Visualização do PDF -->
-            <div class="border-t border-gray-700 pt-6">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-3">Visualização do PDF</h2>
-                <iframe src="curriculo.pdf" class="w-full h-[50vh] rounded-lg border border-gray-700" frameborder="0"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
-
 
     <script>
         // Script para animação de fade-in ao rolar a página
@@ -435,6 +361,7 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+        
         // Script para o Modal do Currículo
         const resumeModal = document.getElementById('resume-modal');
         const openResumeModalBtn = document.getElementById('open-resume-modal');
@@ -451,7 +378,10 @@
             document.body.style.overflow = ''; // Restaura o scroll
         };
 
-        openResumeModalBtn.addEventListener('click', openModal);
+        openResumeModalBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Impede que o link '#' cause um pulo na página
+            openModal();
+        });
         closeResumeModalBtn.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', closeModal);
 
@@ -464,5 +394,3 @@
     </script>
 </body>
 </html>
-
-
