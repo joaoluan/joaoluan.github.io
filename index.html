@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | João Moura</title>
+    
+    <title class="lang-pt">Portfólio | João Moura</title>
+    <title class="lang-en hidden">Portfolio | João Moura</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0A192F; /* Azul marinho escuro */
-            color: #CCD6F6; /* Cinza claro azulado */
+            background-color: #0A192F;
+            color: #CCD6F6;
         }
-        .text-cyan-400 {
-            color: #64FFDA; /* Ciano vibrante */
-        }
-        .bg-gray-800 {
-            background-color: #112240; /* Azul marinho um pouco mais claro */
-        }
+        .text-cyan-400 { color: #64FFDA; }
+        .bg-gray-800 { background-color: #112240; }
         .project-card, .skill-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -56,38 +56,44 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Estilos do Modal */
-        .modal-overlay {
-            transition: opacity 0.3s ease;
-        }
-        .modal-container {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .modal-hidden {
-            pointer-events: none;
-        }
-        .modal-hidden .modal-overlay {
-            opacity: 0;
-        }
+        .modal-overlay { transition: opacity 0.3s ease; }
+        .modal-container { transition: transform 0.3s ease, opacity 0.3s ease; }
+        .modal-hidden { pointer-events: none; }
+        .modal-hidden .modal-overlay { opacity: 0; }
         .modal-hidden .modal-container {
             opacity: 0;
             transform: scale(0.95);
+        }
+        /* Classe para esconder elementos de um idioma */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
 
+    <div class="fixed top-4 right-4 z-50">
+        <button id="lang-switcher" class="bg-gray-800 border border-gray-700 text-cyan-400 font-semibold rounded-md px-4 py-2 hover:bg-gray-700 transition">
+            <span class="lang-pt">EN</span>
+            <span class="lang-en hidden">PT</span>
+        </button>
+    </div>
+
     <div class="container mx-auto max-w-5xl px-4 py-12">
 
         <header class="text-center mb-16 fade-in-section">
             <h1 class="text-5xl md:text-6xl font-bold text-white">João Moura</h1>
-            <h2 class="text-2xl text-cyan-400 mt-2">Desenvolvedor de Software</h2>
+            <h2 class="text-2xl text-cyan-400 mt-2">
+                <span class="lang-pt">Desenvolvedor de Software</span>
+                <span class="lang-en hidden">Software Developer</span>
+            </h2>
             <p class="text-gray-400 mt-6 max-w-3xl mx-auto">
-                Em transição para a área de tecnologia, com foco em desenvolvimento de software. Trago mais de 15 anos de experiência em liderança e gestão de operações no setor de alimentação, agora aplicando essas habilidades em novos desafios como futuro desenvolvedor.
+                <span class="lang-pt">Em transição para a área de tecnologia, com foco em desenvolvimento de software. Trago mais de 15 anos de experiência em liderança e gestão de operações no setor de alimentação, agora aplicando essas habilidades em novos desafios como futuro desenvolvedor.</span>
+                <span class="lang-en hidden">Transitioning to the technology field with a focus on software development. I bring over 15 years of leadership and operations management experience from the food industry, now applying these skills to new challenges as a future developer.</span>
             </p>
             <div class="mt-8 flex justify-center items-center gap-6 flex-wrap">
                 <a href="mailto:joao.luan@hotmail.com" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     Email
                 </a>
                 <a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
@@ -99,63 +105,74 @@
                     GitHub
                 </a>
                 <a href="#" id="open-resume-modal" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 20h9"></path><path d="M12 4h9"></path>
-                    <path d="M4 9h16"></path><path d="M4 15h16"></path>
-                </svg>
-                Currículo
-            </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M12 4h9"></path><path d="M4 9h16"></path><path d="M4 15h16"></path></svg>
+                    <span class="lang-pt">Currículo</span>
+                    <span class="lang-en hidden">Resume</span>
+                </a>
+                <a href="#" id="open-certs-modal" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    <span class="lang-pt">Certificados</span>
+                    <span class="lang-en hidden">Certificates</span>
+                </a>
             </div>
         </header>
 
         <main>
             <section class="mb-16 fade-in-section">
-                <h2 class="text-3xl font-bold text-white text-center mb-8">Principais Habilidades</h2>
+                <h2 class="text-3xl font-bold text-white text-center mb-8">
+                    <span class="lang-pt">Principais Habilidades</span>
+                    <span class="lang-en hidden">Main Skills</span>
+                </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Java</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Node.js</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">MySQL</span>
-                    </div>
-                     <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Linux</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Docker</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">JavaScript</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Express</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">jQuery</span>
-                    </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">Bootstrap</span>
-                    </div>
-                     <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center">
-                        <span class="text-cyan-400 text-lg font-semibold">DevOps</span>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Java</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">☕</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Node.js</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🟢</div>    
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">MySQL</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐬</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Linux</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐧</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Docker</span>`
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐳</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">JavaScript</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">⚡</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Express</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🚂</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">jQuery</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">💫</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Bootstrap</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🎨</div>
+                </div>
+                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">DevOps</span>
+                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">⚙️</div>
                     </div>
                 </div>
             </section>
             
             <section class="fade-in-section">
-                <h2 class="text-3xl font-bold text-white text-center mb-10">Projetos em Destaque</h2>
-
+                <h2 class="text-3xl font-bold text-white text-center mb-10">
+                    <span class="lang-pt">Projetos em Destaque</span>
+                    <span class="lang-en hidden">Featured Projects</span>
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Vigilancia+Solidaria" alt="Vigilância Solidária" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">Vigilância Solidária – Monitoramento Comunitário</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Sistema web full-stack para monitoramento comunitário, integrado ao Home Assistant, permitindo conexão de câmeras, alertas e registro de eventos.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            <span class="lang-pt">Vigilância Solidária – Monitoramento Comunitário</span>
+                            <span class="lang-en hidden">Neighborhood Watch – Community Monitoring</span>
+                        </h3>
+                        <p class="text-gray-400 mb-4 flex-grow">
+                            <span class="lang-pt">Sistema web full-stack para monitoramento comunitário, integrado ao Home Assistant, permitindo conexão de câmeras, alertas e registro de eventos.</span>
+                            <span class="lang-en hidden">Full-stack web system for community monitoring, integrated with Home Assistant, allowing camera connections, alerts, and event logging.</span>
+                        </p>
                         <div class="mb-4 flex flex-wrap gap-2">
                             <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Node.js</span>
                             <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Express</span>
@@ -163,234 +180,465 @@
                             <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Bootstrap</span>
                         </div>
                         <div class="mt-auto flex items-center gap-4">
-                            <a href="https://github.com/joaoluan/vs-melhorado" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">Ver Código</a>
-                            <a href="https://vs.joaomoura.dev.br/" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">Ver Demo &rarr;</a>
+                            <a href="https://github.com/joaoluan/vs-melhorado" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
+                                <span class="lang-pt">Ver Código</span>
+                                <span class="lang-en hidden">View Code</span>
+                            </a>
+                            <a href="https://vs.joaomoura.dev.br/" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
+                                <span class="lang-pt">Ver Demo &rarr;</span>
+                                <span class="lang-en hidden">View Demo &rarr;</span>
+                            </a>
                         </div>
                     </div>
-
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Sistema+de+Locadora" alt="Sistema de Locadora" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">Sistema de Locadora – Banco de Dados</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Projeto de banco de dados para gerenciar uma locadora de veículos, com triggers para automatizar cálculos de locação e atualizações de status.</p>
+                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Sistema+de+Locadora" alt="Sistema de Locadora" class="rounded-md mb-4 aspect-video object-cover">
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            <span class="lang-pt">Sistema de Locadora – Banco de Dados</span>
+                            <span class="lang-en hidden">Rental System – Database</span>
+                        </h3>
+                        <p class="text-gray-400 mb-4 flex-grow">
+                            <span class="lang-pt">Projeto de banco de dados para gerenciar uma locadora de veículos, com triggers para automatizar cálculos de locação e atualizações de status.</span>
+                            <span class="lang-en hidden">Database project to manage a car rental agency, with triggers to automate rental calculations and status updates.</span>
+                        </p>
                         <div class="mb-4 flex flex-wrap gap-2">
                             <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">MySQL</span>
                             <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">SQL</span>
                             <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">Triggers</span>
                         </div>
                         <div class="mt-auto">
-                           <a href="https://github.com/joaoluan/locadora" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">Ver Código &rarr;</a>
+                           <a href="https://github.com/joaoluan/locadora" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
+                               <span class="lang-pt">Ver Código &rarr;</span>
+                               <span class="lang-en hidden">View Code &rarr;</span>
+                           </a>
                         </div>
                     </div>
-
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Labirinto+Recursivo" alt="Labirinto com Recursão" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">Labirinto – Simulação com Recursão</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Simulação de labirinto que demonstra lógica e resolução de problemas complexos através do uso de arrays bidimensionais e algoritmos de recursão.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            <span class="lang-pt">Labirinto – Simulação com Recursão</span>
+                            <span class="lang-en hidden">Maze – Simulation with Recursion</span>
+                        </h3>
+                        <p class="text-gray-400 mb-4 flex-grow">
+                            <span class="lang-pt">Simulação de labirinto que demonstra lógica e resolução de problemas complexos através do uso de arrays bidimensionais e algoritmos de recursão.</span>
+                            <span class="lang-en hidden">Maze simulation that demonstrates logic and complex problem-solving using two-dimensional arrays and recursion algorithms.</span>
+                        </p>
                         <div class="mb-4 flex flex-wrap gap-2">
                             <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Java</span>
-                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Recursão</span>
-                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Estrutura de Dados</span>
+                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Recursion</span>
+                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Data Structures</span>
                         </div>
                         <div class="mt-auto">
-                            <a href="https://github.com/joaoluan/Labirinto" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">Ver Código &rarr;</a>
+                            <a href="https://github.com/joaoluan/Labirinto" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
+                                <span class="lang-pt">Ver Código &rarr;</span>
+                                <span class="lang-en hidden">View Code &rarr;</span>
+                            </a>
                         </div>
                     </div>
-
                     <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                         <img src="https://placehold.co/600x400/112240/64FFDA?text=Linux+e+Containers" alt="Ambientes com Linux e Containers" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">Ambientes com Linux e Containers</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Experiência prática na configuração de ambientes de desenvolvimento e teste em containers isolados, simulando cenários de produção com Docker.</p>
+                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Linux+e+Containers" alt="Ambientes com Linux e Containers" class="rounded-md mb-4 aspect-video object-cover">
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            <span class="lang-pt">Ambientes com Linux e Containers</span>
+                            <span class="lang-en hidden">Environments with Linux and Containers</span>
+                        </h3>
+                        <p class="text-gray-400 mb-4 flex-grow">
+                            <span class="lang-pt">Experiência prática na configuração de ambientes de desenvolvimento e teste em containers isolados, simulando cenários de produção com Docker.</span>
+                            <span class="lang-en hidden">Practical experience in configuring development and testing environments in isolated containers, simulating production scenarios with Docker.</span>
+                        </p>
                         <div class="mb-4 flex flex-wrap gap-2">
                             <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">Linux Debian</span>
                             <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">Docker</span>
                             <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">SSH</span>
                             <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">DevOps</span>
                         </div>
-                        <div class="mt-auto">
-                        </div>
                     </div>
                 </div>
             </section>
         </main>
         
-        <div id="resume-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
-
-            <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
-                <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
-                    <h3 class="text-2xl font-bold text-white">Meu Currículo</h3>
-                    <div class="flex items-center gap-3">
-                        <a href="curriculo.pdf" download class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded transition">
-                            Baixar PDF
-                        </a>
-                        <button id="close-resume-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">
-                            &times;
-                        </button>
-                    </div>
-                </div>
-
-                <div class="space-y-8 p-6 overflow-y-auto flex-1">
-                    <div>
-                        <h1 class="text-4xl font-bold text-white">JOÃO LUAN MENDOÇA MOURA</h1>
-                        <p class="text-gray-400 text-sm mt-2">
-                            Novo Hamburgo - RS &bull; +55 51 98571-1759 &bull; joao.luan@hotmail.com &bull; 
-                        </p>
-                    </div>
-
-                    <div class="border-t border-gray-700 pt-6">
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">RESUMO PROFISSIONAL</h2>
-                        <p class="text-gray-400">
-                            Sou estudante de Análise e Desenvolvimento de Sistemas e sempre tive paixão por tecnologia desde a adolescência. Atualmente, desenvolvo projetos práticos em Node.js, Express, jQuery e Bootstrap, incluindo uma aplicação de monitoramento comunitário integrada ao Home Assistant. Tenho mais de 15 anos de experiência em gestão e liderança no setor de alimentação, o que me trouxe habilidades de organização, trabalho em equipe e resolução de problemas. Estou em transição de carreira para a área de TI e busco uma oportunidade de estágio para aplicar meus conhecimentos, crescer profissionalmente e contribuir de forma efetiva para a equipe.
-                        </p>
-                    </div>
-
-                    <div class="border-t border-gray-700 pt-6">
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">EXPERIÊNCIA PROFISSIONAL</h2>
-                        <div class="space-y-6">
-                            <div>
-                                <h3 class="text-xl font-semibold text-white">Gerente Geral – SS Reis LTDA</h3>
-                                <p class="text-gray-500 italic">Jun. 2025 - Atual</p>
-                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                    <li>Gestão de equipe, incluindo contratação, treinamento e acompanhamento de desempenho.</li>
-                                    <li>Controle de qualidade, assegurando padrão elevado em todas as etapas do serviço.</li>
-                                    <li>Gestão de estoque e fornecedores, com foco em redução de custos e eficiência na operação.</li>
-                                    <li>Análise de indicadores, aplicando estratégias para aumento de receita e fidelização de clientes.</li>
-                                    <li>Planejamento e execução de campanhas promocionais e gestão de presença digital.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-white">Gerente de Restaurante – America Steak House</h3>
-                                <p class="text-gray-500 italic">Abr. 2023 – Abr. 2025</p>
-                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                    <li>Gerenciamento de base de dados com mais de 10 mil clientes.</li>
-                                    <li>Captação, fidelização e atendimento personalizado.</li>
-                                    <li>Gestão de equipe: contratação, treinamento e liderança operacional.</li>
-                                    <li>Controle de estoque, compras e relacionamento com fornecedores.</li>
-                                    <li>Coordenação de sistemas de reservas e fluxo de salão.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-white">Gerente – Croasonho / Habib’s / Newport</h3>
-                                <p class="text-gray-500 italic">Abr. 2015 – Dez. 2019</p>
-                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                    <li>Gestão de pessoas e treinamento de equipe.</li>
-                                    <li>Controle de estoque, custos e indicadores de desempenho.</li>
-                                    <li>Atendimento ao cliente e operações administrativas.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-white">Sócio/Administrador – Restaurante</h3>
-                                <p class="text-gray-500 italic">Empreendimentos Moura Aquino, SSA/BA | Dez. 2009 – Mai. 2015</p>
-                                <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                    <li>Administração geral, controle financeiro e gestão de estoque.</li>
-                                    <li>Atendimento ao cliente e coordenação de equipe.</li>
-                                    <li>Desenvolvimento de cardápio e estratégias de operação.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border-t border-gray-700 pt-6">
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">FORMAÇÃO</h2>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Análise e Desenvolvimento de Sistemas</h3>
-                            <p class="text-gray-500 italic">UNISINOS | Previsão de conclusão: 2026</p>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t border-gray-700 pt-6">
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">CERTIFICADOS</h2>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                            <li>Segurança Ofensiva: Análise e Anatomia de Ataques Cibernéticos – Plataforma LabTools</li>
-                            <li>Desenvolvimento Pessoal: Comunicação Não Violenta – Plataforma LabTools</li>
-                            <li>Empreendedorismo: Problemas, Ideias e Oportunidades – Plataforma LabTools</li>
-                            <li>Empreendedorismo: Autoconhecimento Empreendedor e Rede – Plataforma LabTools</li>
-                            <li>Inglês: Participação em Reuniões – Plataforma LabTools</li>
-                            <li>Inglês: E-mails – Plataforma LabTools</li>
-                        </ul>        
-                    </div>
-
-                    <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h2 class="text-2xl font-bold text-cyan-400 mb-3">HABILIDADES TÉCNICAS</h2>
-                            <h4 class="font-bold text-white mt-2">Programação:</h4>
-                            <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
-                            <h4 class="font-bold text-white mt-2">Frameworks e Bibliotecas:</h4>
-                            <p class="text-gray-400">Express, Bootstrap, jQuery</p>
-                            <h4 class="font-bold text-white mt-2">Banco de Dados:</h4>
-                            <p class="text-gray-400">JSON, noções de SQL e integração de dados</p>
-                            <h4 class="font-bold text-white mt-2">Ferramentas:</h4>
-                            <p class="text-gray-400">Git/GitHub, VS Code, Linux (containers e terminal)</p>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl font-bold text-cyan-400 mb-3">COMPETÊNCIAS</h2>
-                            <ul class="list-disc list-inside text-gray-400 space-y-1">
-                                <li>Gestão de processos digitais e organização de dados.</li>
-                                <li>Análise de indicadores de desempenho e custos.</li>
-                                <li>Criação de fluxos de trabalho e padronização.</li>
-                                <li>Atendimento ao cliente e gestão de conflitos.</li>
-                            </ul>
-                            <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">IDIOMAS</h2>
-                            <p class="text-gray-400">Inglês - Nível C1 (Avançado)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <footer class="text-center text-gray-500 mt-16 fade-in-section">
-            <p>&copy; 2025 João Moura. Todos os direitos reservados.</p>
+            <p>
+                <span class="lang-pt">&copy; 2025 João Moura. Todos os direitos reservados.</span>
+                <span class="lang-en hidden">&copy; 2025 João Moura. All rights reserved.</span>
+            </p>
         </footer>
 
     </div>
 
-    <script>
-        // Script para animação de fade-in ao rolar a página
-        const sections = document.querySelectorAll('.fade-in-section');
+    <div id="resume-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
+        <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
+            <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
+                <h3 class="text-2xl font-bold text-white">
+                    <span class="lang-pt">Meu Currículo</span>
+                    <span class="lang-en hidden">My Resume</span>
+                </h3>
+                <div class="flex items-center gap-4">
+                    <a id="download-resume-link" href="curriculo.pdf" download class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded transition">
+                        <span class="lang-pt">Baixar PDF</span>
+                        <span class="lang-en hidden">Download PDF</span>
+                    </a>
+                    <button id="close-resume-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">&times;</button>
+                </div>
+            </div>
+            <div class="space-y-8 p-6 overflow-y-auto flex-1">
+                <div>
+                    <h1 class="text-4xl font-bold text-white">JOÃO LUAN MENDOÇA MOURA</h1>
+                    <p class="text-gray-400 text-sm mt-2">Novo Hamburgo - RS &bull; +55 51 98571-1759 &bull; joao.luan@hotmail.com</p>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                        <span class="lang-pt">RESUMO PROFISSIONAL</span>
+                        <span class="lang-en hidden">PROFESSIONAL SUMMARY</span>
+                    </h2>
+                    <p class="text-gray-400">
+                        <span class="lang-pt">Sou estudante de Análise e Desenvolvimento de Sistemas e sempre tive paixão por tecnologia desde a adolescência. Atualmente, desenvolvo projetos práticos em Node.js, Express, jQuery e Bootstrap, incluindo uma aplicação de monitoramento comunitário integrada ao Home Assistant. Tenho mais de 15 anos de experiência em gestão e liderança no setor de alimentação, o que me trouxe habilidades de organização, trabalho em equipe e resolução de problemas. Estou em transição de carreira para a área de TI e busco uma oportunidade de estágio para aplicar meus conhecimentos, crescer profissionalmente e contribuir de forma efetiva para a equipe.</span>
+                        <span class="lang-en hidden">I am a student of Systems Analysis and Development with a lifelong passion for technology. Currently, I am developing practical projects in Node.js, Express, jQuery, and Bootstrap, including a community monitoring application integrated with Home Assistant. I have over 15 years of experience in management and leadership in the food industry, which has provided me with skills in organization, teamwork, and problem-solving. I am transitioning my career to the IT field and seeking an internship opportunity to apply my knowledge, grow professionally, and contribute effectively to the team.</span>
+                    </p>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                        <span class="lang-pt">EXPERIÊNCIA PROFISSIONAL</span>
+                        <span class="lang-en hidden">PROFESSIONAL EXPERIENCE</span>
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">
+                                <span class="lang-pt">Gerente Geral – SS Reis LTDA</span>
+                                <span class="lang-en hidden">General Manager – SS Reis LTDA</span>
+                            </h3>
+                            <p class="text-gray-500 italic">
+                                <span class="lang-pt">Jun. 2025 - Atual</span>
+                                <span class="lang-en hidden">Jun. 2025 - Present</span>
+                            </p>
+                            <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                <li class="lang-pt">Gestão de equipe, incluindo contratação, treinamento e acompanhamento de desempenho.</li><li class="lang-en hidden">Team management, including hiring, training, and performance monitoring.</li>
+                                <li class="lang-pt">Controle de qualidade, assegurando padrão elevado em todas as etapas do serviço.</li><li class="lang-en hidden">Quality control, ensuring high standards at all stages of service.</li>
+                                <li class="lang-pt">Gestão de estoque e fornecedores, com foco em redução de custos e eficiência na operação.</li><li class="lang-en hidden">Inventory and supplier management, focusing on cost reduction and operational efficiency.</li>
+                                <li class="lang-pt">Análise de indicadores, aplicando estratégias para aumento de receita e fidelização de clientes.</li><li class="lang-en hidden">Indicator analysis, applying strategies to increase revenue and customer loyalty.</li>
+                                <li class="lang-pt">Planejamento e execução de campanhas promocionais e gestão de presença digital.</li><li class="lang-en hidden">Planning and execution of promotional campaigns and digital presence management.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">
+                                <span class="lang-pt">Gerente de Restaurante – America Steak House</span>
+                                <span class="lang-en hidden">Restaurant Manager – America Steak House</span>
+                            </h3>
+                            <p class="text-gray-500 italic">
+                                <span class="lang-pt">Abr. 2023 – Abr. 2025</span>
+                                <span class="lang-en hidden">Apr. 2023 – Apr. 2025</span>
+                            </p>
+                             <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                                <li class="lang-pt">Gerenciamento de base de dados com mais de 10 mil clientes.</li><li class="lang-en hidden">Database management with over 10,000 customers.</li>
+                                <li class="lang-pt">Captação, fidelização e atendimento personalizado.</li><li class="lang-en hidden">Customer acquisition, retention, and personalized service.</li>
+                                <li class="lang-pt">Gestão de equipe: contratação, treinamento e liderança operacional.</li><li class="lang-en hidden">Team management: hiring, training, and operational leadership.</li>
+                                <li class="lang-pt">Controle de estoque, compras e relacionamento com fornecedores.</li><li class="lang-en hidden">Inventory control, purchasing, and supplier relations.</li>
+                                <li class="lang-pt">Coordenação de sistemas de reservas e fluxo de salão.</li><li class="lang-en hidden">Coordination of reservation systems and dining room flow.</li>
+                            </ul>
+                        </div>
+                        <div>
+                           <h3 class="text-xl font-semibold text-white">
+                               <span class="lang-pt">Gerente – Croasonho / Habib’s / Newport</span>
+                               <span class="lang-en hidden">Manager – Croasonho / Habib’s / Newport</span>
+                           </h3>
+                           <p class="text-gray-500 italic">
+                               <span class="lang-pt">Abr. 2015 – Dez. 2019</span>
+                               <span class="lang-en hidden">Apr. 2015 – Dec. 2019</span>
+                           </p>
+                           <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                               <li class="lang-pt">Gestão de pessoas e treinamento de equipe.</li><li class="lang-en hidden">People management and team training.</li>
+                               <li class="lang-pt">Controle de estoque, custos e indicadores de desempenho.</li><li class="lang-en hidden">Inventory control, costs, and performance indicators.</li>
+                               <li class="lang-pt">Atendimento ao cliente e operações administrativas.</li><li class="lang-en hidden">Customer service and administrative operations.</li>
+                           </ul>
+                        </div>
+                        <div>
+                           <h3 class="text-xl font-semibold text-white">
+                               <span class="lang-pt">Sócio/Administrador – Restaurante</span>
+                               <span class="lang-en hidden">Partner/Administrator – Restaurant</span>
+                           </h3>
+                           <p class="text-gray-500 italic">
+                               <span class="lang-pt">Empreendimentos Moura Aquino, SSA/BA | Dez. 2009 – Mai. 2015</span>
+                               <span class="lang-en hidden">Empreendimentos Moura Aquino, SSA/BA | Dec. 2009 – May 2015</span>
+                           </p>
+                           <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
+                               <li class="lang-pt">Administração geral, controle financeiro e gestão de estoque.</li><li class="lang-en hidden">General administration, financial control, and inventory management.</li>
+                               <li class="lang-pt">Atendimento ao cliente e coordenação de equipe.</li><li class="lang-en hidden">Customer service and team coordination.</li>
+                               <li class="lang-pt">Desenvolvimento de cardápio e estratégias de operação.</li><li class="lang-en hidden">Menu development and operational strategies.</li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                        <span class="lang-pt">FORMAÇÃO</span>
+                        <span class="lang-en hidden">EDUCATION</span>
+                    </h2>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white">
+                            <span class="lang-pt">Análise e Desenvolvimento de Sistemas</span>
+                            <span class="lang-en hidden">Systems Analysis and Development</span>
+                        </h3>
+                        <p class="text-gray-500 italic">
+                            <span class="lang-pt">UNISINOS | Previsão de conclusão: 2026</span>
+                            <span class="lang-en hidden">UNISINOS | Expected completion: 2026</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                            <span class="lang-pt">HABILIDADES TÉCNICAS</span>
+                            <span class="lang-en hidden">TECHNICAL SKILLS</span>
+                        </h2>
+                        <h4 class="font-bold text-white mt-2">
+                            <span class="lang-pt">Programação:</span>
+                            <span class="lang-en hidden">Programming:</span>
+                        </h4>
+                        <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
+                        <h4 class="font-bold text-white mt-2">
+                            <span class="lang-pt">Frameworks e Bibliotecas:</span>
+                            <span class="lang-en hidden">Frameworks and Libraries:</span>
+                        </h4>
+                        <p class="text-gray-400">Express, Bootstrap, jQuery</p>
+                        <h4 class="font-bold text-white mt-2">
+                            <span class="lang-pt">Banco de Dados:</span>
+                            <span class="lang-en hidden">Database:</span>
+                        </h4>
+                        <p class="text-gray-400">
+                            <span class="lang-pt">JSON, noções de SQL e integração de dados</span>
+                            <span class="lang-en hidden">JSON, SQL basics, and data integration</span>
+                        </p>
+                        <h4 class="font-bold text-white mt-2">
+                            <span class="lang-pt">Ferramentas:</span>
+                            <span class="lang-en hidden">Tools:</span>
+                        </h4>
+                        <p class="text-gray-400">
+                            <span class="lang-pt">Git/GitHub, VS Code, Linux (containers e terminal)</span>
+                            <span class="lang-en hidden">Git/GitHub, VS Code, Linux (containers and terminal)</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                            <span class="lang-pt">COMPETÊNCIAS</span>
+                            <span class="lang-en hidden">COMPETENCIES</span>
+                        </h2>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1">
+                            <li class="lang-pt">Gestão de processos digitais e organização de dados.</li><li class="lang-en hidden">Digital process management and data organization.</li>
+                            <li class="lang-pt">Análise de indicadores de desempenho e custos.</li><li class="lang-en hidden">Performance and cost indicator analysis.</li>
+                            <li class="lang-pt">Criação de fluxos de trabalho e padronização.</li><li class="lang-en hidden">Workflow creation and standardization.</li>
+                            <li class="lang-pt">Atendimento ao cliente e gestão de conflitos.</li><li class="lang-en hidden">Customer service and conflict management.</li>
+                        </ul>
+                        <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">
+                            <span class="lang-pt">IDIOMAS</span>
+                            <span class="lang-en hidden">LANGUAGES</span>
+                        </h2>
+                        <p class="text-gray-400">
+                            <span class="lang-pt">Inglês - Nível C1 (Avançado)</span>
+                            <span class="lang-en hidden">English - C1 Level (Advanced)</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+                        <span class="lang-pt">Visualização do PDF</span>
+                        <span class="lang-en hidden">PDF Preview</span>
+                    </h2>
+                    <iframe id="resume-iframe" class="w-full h-[50vh] rounded-lg border border-gray-700" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+    <div id="certs-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
+        <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
+            <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
+                <h3 class="text-2xl font-bold text-white">
+                    <span class="lang-pt">Meus Certificados</span>
+                    <span class="lang-en hidden">My Certificates</span>
+                </h3>
+                <button id="close-certs-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-gray-900 p-4 rounded-lg flex flex-col items-center text-center">
+                        <h4 class="text-xl font-bold text-white mb-3 leading-tight">Exploring Data Modeling with SAP Solutions</h4>
+                        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="d4d30570-998d-4bb2-aa9e-d758d180d67d" data-share-badge-host="https://www.credly.com"></div>
+                    </div>
+                    
+                    <a href="analise e anotomia de ataques ciberneticos.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Segurança Ofensiva</span>
+                            <span class="lang-en hidden">Offensive Security</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Script para o Modal do Currículo
-        const resumeModal = document.getElementById('resume-modal');
-        const openResumeModalBtn = document.getElementById('open-resume-modal');
-        const closeResumeModalBtn = document.getElementById('close-resume-modal');
-        const modalOverlay = resumeModal.querySelector('.modal-overlay');
+                    <a href="certificado CNV.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Comunicação Não Violenta</span>
+                            <span class="lang-en hidden">Nonviolent Communication</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
 
-        const openModal = () => {
-            resumeModal.classList.remove('modal-hidden');
-            document.body.style.overflow = 'hidden'; // Impede o scroll da página principal
-        };
+                    <a href="empreendedorismo Problemass ideias oportunidades.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Empreendedorismo: Problemas, Ideias e Oportunidades</span>
+                            <span class="lang-en hidden">Entrepreneurship: Problems, Ideas & Opportunities</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
 
-        const closeModal = () => {
-            resumeModal.classList.add('modal-hidden');
-            document.body.style.overflow = ''; // Restaura o scroll
-        };
+                    <a href="Empreendedorissmo auto conhecimento empreendedor e rede.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Empreendedorismo: Autoconhecimento Empreendedor e Rede</span>
+                            <span class="lang-en hidden">Entrepreneurship: Self-Awareness & Networking</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
 
-        openResumeModalBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Impede que o link '#' cause um pulo na página
-            openModal();
-        });
-        closeResumeModalBtn.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', closeModal);
+                    <a href="Ingle participaçao em reunioe.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Inglês: Participação em Reuniões</span>
+                            <span class="lang-en hidden">English: Participating in Meetings</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
 
-        // Fechar com a tecla 'Escape'
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !resumeModal.classList.contains('modal-hidden')) {
-                closeModal();
+                    <a href="ingles e-mails.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                            <span class="lang-pt">Inglês: E-mails</span>
+                            <span class="lang-en hidden">English: E-mails</span>
+                        </h4>
+                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
+                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </a>
+
+                </div>
+                
+                <div class="mt-8 border-t border-gray-700 pt-6">
+                    <h3 class="text-xl font-bold text-cyan-400 mb-3">
+                        <span class="lang-pt">Lista Completa</span>
+                        <span class="lang-en hidden">Full List</span>
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-1">
+                        <li class="lang-pt">Exploring Data Modeling with SAP Solutions - Record of Achievement</li><li class="lang-en hidden">Exploring Data Modeling with SAP Solutions - Record of Achievement</li>
+                        <li class="lang-pt">Segurança Ofensiva: Análise e Anatomia de Ataques Cibernéticos – Plataforma LabTools</li><li class="lang-en hidden">Offensive Security: Analysis and Anatomy of Cyber Attacks – LabTools Platform</li>
+                        <li class="lang-pt">Desenvolvimento Pessoal: Comunicação Não Violenta – Plataforma LabTools</li><li class="lang-en hidden">Personal Development: Nonviolent Communication – LabTools Platform</li>
+                        <li class="lang-pt">Empreendedorismo: Problemas, Ideias e Oportunidades – Plataforma LabTools</li><li class="lang-en hidden">Entrepreneurship: Problems, Ideas, and Opportunities – LabTools Platform</li>
+                        <li class="lang-pt">Empreendedorismo: Autoconhecimento Empreendedor e Rede – Plataforma LabTools</li><li class="lang-en hidden">Entrepreneurship: Entrepreneurial Self-Awareness and Networking – LabTools Platform</li>
+                        <li class="lang-pt">Inglês: Participação em Reuniões – Plataforma LabTools</li><li class="lang-en hidden">English: Participating in Meetings – LabTools Platform</li>
+                        <li class="lang-pt">Inglês: E-mails – Plataforma LabTools</li><li class="lang-en hidden">English: E-mails – LabTools Platform</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    // Animação de fade-in ao rolar
+    const sections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
             }
         });
-    </script>
-</body>
-</html>
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+    
+    // --- Lógica dos Modais ---
+
+    // Função genérica para modais simples (como o de certificados)
+    function setupSimpleModal(modalId, openBtnId, closeBtnId) {
+        const modal = document.getElementById(modalId);
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        const overlay = modal.querySelector('.modal-overlay');
+
+        const open = (e) => {
+            if(e) e.preventDefault();
+            modal.classList.remove('modal-hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const close = () => {
+            modal.classList.add('modal-hidden');
+            document.body.style.overflow = '';
+        };
+
+        openBtn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', close);
+        
+        return close;
+    }
+
+    // --- Lógica específica para o Modal de Currículo (com troca de PDF) ---
+    const resumeModal = document.getElementById('resume-modal');
+    const openResumeModalBtn = document.getElementById('open-resume-modal');
+    const closeResumeModalBtn = document.getElementById('close-resume-modal');
+    const resumeIframe = document.getElementById('resume-iframe');
+    const resumeOverlay = resumeModal.querySelector('.modal-overlay');
+    // NOVO: Seleciona o link de download pelo ID
+    const downloadResumeLink = document.getElementById('download-resume-link');
+
+    const openResumeModal = (e) => {
+        e.preventDefault();
+        
+        const isEnglish = document.querySelector('.lang-en').classList.contains('hidden') === false;
+
+        if (isEnglish) {
+            resumeIframe.src = 'resume_en.pdf';
+            // NOVO: Atualiza o link de download para a versão em inglês
+            downloadResumeLink.href = 'resume_en.pdf'; 
+        } else {
+            resumeIframe.src = 'curriculo.pdf';
+            // NOVO: Garante que o link de download aponte para a versão em português
+            downloadResumeLink.href = 'curriculo.pdf';
+        }
+        
+        resumeModal.classList.remove('modal-hidden');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeResumeModal = () => {
+        resumeModal.classList.add('modal-hidden');
+        document.body.style.overflow = '';
+        resumeIframe.src = ''; 
+    };
+
+    openResumeModalBtn.addEventListener('click', openResumeModal);
+    closeResumeModalBtn.addEventListener('click', closeResumeModal);
+    resumeOverlay.addEventListener('click', closeResumeModal);
+    
+    // Configura o modal de Certificados (que é mais simples)
+    const closeCertsModal = setupSimpleModal('certs-modal', 'open-certs-modal', 'close-certs-modal');
+
+    // Fechar com a tecla 'Escape'
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            if (!resumeModal.classList.contains('modal-hidden')) {
+                closeResumeModal();
+            }
+            if (!document.getElementById('certs-modal').classList.contains('modal-hidden')) {
+                closeCertsModal();
+            }
+        }
+    });
+
+    // --- Lógica do Seletor de Idioma ---
+    const langSwitcher = document.getElementById('lang-switcher');
+    const ptElements = document.querySelectorAll('.lang-pt');
+    const enElements = document.querySelectorAll('.lang-en');
+
+    langSwitcher.addEventListener('click', () => {
+        ptElements.forEach(el => el.classList.toggle('hidden'));
+        enElements.forEach(el => el.classList.toggle('hidden'));
+    });
+</script>
