@@ -1,644 +1,368 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title class="lang-pt">Portfólio | João Moura</title>
-    <title class="lang-en hidden">Portfolio | João Moura</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A192F;
-            color: #CCD6F6;
-        }
-        .text-cyan-400 { color: #64FFDA; }
-        .bg-gray-800 { background-color: #112240; }
-        .project-card, .skill-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover, .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 15px -3px rgba(100, 255, 218, 0.1), 0 4px 6px -2px rgba(100, 255, 218, 0.05);
-        }
-        .link-underline {
-            position: relative;
-            text-decoration: none;
-        }
-        .link-underline::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #64FFDA;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .link-underline:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .modal-overlay { transition: opacity 0.3s ease; }
-        .modal-container { transition: transform 0.3s ease, opacity 0.3s ease; }
-        .modal-hidden { pointer-events: none; }
-        .modal-hidden .modal-overlay { opacity: 0; }
-        .modal-hidden .modal-container {
-            opacity: 0;
-            transform: scale(0.95);
-        }
-        /* Classe para esconder elementos de um idioma */
-        .hidden {
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>João Moura | Desenvolvedor de Software</title>
+<meta name="description" content="Portfólio de João Moura — desenvolvedor full-stack especializado em Node.js, APIs REST, Docker e integrações WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#090e1a;--bg2:#0d1525;--card:rgba(16,24,44,.9);--accent:#4dffc3;--accent2:#7c6bff;--private:#ffb347;--text:#ccd6f6;--dim:#8892b0;--border:rgba(77,255,195,.12);--bh:rgba(77,255,195,.35);--mono:'JetBrains Mono',monospace;--sans:'Syne',sans-serif;--r:10px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(77,255,195,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(77,255,195,.022) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0}
+.blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3}
+.blob1{width:600px;height:600px;background:rgba(77,255,195,.08);top:-200px;right:-200px}
+.blob2{width:500px;height:500px;background:rgba(124,107,255,.07);bottom:-150px;left:-150px}
+nav{position:fixed;top:0;width:100%;z-index:200;backdrop-filter:blur(20px) saturate(1.5);background:rgba(9,14,26,.78);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);height:62px}
+.nav-logo{font-family:var(--mono);font-size:.95rem;color:var(--accent);text-decoration:none}
+.nav-logo span{color:var(--dim)}
+nav ul{display:flex;list-style:none;gap:1.75rem;align-items:center}
+nav a{color:var(--dim);text-decoration:none;font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;transition:color .2s;display:flex;align-items:center;gap:.3rem}
+nav a .n{color:var(--accent);font-size:.68rem}
+nav a:hover{color:var(--accent)}
+.lang-btn{background:transparent;border:1px solid var(--border);color:var(--dim);padding:.28rem .65rem;border-radius:5px;font-family:var(--mono);font-size:.72rem;cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent)}
+section,header{position:relative;z-index:1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem)}
+.sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+.sec-label h2{font-family:var(--sans);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;white-space:nowrap}
+.sec-label h2 .n{color:var(--accent);font-family:var(--mono);font-size:.85em;margin-right:.2rem}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(1.5rem,6vw,5rem) 60px;max-width:860px;margin:0 auto}
+.hi{font-family:var(--mono);color:var(--accent);font-size:.95rem;margin-bottom:1.1rem;opacity:0;animation:up .5s .1s forwards}
+.hname{font-size:clamp(3rem,9vw,6rem);font-weight:800;line-height:1.0;color:var(--text);margin-bottom:.2rem;opacity:0;animation:up .5s .25s forwards}
+.htitle{font-size:clamp(1.6rem,4vw,3rem);font-weight:700;color:var(--dim);margin-bottom:2rem;opacity:0;animation:up .5s .4s forwards}
+.hdesc{max-width:540px;color:var(--dim);font-size:.97rem;line-height:1.85;margin-bottom:2.5rem;opacity:0;animation:up .5s .55s forwards}
+.hdesc strong{color:var(--accent);font-weight:600}
+.hcta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .5s .7s forwards}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.5rem;border-radius:var(--r);font-family:var(--mono);font-size:.82rem;text-decoration:none;transition:all .2s;cursor:pointer}
+.btn-a{border:1.5px solid var(--accent);color:var(--accent);background:transparent}
+.btn-a:hover{background:rgba(77,255,195,.08);transform:translateY(-2px);box-shadow:0 8px 28px rgba(77,255,195,.1)}
+.btn-g{color:var(--dim);background:transparent;border:1.5px solid rgba(255,255,255,.1)}
+.btn-g:hover{border-color:var(--dim);color:var(--text);transform:translateY(-2px)}
+#sobre{padding:100px 0}
+.about-g{display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
+.about-text p{color:var(--dim);margin-bottom:1rem;line-height:1.85;font-size:.97rem}
+.about-text p strong{color:var(--text)}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;position:sticky;top:78px}
+.aline{display:flex;align-items:center;gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+.aline:last-child{border-bottom:none}
+.aline .ic{color:var(--accent);flex-shrink:0}
+.aline a{color:var(--accent);text-decoration:none}
+.aline a:hover{text-decoration:underline}
+#habilidades{padding:100px 0;background:linear-gradient(to bottom,transparent,rgba(13,21,37,.6),transparent)}
+.sk-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.sk-cat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:border-color .2s,transform .2s}
+.sk-cat:hover{border-color:var(--bh);transform:translateY(-3px)}
+.sk-cat h3{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tag{font-family:var(--mono);font-size:.72rem;padding:.28rem .65rem;border-radius:4px;background:rgba(77,255,195,.06);border:1px solid rgba(77,255,195,.13);color:var(--text);transition:all .15s;cursor:default}
+.tag:hover{background:rgba(77,255,195,.11);border-color:rgba(77,255,195,.28);color:var(--accent)}
+.tag.new{border-color:rgba(124,107,255,.25);background:rgba(124,107,255,.07);color:var(--accent2)}
+#projetos{padding:100px 0}
+.subsec{font-family:var(--mono);font-size:.75rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem}
+.subsec::after{content:'';flex:1;height:1px;background:var(--border)}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.4rem;margin-bottom:3.5rem}
+.feat{grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr;background:var(--card);border:1px solid var(--bh);border-radius:var(--r);overflow:hidden;transition:all .25s}
+.feat:hover{box-shadow:0 20px 50px rgba(0,0,0,.4);transform:translateY(-4px)}
+.feat-l{padding:2rem 2.25rem;display:flex;flex-direction:column;gap:1rem;border-right:1px solid var(--border)}
+.feat-r{padding:2rem 2.25rem;display:flex;flex-direction:column;gap:.75rem}
+.feat-r h4{font-family:var(--mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
+.feat-r ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.feat-r li{font-size:.85rem;color:var(--dim);display:flex;align-items:flex-start;gap:.5rem;line-height:1.6}
+.feat-r li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:.05rem}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.65rem;display:flex;flex-direction:column;gap:.9rem;transition:all .25s;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .25s}
+.pc:hover{border-color:var(--bh);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.pc:hover::before{opacity:1}
+.pc.priv{border-color:rgba(255,179,71,.13)}
+.pc.priv::before{background:linear-gradient(90deg,var(--private),transparent)}
+.pc.priv:hover{border-color:rgba(255,179,71,.38)}
+.pt2{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem}
+.picon{font-size:1.7rem}
+.badges{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+.badge{font-family:var(--mono);font-size:.62rem;padding:.18rem .52rem;border-radius:99px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.bl{background:rgba(77,255,195,.1);color:var(--accent);border:1px solid rgba(77,255,195,.22)}
+.bp{background:rgba(255,179,71,.1);color:var(--private);border:1px solid rgba(255,179,71,.22)}
+.bs{background:rgba(124,107,255,.1);color:var(--accent2);border:1px solid rgba(124,107,255,.22)}
+.bw{background:rgba(52,211,153,.08);color:#34d399;border:1px solid rgba(52,211,153,.2)}
+.ptitle{font-size:1.1rem;font-weight:700;color:var(--text)}
+.pdesc{font-size:.88rem;color:var(--dim);line-height:1.75;flex:1}
+.pstack{display:flex;flex-wrap:wrap;gap:.35rem}
+.st{font-family:var(--mono);font-size:.68rem;color:var(--dim);padding:.13rem .45rem;background:rgba(255,255,255,.04);border-radius:3px}
+.plinks{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:auto}
+.pl{font-family:var(--mono);font-size:.74rem;color:var(--dim);text-decoration:none;display:flex;align-items:center;gap:.28rem;transition:color .15s;padding-bottom:.12rem;border-bottom:1px solid transparent}
+.pl:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.priv-note{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;color:rgba(255,179,71,.65);background:rgba(255,179,71,.04);border:1px dashed rgba(255,179,71,.18);border-radius:5px;padding:.5rem .7rem;margin-top:auto}
+#certificados{padding:100px 0}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.35rem;display:flex;align-items:flex-start;gap:.9rem;text-decoration:none;transition:all .2s}
+.cc:hover{border-color:var(--bh);transform:translateX(4px)}
+.ci{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}
+.cinfo h4{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.25rem;line-height:1.4}
+.cinfo span{font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+#contato{padding:100px 0 140px;text-align:center}
+.con-wrap{max-width:580px;margin:0 auto}
+.con-top{font-family:var(--mono);color:var(--accent);font-size:.88rem;margin-bottom:1rem}
+.con-h{font-size:clamp(1.9rem,5vw,3rem);font-weight:800;margin-bottom:1.2rem}
+.con-p{color:var(--dim);margin-bottom:2.5rem;line-height:1.85;font-size:.97rem}
+.con-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.clink{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.83rem;color:var(--dim);text-decoration:none;transition:color .2s;padding-bottom:.12rem;border-bottom:1px solid transparent}
+.clink:hover{color:var(--accent);border-bottom-color:var(--accent)}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:1.4rem clamp(1.5rem,5vw,4rem);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.72rem;color:var(--dim);flex-wrap:wrap;gap:1rem}
+footer a{color:var(--accent);text-decoration:none}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.rv.vis{opacity:1;transform:none}
+[data-lang="en"] .pt{display:none!important}
+[data-lang="pt"] .en{display:none!important}
+@media(max-width:780px){.about-g{grid-template-columns:1fr}.acard{position:static}nav ul{display:none}.feat{grid-template-columns:1fr}.feat-l{border-right:none;border-bottom:1px solid var(--border)}}
+</style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body data-lang="pt">
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
-    <div class="fixed top-4 right-4 z-50">
-        <button id="lang-switcher" class="bg-gray-800 border border-gray-700 text-cyan-400 font-semibold rounded-md px-4 py-2 hover:bg-gray-700 transition">
-            <span class="lang-pt">EN</span>
-            <span class="lang-en hidden">PT</span>
-        </button>
+<nav>
+  <a href="#" class="nav-logo">joão<span>.dev</span></a>
+  <ul>
+    <li><a href="#sobre"><span class="n">01.</span><span class="pt">Sobre</span><span class="en">About</span></a></li>
+    <li><a href="#habilidades"><span class="n">02.</span>Skills</a></li>
+    <li><a href="#projetos"><span class="n">03.</span><span class="pt">Projetos</span><span class="en">Projects</span></a></li>
+    <li><a href="#certificados"><span class="n">04.</span>Certs</a></li>
+    <li><a href="#contato"><span class="n">05.</span><span class="pt">Contato</span><span class="en">Contact</span></a></li>
+    <li><button class="lang-btn" id="langBtn">EN</button></li>
+  </ul>
+</nav>
+
+<header id="hero">
+  <div>
+    <p class="hi"><span class="pt">👋 Olá, me chamo</span><span class="en">👋 Hi, my name is</span></p>
+    <h1 class="hname">João Moura.</h1>
+    <h2 class="htitle"><span class="pt">Desenvolvedor Full Stack</span><span class="en">Full Stack Developer</span></h2>
+    <p class="hdesc">
+      <span class="pt">Estudante de ADS na UNISINOS. Construo sistemas reais em produção — de e-commerce com gateway de pagamento a <strong>bots de WhatsApp</strong> e APIs REST com <strong>Node.js, Docker e Prisma ORM</strong>. 15+ anos de liderança me ensinaram o que nenhum framework ensina: entender o negócio por completo.</span>
+      <span class="en">Systems Analysis student at UNISINOS. I build real production systems — from e-commerce with payment gateways to <strong>WhatsApp bots</strong> and REST APIs using <strong>Node.js, Docker and Prisma ORM</strong>. 15+ years of leadership taught me what no framework can: fully understanding the business.</span>
+    </p>
+    <div class="hcta">
+      <a href="#projetos" class="btn btn-a"><span class="pt">Ver Projetos →</span><span class="en">View Projects →</span></a>
+      <a href="curriculo.pdf" class="btn btn-g" download><span class="pt">📄 Baixar CV</span><span class="en">📄 Download CV</span></a>
     </div>
+  </div>
+</header>
 
-    <div class="container mx-auto max-w-5xl px-4 py-12">
+<section id="sobre">
+  <div class="wrap">
+    <div class="sec-label rv"><h2><span class="n">01.</span><span class="pt">Sobre mim</span><span class="en">About me</span></h2></div>
+    <div class="about-g rv">
+      <div class="about-text">
+        <p class="pt">Sou João Moura, de Novo Hamburgo/RS. Tecnologia sempre foi minha maior paixão — desde adolescente. Hoje, estou transformando isso em carreira profissional como desenvolvedor full-stack.</p>
+        <p class="en">I'm João Moura from Novo Hamburgo/RS, Brazil. Technology has always been my greatest passion — since my teenage years. Today, I'm turning that passion into a professional career as a full-stack developer.</p>
+        <p class="pt">Desenvolvo sistemas reais em produção: a <strong>Donilla</strong> é minha própria loja online, com backend Node.js completo, gateway de pagamento Asaas, bot de WhatsApp para notificações automáticas, painel admin com atualizações em tempo real via SSE e deploy com Docker em VPS própria. Não é projeto de faculdade — é um negócio rodando de verdade.</p>
+        <p class="en">I build real production systems: <strong>Donilla</strong> is my own online store with a complete Node.js backend, Asaas payment gateway, WhatsApp bot for automatic notifications, real-time admin panel via SSE, and Docker deployment on a personal VPS. Not a college project — a real running business.</p>
+        <p class="pt"><strong>O que me diferencia:</strong> 15+ anos gerenciando equipes, custos e indicadores no setor de alimentação. Quando desenvolvo, entendo o lado do negócio — sei perguntar as perguntas certas e me comunicar com clareza tanto com times técnicos quanto com stakeholders. Inglês C1 avançado.</p>
+        <p class="en"><strong>What sets me apart:</strong> 15+ years managing teams, costs and KPIs in the food industry. When I develop, I understand the business side — I ask the right questions and communicate clearly with both technical teams and stakeholders. Advanced English (C1).</p>
+      </div>
+      <div class="acard">
+        <div class="aline"><span class="ic">📍</span><span>Novo Hamburgo, RS</span></div>
+        <div class="aline"><span class="ic">🎓</span><span class="pt">ADS · UNISINOS · 2026</span><span class="en">Sys. Dev · UNISINOS · 2026</span></div>
+        <div class="aline"><span class="ic">🌐</span><span class="pt">Inglês C1 · Avançado</span><span class="en">English C1 · Advanced</span></div>
+        <div class="aline"><span class="ic">🚀</span><span class="pt">Em produção:</span><span class="en">Live system:</span>&nbsp;<a href="https://github.com/joaoluan/donilla-app" target="_blank">donilla-app</a></div>
+        <div class="aline"><span class="ic">🐙</span><a href="https://github.com/joaoluan" target="_blank">github.com/joaoluan</a></div>
+        <div class="aline"><span class="ic">💼</span><a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank">LinkedIn</a></div>
+        <div class="aline"><span class="ic">✉️</span><a href="mailto:joao.luan@hotmail.com">joao.luan@hotmail.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <header class="text-center mb-16 fade-in-section">
-            <h1 class="text-5xl md:text-6xl font-bold text-white">João Moura</h1>
-            <h2 class="text-2xl text-cyan-400 mt-2">
-                <span class="lang-pt">Desenvolvedor de Software</span>
-                <span class="lang-en hidden">Software Developer</span>
-            </h2>
-            <p class="text-gray-400 mt-6 max-w-3xl mx-auto">
-                <span class="lang-pt">Em transição para a área de tecnologia, com foco em desenvolvimento de software. Trago mais de 15 anos de experiência em liderança e gestão de operações no setor de alimentação, agora aplicando essas habilidades em novos desafios como futuro desenvolvedor.</span>
-                <span class="lang-en hidden">Transitioning to the technology field with a focus on software development. I bring over 15 years of leadership and operations management experience from the food industry, now applying these skills to new challenges as a future developer.</span>
+<section id="habilidades">
+  <div class="wrap">
+    <div class="sec-label rv"><h2><span class="n">02.</span><span class="pt">Habilidades</span><span class="en">Skills</span></h2></div>
+    <div class="sk-g">
+      <div class="sk-cat rv">
+        <h3>⚡ <span class="pt">Linguagens</span><span class="en">Languages</span></h3>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SQL</span><span class="tag">Bash</span></div>
+      </div>
+      <div class="sk-cat rv">
+        <h3>🚂 Backend / APIs</h3>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST API</span><span class="tag">SSE</span><span class="tag">Webhooks</span><span class="tag">JWT / Auth</span><span class="tag">CORS</span></div>
+      </div>
+      <div class="sk-cat rv">
+        <h3>🗄️ <span class="pt">Banco de Dados</span><span class="en">Databases</span></h3>
+        <div class="tags"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Prisma ORM</span><span class="tag">Triggers</span><span class="tag">Migrations</span></div>
+      </div>
+      <div class="sk-cat rv">
+        <h3>⚙️ DevOps / <span class="pt">Infra</span><span class="en">Infra</span></h3>
+        <div class="tags"><span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Linux Debian</span><span class="tag">SSH</span><span class="tag">VPS</span><span class="tag">Git / GitHub</span></div>
+      </div>
+      <div class="sk-cat rv">
+        <h3>🔌 <span class="pt">Integrações</span><span class="en">Integrations</span></h3>
+        <div class="tags"><span class="tag">WhatsApp (WPPConnect)</span><span class="tag">Evolution API</span><span class="tag">Asaas Checkout</span><span class="tag">Home Assistant</span><span class="tag">Bitwarden BWS</span></div>
+      </div>
+      <div class="sk-cat rv">
+        <h3>📚 <span class="pt">Estudando</span><span class="en">Learning</span></h3>
+        <div class="tags"><span class="tag new">React</span><span class="tag new">Spring Boot</span><span class="tag new">Playwright</span><span class="tag new">Redis Pub/Sub</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-label rv"><h2><span class="n">03.</span><span class="pt">Projetos</span><span class="en">Projects</span></h2></div>
+
+    <div class="subsec rv"><span>⭐ <span class="pt">Projeto principal em produção</span><span class="en">Main production project</span></span></div>
+    <div class="pg">
+      <div class="feat rv">
+        <div class="feat-l">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span style="font-size:2rem">🛒</span>
+            <div class="badges"><span class="badge bl">Live</span><span class="badge bw"><span class="pt">Produção</span><span class="en">Production</span></span></div>
+          </div>
+          <div>
+            <h3 class="ptitle" style="font-size:1.3rem;margin-bottom:.4rem">Donilla App</h3>
+            <p class="pdesc">
+              <span class="pt">Backend completo de e-commerce construído do zero para minha loja online. API REST com Node.js, gateway de pagamento Asaas, bot WhatsApp nativo para notificações de pedidos, painel admin com SSE em tempo real, auditoria completa por pedido, autenticação e deploy em VPS via Docker com segredos gerenciados pelo Bitwarden.</span>
+              <span class="en">Complete e-commerce backend built from scratch for my online store. Node.js REST API, Asaas payment gateway, native WhatsApp bot for order notifications, real-time SSE admin panel, full per-order audit trail, authentication, and VPS deployment via Docker with Bitwarden-managed secrets.</span>
             </p>
-            <div class="mt-8 flex justify-center items-center gap-6 flex-wrap">
-                <a href="mailto:joao.luan@hotmail.com" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Email
-                </a>
-                <a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/joaoluan" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
-                </a>
-                <a href="#" id="open-resume-modal" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M12 4h9"></path><path d="M4 9h16"></path><path d="M4 15h16"></path></svg>
-                    <span class="lang-pt">Currículo</span>
-                    <span class="lang-en hidden">Resume</span>
-                </a>
-                <a href="#" id="open-certs-modal" class="flex items-center gap-2 text-cyan-400 hover:text-white transition link-underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                    <span class="lang-pt">Certificados</span>
-                    <span class="lang-en hidden">Certificates</span>
-                </a>
-            </div>
-        </header>
-
-        <main>
-            <section class="mb-16 fade-in-section">
-                <h2 class="text-3xl font-bold text-white text-center mb-8">
-                    <span class="lang-pt">Principais Habilidades</span>
-                    <span class="lang-en hidden">Main Skills</span>
-                </h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Java</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">☕</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Node.js</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🟢</div>    
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">MySQL</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐬</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Linux</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐧</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Docker</span>`
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🐳</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">JavaScript</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">⚡</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Express</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🚂</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">jQuery</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">💫</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">Bootstrap</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">🎨</div>
-                </div>
-                    <div class="skill-card bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center"><span class="text-cyan-400 text-lg font-semibold">DevOps</span>
-                    <div class="text-4xl mb-3 transform transition-transform group-hover:scale-110">⚙️</div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="fade-in-section">
-                <h2 class="text-3xl font-bold text-white text-center mb-10">
-                    <span class="lang-pt">Projetos em Destaque</span>
-                    <span class="lang-en hidden">Featured Projects</span>
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Vigilancia+Solidaria" alt="Vigilância Solidária" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">
-                            <span class="lang-pt">Vigilância Solidária – Monitoramento Comunitário</span>
-                            <span class="lang-en hidden">Neighborhood Watch – Community Monitoring</span>
-                        </h3>
-                        <p class="text-gray-400 mb-4 flex-grow">
-                            <span class="lang-pt">Sistema web full-stack para monitoramento comunitário, integrado ao Home Assistant, permitindo conexão de câmeras, alertas e registro de eventos.</span>
-                            <span class="lang-en hidden">Full-stack web system for community monitoring, integrated with Home Assistant, allowing camera connections, alerts, and event logging.</span>
-                        </p>
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Node.js</span>
-                            <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Express</span>
-                            <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">jQuery</span>
-                            <span class="bg-cyan-900 text-cyan-300 text-sm font-medium px-2.5 py-0.5 rounded">Bootstrap</span>
-                        </div>
-                        <div class="mt-auto flex items-center gap-4">
-                            <a href="https://github.com/joaoluan/vs-melhorado" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
-                                <span class="lang-pt">Ver Código</span>
-                                <span class="lang-en hidden">View Code</span>
-                            </a>
-                            <a href="https://vs.joaomoura.dev.br/" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
-                                <span class="lang-pt">Ver Demo &rarr;</span>
-                                <span class="lang-en hidden">View Demo &rarr;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Sistema+de+Locadora" alt="Sistema de Locadora" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">
-                            <span class="lang-pt">Sistema de Locadora – Banco de Dados</span>
-                            <span class="lang-en hidden">Rental System – Database</span>
-                        </h3>
-                        <p class="text-gray-400 mb-4 flex-grow">
-                            <span class="lang-pt">Projeto de banco de dados para gerenciar uma locadora de veículos, com triggers para automatizar cálculos de locação e atualizações de status.</span>
-                            <span class="lang-en hidden">Database project to manage a car rental agency, with triggers to automate rental calculations and status updates.</span>
-                        </p>
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">MySQL</span>
-                            <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">SQL</span>
-                            <span class="bg-blue-900 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded">Triggers</span>
-                        </div>
-                        <div class="mt-auto">
-                           <a href="https://github.com/joaoluan/locadora" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
-                               <span class="lang-pt">Ver Código &rarr;</span>
-                               <span class="lang-en hidden">View Code &rarr;</span>
-                           </a>
-                        </div>
-                    </div>
-                    <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Labirinto+Recursivo" alt="Labirinto com Recursão" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">
-                            <span class="lang-pt">Labirinto – Simulação com Recursão</span>
-                            <span class="lang-en hidden">Maze – Simulation with Recursion</span>
-                        </h3>
-                        <p class="text-gray-400 mb-4 flex-grow">
-                            <span class="lang-pt">Simulação de labirinto que demonstra lógica e resolução de problemas complexos através do uso de arrays bidimensionais e algoritmos de recursão.</span>
-                            <span class="lang-en hidden">Maze simulation that demonstrates logic and complex problem-solving using two-dimensional arrays and recursion algorithms.</span>
-                        </p>
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Java</span>
-                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Recursion</span>
-                            <span class="bg-red-900 text-red-300 text-sm font-medium px-2.5 py-0.5 rounded">Data Structures</span>
-                        </div>
-                        <div class="mt-auto">
-                            <a href="https://github.com/joaoluan/Labirinto" target="_blank" class="text-cyan-400 hover:text-white font-semibold link-underline">
-                                <span class="lang-pt">Ver Código &rarr;</span>
-                                <span class="lang-en hidden">View Code &rarr;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-card bg-gray-800 rounded-lg p-6 flex flex-col">
-                        <img src="https://placehold.co/600x400/112240/64FFDA?text=Linux+e+Containers" alt="Ambientes com Linux e Containers" class="rounded-md mb-4 aspect-video object-cover">
-                        <h3 class="text-2xl font-bold text-white mb-2">
-                            <span class="lang-pt">Ambientes com Linux e Containers</span>
-                            <span class="lang-en hidden">Environments with Linux and Containers</span>
-                        </h3>
-                        <p class="text-gray-400 mb-4 flex-grow">
-                            <span class="lang-pt">Experiência prática na configuração de ambientes de desenvolvimento e teste em containers isolados, simulando cenários de produção com Docker.</span>
-                            <span class="lang-en hidden">Practical experience in configuring development and testing environments in isolated containers, simulating production scenarios with Docker.</span>
-                        </p>
-                        <div class="mb-4 flex flex-wrap gap-2">
-                            <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">Linux Debian</span>
-                            <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">Docker</span>
-                            <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">SSH</span>
-                            <span class="bg-green-900 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded">DevOps</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer class="text-center text-gray-500 mt-16 fade-in-section">
-            <p>
-                <span class="lang-pt">&copy; 2025 João Moura. Todos os direitos reservados.</span>
-                <span class="lang-en hidden">&copy; 2025 João Moura. All rights reserved.</span>
-            </p>
-        </footer>
-
-    </div>
-
-    <div id="resume-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
-        <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
-            <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
-                <h3 class="text-2xl font-bold text-white">
-                    <span class="lang-pt">Meu Currículo</span>
-                    <span class="lang-en hidden">My Resume</span>
-                </h3>
-                <div class="flex items-center gap-4">
-                    <a id="download-resume-link" href="curriculo.pdf" download class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded transition">
-                        <span class="lang-pt">Baixar PDF</span>
-                        <span class="lang-en hidden">Download PDF</span>
-                    </a>
-                    <button id="close-resume-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">&times;</button>
-                </div>
-            </div>
-            <div class="space-y-8 p-6 overflow-y-auto flex-1">
-                <div>
-                    <h1 class="text-4xl font-bold text-white">JOÃO LUAN MENDOÇA MOURA</h1>
-                    <p class="text-gray-400 text-sm mt-2">Novo Hamburgo - RS &bull; +55 51 98571-1759 &bull; joao.luan@hotmail.com</p>
-                </div>
-                <div class="border-t border-gray-700 pt-6">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                        <span class="lang-pt">RESUMO PROFISSIONAL</span>
-                        <span class="lang-en hidden">PROFESSIONAL SUMMARY</span>
-                    </h2>
-                    <p class="text-gray-400">
-                        <span class="lang-pt">Sou estudante de Análise e Desenvolvimento de Sistemas e sempre tive paixão por tecnologia desde a adolescência. Atualmente, desenvolvo projetos práticos em Node.js, Express, jQuery e Bootstrap, incluindo uma aplicação de monitoramento comunitário integrada ao Home Assistant. Tenho mais de 15 anos de experiência em gestão e liderança no setor de alimentação, o que me trouxe habilidades de organização, trabalho em equipe e resolução de problemas. Estou em transição de carreira para a área de TI e busco uma oportunidade de estágio para aplicar meus conhecimentos, crescer profissionalmente e contribuir de forma efetiva para a equipe.</span>
-                        <span class="lang-en hidden">I am a student of Systems Analysis and Development with a lifelong passion for technology. Currently, I am developing practical projects in Node.js, Express, jQuery, and Bootstrap, including a community monitoring application integrated with Home Assistant. I have over 15 years of experience in management and leadership in the food industry, which has provided me with skills in organization, teamwork, and problem-solving. I am transitioning my career to the IT field and seeking an internship opportunity to apply my knowledge, grow professionally, and contribute effectively to the team.</span>
-                    </p>
-                </div>
-                <div class="border-t border-gray-700 pt-6">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                        <span class="lang-pt">EXPERIÊNCIA PROFISSIONAL</span>
-                        <span class="lang-en hidden">PROFESSIONAL EXPERIENCE</span>
-                    </h2>
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">
-                                <span class="lang-pt">Gerente Geral – SS Reis LTDA</span>
-                                <span class="lang-en hidden">General Manager – SS Reis LTDA</span>
-                            </h3>
-                            <p class="text-gray-500 italic">
-                                <span class="lang-pt">Jun. 2025 - Atual</span>
-                                <span class="lang-en hidden">Jun. 2025 - Present</span>
-                            </p>
-                            <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                <li class="lang-pt">Gestão de equipe, incluindo contratação, treinamento e acompanhamento de desempenho.</li><li class="lang-en hidden">Team management, including hiring, training, and performance monitoring.</li>
-                                <li class="lang-pt">Controle de qualidade, assegurando padrão elevado em todas as etapas do serviço.</li><li class="lang-en hidden">Quality control, ensuring high standards at all stages of service.</li>
-                                <li class="lang-pt">Gestão de estoque e fornecedores, com foco em redução de custos e eficiência na operação.</li><li class="lang-en hidden">Inventory and supplier management, focusing on cost reduction and operational efficiency.</li>
-                                <li class="lang-pt">Análise de indicadores, aplicando estratégias para aumento de receita e fidelização de clientes.</li><li class="lang-en hidden">Indicator analysis, applying strategies to increase revenue and customer loyalty.</li>
-                                <li class="lang-pt">Planejamento e execução de campanhas promocionais e gestão de presença digital.</li><li class="lang-en hidden">Planning and execution of promotional campaigns and digital presence management.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">
-                                <span class="lang-pt">Gerente de Restaurante – America Steak House</span>
-                                <span class="lang-en hidden">Restaurant Manager – America Steak House</span>
-                            </h3>
-                            <p class="text-gray-500 italic">
-                                <span class="lang-pt">Abr. 2023 – Abr. 2025</span>
-                                <span class="lang-en hidden">Apr. 2023 – Apr. 2025</span>
-                            </p>
-                             <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                                <li class="lang-pt">Gerenciamento de base de dados com mais de 10 mil clientes.</li><li class="lang-en hidden">Database management with over 10,000 customers.</li>
-                                <li class="lang-pt">Captação, fidelização e atendimento personalizado.</li><li class="lang-en hidden">Customer acquisition, retention, and personalized service.</li>
-                                <li class="lang-pt">Gestão de equipe: contratação, treinamento e liderança operacional.</li><li class="lang-en hidden">Team management: hiring, training, and operational leadership.</li>
-                                <li class="lang-pt">Controle de estoque, compras e relacionamento com fornecedores.</li><li class="lang-en hidden">Inventory control, purchasing, and supplier relations.</li>
-                                <li class="lang-pt">Coordenação de sistemas de reservas e fluxo de salão.</li><li class="lang-en hidden">Coordination of reservation systems and dining room flow.</li>
-                            </ul>
-                        </div>
-                        <div>
-                           <h3 class="text-xl font-semibold text-white">
-                               <span class="lang-pt">Gerente – Croasonho / Habib’s / Newport</span>
-                               <span class="lang-en hidden">Manager – Croasonho / Habib’s / Newport</span>
-                           </h3>
-                           <p class="text-gray-500 italic">
-                               <span class="lang-pt">Abr. 2015 – Dez. 2019</span>
-                               <span class="lang-en hidden">Apr. 2015 – Dec. 2019</span>
-                           </p>
-                           <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                               <li class="lang-pt">Gestão de pessoas e treinamento de equipe.</li><li class="lang-en hidden">People management and team training.</li>
-                               <li class="lang-pt">Controle de estoque, custos e indicadores de desempenho.</li><li class="lang-en hidden">Inventory control, costs, and performance indicators.</li>
-                               <li class="lang-pt">Atendimento ao cliente e operações administrativas.</li><li class="lang-en hidden">Customer service and administrative operations.</li>
-                           </ul>
-                        </div>
-                        <div>
-                           <h3 class="text-xl font-semibold text-white">
-                               <span class="lang-pt">Sócio/Administrador – Restaurante</span>
-                               <span class="lang-en hidden">Partner/Administrator – Restaurant</span>
-                           </h3>
-                           <p class="text-gray-500 italic">
-                               <span class="lang-pt">Empreendimentos Moura Aquino, SSA/BA | Dez. 2009 – Mai. 2015</span>
-                               <span class="lang-en hidden">Empreendimentos Moura Aquino, SSA/BA | Dec. 2009 – May 2015</span>
-                           </p>
-                           <ul class="list-disc list-inside mt-2 text-gray-400 space-y-1">
-                               <li class="lang-pt">Administração geral, controle financeiro e gestão de estoque.</li><li class="lang-en hidden">General administration, financial control, and inventory management.</li>
-                               <li class="lang-pt">Atendimento ao cliente e coordenação de equipe.</li><li class="lang-en hidden">Customer service and team coordination.</li>
-                               <li class="lang-pt">Desenvolvimento de cardápio e estratégias de operação.</li><li class="lang-en hidden">Menu development and operational strategies.</li>
-                           </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-t border-gray-700 pt-6">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                        <span class="lang-pt">FORMAÇÃO</span>
-                        <span class="lang-en hidden">EDUCATION</span>
-                    </h2>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white">
-                            <span class="lang-pt">Análise e Desenvolvimento de Sistemas</span>
-                            <span class="lang-en hidden">Systems Analysis and Development</span>
-                        </h3>
-                        <p class="text-gray-500 italic">
-                            <span class="lang-pt">UNISINOS | Previsão de conclusão: 2026</span>
-                            <span class="lang-en hidden">UNISINOS | Expected completion: 2026</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="border-t border-gray-700 pt-6 grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                            <span class="lang-pt">HABILIDADES TÉCNICAS</span>
-                            <span class="lang-en hidden">TECHNICAL SKILLS</span>
-                        </h2>
-                        <h4 class="font-bold text-white mt-2">
-                            <span class="lang-pt">Programação:</span>
-                            <span class="lang-en hidden">Programming:</span>
-                        </h4>
-                        <p class="text-gray-400">Node.js, Java, HTML, CSS, JavaScript</p>
-                        <h4 class="font-bold text-white mt-2">
-                            <span class="lang-pt">Frameworks e Bibliotecas:</span>
-                            <span class="lang-en hidden">Frameworks and Libraries:</span>
-                        </h4>
-                        <p class="text-gray-400">Express, Bootstrap, jQuery</p>
-                        <h4 class="font-bold text-white mt-2">
-                            <span class="lang-pt">Banco de Dados:</span>
-                            <span class="lang-en hidden">Database:</span>
-                        </h4>
-                        <p class="text-gray-400">
-                            <span class="lang-pt">JSON, noções de SQL e integração de dados</span>
-                            <span class="lang-en hidden">JSON, SQL basics, and data integration</span>
-                        </p>
-                        <h4 class="font-bold text-white mt-2">
-                            <span class="lang-pt">Ferramentas:</span>
-                            <span class="lang-en hidden">Tools:</span>
-                        </h4>
-                        <p class="text-gray-400">
-                            <span class="lang-pt">Git/GitHub, VS Code, Linux (containers e terminal)</span>
-                            <span class="lang-en hidden">Git/GitHub, VS Code, Linux (containers and terminal)</span>
-                        </p>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                            <span class="lang-pt">COMPETÊNCIAS</span>
-                            <span class="lang-en hidden">COMPETENCIES</span>
-                        </h2>
-                        <ul class="list-disc list-inside text-gray-400 space-y-1">
-                            <li class="lang-pt">Gestão de processos digitais e organização de dados.</li><li class="lang-en hidden">Digital process management and data organization.</li>
-                            <li class="lang-pt">Análise de indicadores de desempenho e custos.</li><li class="lang-en hidden">Performance and cost indicator analysis.</li>
-                            <li class="lang-pt">Criação de fluxos de trabalho e padronização.</li><li class="lang-en hidden">Workflow creation and standardization.</li>
-                            <li class="lang-pt">Atendimento ao cliente e gestão de conflitos.</li><li class="lang-en hidden">Customer service and conflict management.</li>
-                        </ul>
-                        <h2 class="text-2xl font-bold text-cyan-400 mt-6 mb-3">
-                            <span class="lang-pt">IDIOMAS</span>
-                            <span class="lang-en hidden">LANGUAGES</span>
-                        </h2>
-                        <p class="text-gray-400">
-                            <span class="lang-pt">Inglês - Nível C1 (Avançado)</span>
-                            <span class="lang-en hidden">English - C1 Level (Advanced)</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="border-t border-gray-700 pt-6">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-3">
-                        <span class="lang-pt">Visualização do PDF</span>
-                        <span class="lang-en hidden">PDF Preview</span>
-                    </h2>
-                    <iframe id="resume-iframe" class="w-full h-[50vh] rounded-lg border border-gray-700" frameborder="0"></iframe>
-                </div>
-            </div>
+          </div>
+          <div class="pstack"><span class="st">Node.js</span><span class="st">Express</span><span class="st">Prisma ORM</span><span class="st">PostgreSQL</span><span class="st">Docker</span><span class="st">Asaas</span><span class="st">SSE</span><span class="st">WPPConnect</span><span class="st">Playwright</span><span class="st">Bitwarden</span></div>
+          <div class="plinks"><a href="https://github.com/joaoluan/donilla-app" target="_blank" class="pl">⌥ <span class="pt">Ver código</span><span class="en">View code</span></a></div>
         </div>
-    </div>
-
-    <div id="certs-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="modal-overlay fixed inset-0 bg-black bg-opacity-75"></div>
-        <div class="modal-container bg-gray-800 text-gray-200 rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative flex flex-col">
-            <div class="flex justify-between items-center p-6 bg-gray-900 border-b border-gray-700 sticky top-0 z-10">
-                <h3 class="text-2xl font-bold text-white">
-                    <span class="lang-pt">Meus Certificados</span>
-                    <span class="lang-en hidden">My Certificates</span>
-                </h3>
-                <button id="close-certs-modal" class="text-gray-400 hover:text-white transition text-2xl font-bold">&times;</button>
-            </div>
-            <div class="p-6 overflow-y-auto flex-1">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-gray-900 p-4 rounded-lg flex flex-col items-center text-center">
-                        <h4 class="text-xl font-bold text-white mb-3 leading-tight">Exploring Data Modeling with SAP Solutions</h4>
-                        <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="d4d30570-998d-4bb2-aa9e-d758d180d67d" data-share-badge-host="https://www.credly.com"></div>
-                    </div>
-                    
-                    <a href="analise e anotomia de ataques ciberneticos.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Segurança Ofensiva</span>
-                            <span class="lang-en hidden">Offensive Security</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                    <a href="certificado CNV.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Comunicação Não Violenta</span>
-                            <span class="lang-en hidden">Nonviolent Communication</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                    <a href="empreendedorismo Problemass ideias oportunidades.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Empreendedorismo: Problemas, Ideias e Oportunidades</span>
-                            <span class="lang-en hidden">Entrepreneurship: Problems, Ideas & Opportunities</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                    <a href="Empreendedorissmo auto conhecimento empreendedor e rede.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Empreendedorismo: Autoconhecimento Empreendedor e Rede</span>
-                            <span class="lang-en hidden">Entrepreneurship: Self-Awareness & Networking</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                    <a href="Ingle participaçao em reunioe.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Inglês: Participação em Reuniões</span>
-                            <span class="lang-en hidden">English: Participating in Meetings</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                    <a href="ingles e-mails.pdf" target="_blank" class="relative group bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-900/50">
-                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
-                            <span class="lang-pt">Inglês: E-mails</span>
-                            <span class="lang-en hidden">English: E-mails</span>
-                        </h4>
-                        <p class="text-sm text-gray-400 mt-1">Plataforma LabTools</p>
-                        <div class="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </a>
-
-                </div>
-                
-                <div class="mt-8 border-t border-gray-700 pt-6">
-                    <h3 class="text-xl font-bold text-cyan-400 mb-3">
-                        <span class="lang-pt">Lista Completa</span>
-                        <span class="lang-en hidden">Full List</span>
-                    </h3>
-                    <ul class="list-disc list-inside text-gray-400 space-y-1">
-                        <li class="lang-pt">Exploring Data Modeling with SAP Solutions - Record of Achievement</li><li class="lang-en hidden">Exploring Data Modeling with SAP Solutions - Record of Achievement</li>
-                        <li class="lang-pt">Segurança Ofensiva: Análise e Anatomia de Ataques Cibernéticos – Plataforma LabTools</li><li class="lang-en hidden">Offensive Security: Analysis and Anatomy of Cyber Attacks – LabTools Platform</li>
-                        <li class="lang-pt">Desenvolvimento Pessoal: Comunicação Não Violenta – Plataforma LabTools</li><li class="lang-en hidden">Personal Development: Nonviolent Communication – LabTools Platform</li>
-                        <li class="lang-pt">Empreendedorismo: Problemas, Ideias e Oportunidades – Plataforma LabTools</li><li class="lang-en hidden">Entrepreneurship: Problems, Ideas, and Opportunities – LabTools Platform</li>
-                        <li class="lang-pt">Empreendedorismo: Autoconhecimento Empreendedor e Rede – Plataforma LabTools</li><li class="lang-en hidden">Entrepreneurship: Entrepreneurial Self-Awareness and Networking – LabTools Platform</li>
-                        <li class="lang-pt">Inglês: Participação em Reuniões – Plataforma LabTools</li><li class="lang-en hidden">English: Participating in Meetings – LabTools Platform</li>
-                        <li class="lang-pt">Inglês: E-mails – Plataforma LabTools</li><li class="lang-en hidden">English: E-mails – LabTools Platform</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="feat-r">
+          <h4><span class="pt">Funcionalidades</span><span class="en">Features</span></h4>
+          <ul>
+            <li><span class="pt">Checkout hospedado via Asaas com webhook validado server-to-server</span><span class="en">Hosted Asaas Checkout with validated server-to-server webhook</span></li>
+            <li><span class="pt">Bot WhatsApp (WPPConnect) para notificações automáticas e consulta de pedidos</span><span class="en">WhatsApp bot (WPPConnect) for automatic notifications and order queries</span></li>
+            <li><span class="pt">Painel admin com SSE — novos pedidos em tempo real sem polling</span><span class="en">Admin panel with SSE — real-time new orders without polling</span></li>
+            <li><span class="pt">Trilha de auditoria completa por pedido (criação, checkout, webhook, status)</span><span class="en">Full audit trail per order (creation, checkout, webhook, status)</span></li>
+            <li><span class="pt">Gestão de segredos de produção com Bitwarden Secrets Manager</span><span class="en">Production secrets via Bitwarden Secrets Manager</span></li>
+            <li><span class="pt">Smoke tests automatizados com Playwright em container isolado</span><span class="en">Automated smoke tests with Playwright in isolated container</span></li>
+            <li><span class="pt">Agendamento de horários de funcionamento da loja</span><span class="en">Store hours and schedule management</span></li>
+          </ul>
         </div>
+      </div>
     </div>
+
+    <div class="subsec rv"><span>🟢 <span class="pt">Projetos públicos</span><span class="en">Public projects</span></span></div>
+    <div class="pg">
+      <div class="pc rv">
+        <div class="pt2"><span class="picon">💼</span><div class="badges"><span class="badge bs">Full Stack</span></div></div>
+        <h3 class="ptitle">Freela</h3>
+        <p class="pdesc"><span class="pt">Aplicação web full-stack para listagem e busca de vagas freelancer. Estrutura frontend/backend separados com Node.js, pronto para autenticação e publicação de oportunidades.</span><span class="en">Full-stack web app for freelance job listings and search. Separate frontend/backend with Node.js, ready for authentication and opportunity posting.</span></p>
+        <div class="pstack"><span class="st">Node.js</span><span class="st">JavaScript</span><span class="st">CSS</span><span class="st">HTML</span></div>
+        <div class="plinks"><a href="https://github.com/joaoluan/freela" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
+      </div>
+      <div class="pc rv">
+        <div class="pt2"><span class="picon">📡</span><div class="badges"><span class="badge bl">Live Demo</span></div></div>
+        <h3 class="ptitle"><span class="pt">Vigilância Solidária</span><span class="en">Neighborhood Watch</span></h3>
+        <p class="pdesc"><span class="pt">Sistema web de monitoramento comunitário integrado ao Home Assistant. Câmeras, alertas automáticos e registro de eventos de segurança em tempo real.</span><span class="en">Community monitoring web system integrated with Home Assistant. Cameras, automatic alerts and real-time security event logging.</span></p>
+        <div class="pstack"><span class="st">Node.js</span><span class="st">Express</span><span class="st">jQuery</span><span class="st">Bootstrap</span><span class="st">Home Assistant</span></div>
+        <div class="plinks"><a href="https://github.com/joaoluan/vs-melhorado" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a><a href="https://vs.joaomoura.dev.br/" target="_blank" class="pl">↗ Demo</a></div>
+      </div>
+      <div class="pc rv">
+        <div class="pt2"><span class="picon">🚗</span><div class="badges"><span class="badge bs">Database</span></div></div>
+        <h3 class="ptitle"><span class="pt">Sistema de Locadora</span><span class="en">Car Rental System</span></h3>
+        <p class="pdesc"><span class="pt">Banco de dados relacional para gestão de locadora com triggers para automação de cálculos de locação, controle de status de frota e relatórios.</span><span class="en">Relational database for car rental management with triggers for automated calculations, fleet status control and reports.</span></p>
+        <div class="pstack"><span class="st">MySQL</span><span class="st">SQL</span><span class="st">Triggers</span><span class="st">Stored Procedures</span></div>
+        <div class="plinks"><a href="https://github.com/joaoluan/locadora" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
+      </div>
+      <div class="pc rv">
+        <div class="pt2"><span class="picon">🧩</span><div class="badges"><span class="badge bs">Algorithm</span></div></div>
+        <h3 class="ptitle"><span class="pt">Labirinto com Recursão</span><span class="en">Maze with Recursion</span></h3>
+        <p class="pdesc"><span class="pt">Simulação em Java demonstrando algoritmos de recursão e arrays 2D para resolução de labirintos. Foco em lógica de programação e estrutura de dados.</span><span class="en">Java simulation demonstrating recursion algorithms and 2D arrays for maze solving. Focus on programming logic and data structures.</span></p>
+        <div class="pstack"><span class="st">Java</span><span class="st">Recursion</span><span class="st">Arrays 2D</span><span class="st">Data Structures</span></div>
+        <div class="plinks"><a href="https://github.com/joaoluan/Labirinto" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
+      </div>
+    </div>
+
+    <div class="subsec rv"><span>🔒 <span class="pt">Projetos privados — código disponível mediante solicitação</span><span class="en">Private projects — code available upon request</span></span></div>
+    <div class="pg">
+      <div class="pc priv rv">
+        <div class="pt2"><span class="picon">🤖</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Bot</span></div></div>
+        <h3 class="ptitle">Kira Bot</h3>
+        <p class="pdesc"><span class="pt">Bot de WhatsApp em JavaScript integrado ao ecossistema Donilla. Responde automaticamente perguntas sobre pedidos, status de entrega e catálogo de produtos via WPPConnect, sem necessidade de atendimento humano.</span><span class="en">JavaScript WhatsApp bot integrated with the Donilla ecosystem. Automatically answers questions about orders, delivery status and product catalog via WPPConnect, eliminating the need for manual support.</span></p>
+        <div class="pstack"><span class="st">JavaScript</span><span class="st">WPPConnect</span><span class="st">Node.js</span><span class="st">WhatsApp API</span></div>
+        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
+      </div>
+      <div class="pc priv rv">
+        <div class="pt2"><span class="picon">📲</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">TypeScript</span></div></div>
+        <h3 class="ptitle">Donilla WPPConnect Server</h3>
+        <p class="pdesc"><span class="pt">Servidor WhatsApp dedicado em TypeScript usando WPPConnect. Mantém sessão ativa, processa webhooks recebidos e dispara notificações automáticas para clientes em eventos de pedido (criação, atualização de status, pagamento confirmado).</span><span class="en">Dedicated WhatsApp server in TypeScript using WPPConnect. Maintains active session, processes incoming webhooks and sends automatic notifications to customers on order events (creation, status update, payment confirmed).</span></p>
+        <div class="pstack"><span class="st">TypeScript</span><span class="st">WPPConnect</span><span class="st">Webhooks</span><span class="st">Docker</span></div>
+        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
+      </div>
+      <div class="pc priv rv">
+        <div class="pt2"><span class="picon">🍺</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Router</span></div></div>
+        <h3 class="ptitle">Taphouse Router</h3>
+        <p class="pdesc"><span class="pt">Serviço de roteamento em JavaScript para sistema de gestão de taphouse (bar/chopp). Gerencia o tráfego de requisições entre serviços internos, funcionando como gateway de API para os módulos do sistema.</span><span class="en">JavaScript routing service for a taphouse (bar) management system. Manages request traffic between internal services, acting as an API gateway for system modules.</span></p>
+        <div class="pstack"><span class="st">JavaScript</span><span class="st">Node.js</span><span class="st">API Gateway</span><span class="st">Routing</span></div>
+        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
+      </div>
+      <div class="pc priv rv">
+        <div class="pt2"><span class="picon">⚡</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">API</span></div></div>
+        <h3 class="ptitle">Evolution API Integration</h3>
+        <p class="pdesc"><span class="pt">Integração com a Evolution API como alternativa e complemento ao WPPConnect no ecossistema Donilla. Permite múltiplas instâncias WhatsApp com estratégia de failover entre servidores de mensageria.</span><span class="en">Evolution API integration as an alternative and complement to WPPConnect in the Donilla ecosystem. Supports multiple WhatsApp instances with failover strategy across messaging servers.</span></p>
+        <div class="pstack"><span class="st">Evolution API</span><span class="st">WhatsApp</span><span class="st">Node.js</span><span class="st">REST</span><span class="st">Failover</span></div>
+        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
+      </div>
+      <div class="pc priv rv">
+        <div class="pt2"><span class="picon">🗄️</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Database</span></div></div>
+        <h3 class="ptitle">Donilla DB</h3>
+        <p class="pdesc"><span class="pt">Schema e migrations do banco de dados da plataforma Donilla. Cobre pedidos com auditoria, clientes, catálogo de produtos, configurações da loja, agendamentos de horário e tabela de eventos de webhook do gateway de pagamento.</span><span class="en">Database schema and migrations for the Donilla platform. Covers orders with audit trail, customers, product catalog, store settings, schedule configuration, and payment gateway webhook events table.</span></p>
+        <div class="pstack"><span class="st">PostgreSQL</span><span class="st">Prisma</span><span class="st">SQL Migrations</span><span class="st">Audit Trail</span></div>
+        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificados">
+  <div class="wrap">
+    <div class="sec-label rv"><h2><span class="n">04.</span><span class="pt">Certificados</span><span class="en">Certificates</span></h2></div>
+    <div class="cg">
+      <a href="#" class="cc rv"><span class="ci">🏆</span><div class="cinfo"><h4>Exploring Data Modeling with SAP Solutions</h4><span>SAP · Record of Achievement</span></div></a>
+      <a href="analise e anotomia de ataques ciberneticos.pdf" class="cc rv" target="_blank"><span class="ci">🔐</span><div class="cinfo"><h4><span class="pt">Segurança Ofensiva</span><span class="en">Offensive Security</span></h4><span class="pt">Análise e Anatomia de Ataques · LabTools</span><span class="en">Cyber Attack Analysis · LabTools</span></div></a>
+      <a href="certificado CNV.pdf" class="cc rv" target="_blank"><span class="ci">🗣️</span><div class="cinfo"><h4><span class="pt">Comunicação Não Violenta</span><span class="en">Nonviolent Communication</span></h4><span>LabTools</span></div></a>
+      <a href="#" class="cc rv"><span class="ci">💡</span><div class="cinfo"><h4><span class="pt">Empreendedorismo: Problemas, Ideias e Oportunidades</span><span class="en">Entrepreneurship: Problems, Ideas & Opportunities</span></h4><span>LabTools</span></div></a>
+      <a href="#" class="cc rv"><span class="ci">🌐</span><div class="cinfo"><h4><span class="pt">Inglês: Participação em Reuniões</span><span class="en">English: Participating in Meetings</span></h4><span>LabTools</span></div></a>
+      <a href="#" class="cc rv"><span class="ci">✉️</span><div class="cinfo"><h4><span class="pt">Inglês: E-mails Profissionais</span><span class="en">English: Professional E-mails</span></h4><span>LabTools</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="con-wrap">
+      <p class="con-top rv"><span class="pt">05. E agora?</span><span class="en">05. What's next?</span></p>
+      <h2 class="con-h rv"><span class="pt">Vamos conversar!</span><span class="en">Let's talk!</span></h2>
+      <p class="con-p rv"><span class="pt">Estou buscando minha primeira oportunidade como desenvolvedor. Se você tem uma vaga de estágio ou júnior, ou quer trocar uma ideia — minha caixa de entrada está aberta.</span><span class="en">I'm looking for my first developer opportunity. If you have an internship or junior opening, or just want to chat — my inbox is always open.</span></p>
+      <div class="con-links rv">
+        <a href="mailto:joao.luan@hotmail.com" class="btn btn-a"><span class="pt">✉️ Enviar e-mail</span><span class="en">✉️ Send email</span></a>
+        <a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" class="clink" target="_blank">LinkedIn ↗</a>
+        <a href="https://github.com/joaoluan" class="clink" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span><span class="pt">Desenvolvido por</span><span class="en">Built by</span> <a href="#">João Moura</a> · 2025</span>
+  <span style="font-size:.68rem;color:rgba(136,146,176,.4)">joaomoura.dev.br</span>
+</footer>
+
 <script>
-    // Animação de fade-in ao rolar
-    const sections = document.querySelectorAll('.fade-in-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    sections.forEach(section => observer.observe(section));
-    
-    // --- Lógica dos Modais ---
-
-    // Função genérica para modais simples (como o de certificados)
-    function setupSimpleModal(modalId, openBtnId, closeBtnId) {
-        const modal = document.getElementById(modalId);
-        const openBtn = document.getElementById(openBtnId);
-        const closeBtn = document.getElementById(closeBtnId);
-        const overlay = modal.querySelector('.modal-overlay');
-
-        const open = (e) => {
-            if(e) e.preventDefault();
-            modal.classList.remove('modal-hidden');
-            document.body.style.overflow = 'hidden';
-        };
-
-        const close = () => {
-            modal.classList.add('modal-hidden');
-            document.body.style.overflow = '';
-        };
-
-        openBtn.addEventListener('click', open);
-        closeBtn.addEventListener('click', close);
-        overlay.addEventListener('click', close);
-        
-        return close;
-    }
-
-    // --- Lógica específica para o Modal de Currículo (com troca de PDF) ---
-    const resumeModal = document.getElementById('resume-modal');
-    const openResumeModalBtn = document.getElementById('open-resume-modal');
-    const closeResumeModalBtn = document.getElementById('close-resume-modal');
-    const resumeIframe = document.getElementById('resume-iframe');
-    const resumeOverlay = resumeModal.querySelector('.modal-overlay');
-    // NOVO: Seleciona o link de download pelo ID
-    const downloadResumeLink = document.getElementById('download-resume-link');
-
-    const openResumeModal = (e) => {
-        e.preventDefault();
-        
-        const isEnglish = document.querySelector('.lang-en').classList.contains('hidden') === false;
-
-        if (isEnglish) {
-            resumeIframe.src = 'resume_en.pdf';
-            // NOVO: Atualiza o link de download para a versão em inglês
-            downloadResumeLink.href = 'resume_en.pdf'; 
-        } else {
-            resumeIframe.src = 'curriculo.pdf';
-            // NOVO: Garante que o link de download aponte para a versão em português
-            downloadResumeLink.href = 'curriculo.pdf';
-        }
-        
-        resumeModal.classList.remove('modal-hidden');
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeResumeModal = () => {
-        resumeModal.classList.add('modal-hidden');
-        document.body.style.overflow = '';
-        resumeIframe.src = ''; 
-    };
-
-    openResumeModalBtn.addEventListener('click', openResumeModal);
-    closeResumeModalBtn.addEventListener('click', closeResumeModal);
-    resumeOverlay.addEventListener('click', closeResumeModal);
-    
-    // Configura o modal de Certificados (que é mais simples)
-    const closeCertsModal = setupSimpleModal('certs-modal', 'open-certs-modal', 'close-certs-modal');
-
-    // Fechar com a tecla 'Escape'
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            if (!resumeModal.classList.contains('modal-hidden')) {
-                closeResumeModal();
-            }
-            if (!document.getElementById('certs-modal').classList.contains('modal-hidden')) {
-                closeCertsModal();
-            }
-        }
-    });
-
-    // --- Lógica do Seletor de Idioma ---
-    const langSwitcher = document.getElementById('lang-switcher');
-    const ptElements = document.querySelectorAll('.lang-pt');
-    const enElements = document.querySelectorAll('.lang-en');
-
-    langSwitcher.addEventListener('click', () => {
-        ptElements.forEach(el => el.classList.toggle('hidden'));
-        enElements.forEach(el => el.classList.toggle('hidden'));
-    });
+const btn=document.getElementById('langBtn');
+btn.addEventListener('click',()=>{const e=document.body.dataset.lang==='en';document.body.dataset.lang=e?'pt':'en';btn.textContent=e?'EN':'PT'});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const s=[...e.target.parentElement.querySelectorAll('.rv:not(.vis)')];setTimeout(()=>e.target.classList.add('vis'),Math.min(s.indexOf(e.target),5)*75);obs.unobserve(e.target)})},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+const secs=document.querySelectorAll('section[id],header[id]');
+const nas=document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-110)c=s.id});nas.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'var(--accent)':''})},{passive:true});
 </script>
+</body>
+</html>
