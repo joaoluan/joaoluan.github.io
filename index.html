@@ -1,368 +1,1837 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>João Moura | Desenvolvedor de Software</title>
-<meta name="description" content="Portfólio de João Moura — desenvolvedor full-stack especializado em Node.js, APIs REST, Docker e integrações WhatsApp." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-<style>
-:root{--bg:#090e1a;--bg2:#0d1525;--card:rgba(16,24,44,.9);--accent:#4dffc3;--accent2:#7c6bff;--private:#ffb347;--text:#ccd6f6;--dim:#8892b0;--border:rgba(77,255,195,.12);--bh:rgba(77,255,195,.35);--mono:'JetBrains Mono',monospace;--sans:'Syne',sans-serif;--r:10px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
-body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(77,255,195,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(77,255,195,.022) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0}
-.blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3}
-.blob1{width:600px;height:600px;background:rgba(77,255,195,.08);top:-200px;right:-200px}
-.blob2{width:500px;height:500px;background:rgba(124,107,255,.07);bottom:-150px;left:-150px}
-nav{position:fixed;top:0;width:100%;z-index:200;backdrop-filter:blur(20px) saturate(1.5);background:rgba(9,14,26,.78);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);height:62px}
-.nav-logo{font-family:var(--mono);font-size:.95rem;color:var(--accent);text-decoration:none}
-.nav-logo span{color:var(--dim)}
-nav ul{display:flex;list-style:none;gap:1.75rem;align-items:center}
-nav a{color:var(--dim);text-decoration:none;font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;transition:color .2s;display:flex;align-items:center;gap:.3rem}
-nav a .n{color:var(--accent);font-size:.68rem}
-nav a:hover{color:var(--accent)}
-.lang-btn{background:transparent;border:1px solid var(--border);color:var(--dim);padding:.28rem .65rem;border-radius:5px;font-family:var(--mono);font-size:.72rem;cursor:pointer;transition:all .2s}
-.lang-btn:hover{border-color:var(--accent);color:var(--accent)}
-section,header{position:relative;z-index:1}
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem)}
-.sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
-.sec-label h2{font-family:var(--sans);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;white-space:nowrap}
-.sec-label h2 .n{color:var(--accent);font-family:var(--mono);font-size:.85em;margin-right:.2rem}
-.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
-#hero{min-height:100vh;display:flex;align-items:center;padding:100px clamp(1.5rem,6vw,5rem) 60px;max-width:860px;margin:0 auto}
-.hi{font-family:var(--mono);color:var(--accent);font-size:.95rem;margin-bottom:1.1rem;opacity:0;animation:up .5s .1s forwards}
-.hname{font-size:clamp(3rem,9vw,6rem);font-weight:800;line-height:1.0;color:var(--text);margin-bottom:.2rem;opacity:0;animation:up .5s .25s forwards}
-.htitle{font-size:clamp(1.6rem,4vw,3rem);font-weight:700;color:var(--dim);margin-bottom:2rem;opacity:0;animation:up .5s .4s forwards}
-.hdesc{max-width:540px;color:var(--dim);font-size:.97rem;line-height:1.85;margin-bottom:2.5rem;opacity:0;animation:up .5s .55s forwards}
-.hdesc strong{color:var(--accent);font-weight:600}
-.hcta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .5s .7s forwards}
-.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.5rem;border-radius:var(--r);font-family:var(--mono);font-size:.82rem;text-decoration:none;transition:all .2s;cursor:pointer}
-.btn-a{border:1.5px solid var(--accent);color:var(--accent);background:transparent}
-.btn-a:hover{background:rgba(77,255,195,.08);transform:translateY(-2px);box-shadow:0 8px 28px rgba(77,255,195,.1)}
-.btn-g{color:var(--dim);background:transparent;border:1.5px solid rgba(255,255,255,.1)}
-.btn-g:hover{border-color:var(--dim);color:var(--text);transform:translateY(-2px)}
-#sobre{padding:100px 0}
-.about-g{display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start}
-.about-text p{color:var(--dim);margin-bottom:1rem;line-height:1.85;font-size:.97rem}
-.about-text p strong{color:var(--text)}
-.acard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;position:sticky;top:78px}
-.aline{display:flex;align-items:center;gap:.7rem;padding:.55rem 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.78rem;color:var(--dim)}
-.aline:last-child{border-bottom:none}
-.aline .ic{color:var(--accent);flex-shrink:0}
-.aline a{color:var(--accent);text-decoration:none}
-.aline a:hover{text-decoration:underline}
-#habilidades{padding:100px 0;background:linear-gradient(to bottom,transparent,rgba(13,21,37,.6),transparent)}
-.sk-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
-.sk-cat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:border-color .2s,transform .2s}
-.sk-cat:hover{border-color:var(--bh);transform:translateY(-3px)}
-.sk-cat h3{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem}
-.tag{font-family:var(--mono);font-size:.72rem;padding:.28rem .65rem;border-radius:4px;background:rgba(77,255,195,.06);border:1px solid rgba(77,255,195,.13);color:var(--text);transition:all .15s;cursor:default}
-.tag:hover{background:rgba(77,255,195,.11);border-color:rgba(77,255,195,.28);color:var(--accent)}
-.tag.new{border-color:rgba(124,107,255,.25);background:rgba(124,107,255,.07);color:var(--accent2)}
-#projetos{padding:100px 0}
-.subsec{font-family:var(--mono);font-size:.75rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem}
-.subsec::after{content:'';flex:1;height:1px;background:var(--border)}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.4rem;margin-bottom:3.5rem}
-.feat{grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr;background:var(--card);border:1px solid var(--bh);border-radius:var(--r);overflow:hidden;transition:all .25s}
-.feat:hover{box-shadow:0 20px 50px rgba(0,0,0,.4);transform:translateY(-4px)}
-.feat-l{padding:2rem 2.25rem;display:flex;flex-direction:column;gap:1rem;border-right:1px solid var(--border)}
-.feat-r{padding:2rem 2.25rem;display:flex;flex-direction:column;gap:.75rem}
-.feat-r h4{font-family:var(--mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
-.feat-r ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.feat-r li{font-size:.85rem;color:var(--dim);display:flex;align-items:flex-start;gap:.5rem;line-height:1.6}
-.feat-r li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:.05rem}
-.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.65rem;display:flex;flex-direction:column;gap:.9rem;transition:all .25s;position:relative;overflow:hidden}
-.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .25s}
-.pc:hover{border-color:var(--bh);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
-.pc:hover::before{opacity:1}
-.pc.priv{border-color:rgba(255,179,71,.13)}
-.pc.priv::before{background:linear-gradient(90deg,var(--private),transparent)}
-.pc.priv:hover{border-color:rgba(255,179,71,.38)}
-.pt2{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem}
-.picon{font-size:1.7rem}
-.badges{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
-.badge{font-family:var(--mono);font-size:.62rem;padding:.18rem .52rem;border-radius:99px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
-.bl{background:rgba(77,255,195,.1);color:var(--accent);border:1px solid rgba(77,255,195,.22)}
-.bp{background:rgba(255,179,71,.1);color:var(--private);border:1px solid rgba(255,179,71,.22)}
-.bs{background:rgba(124,107,255,.1);color:var(--accent2);border:1px solid rgba(124,107,255,.22)}
-.bw{background:rgba(52,211,153,.08);color:#34d399;border:1px solid rgba(52,211,153,.2)}
-.ptitle{font-size:1.1rem;font-weight:700;color:var(--text)}
-.pdesc{font-size:.88rem;color:var(--dim);line-height:1.75;flex:1}
-.pstack{display:flex;flex-wrap:wrap;gap:.35rem}
-.st{font-family:var(--mono);font-size:.68rem;color:var(--dim);padding:.13rem .45rem;background:rgba(255,255,255,.04);border-radius:3px}
-.plinks{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:auto}
-.pl{font-family:var(--mono);font-size:.74rem;color:var(--dim);text-decoration:none;display:flex;align-items:center;gap:.28rem;transition:color .15s;padding-bottom:.12rem;border-bottom:1px solid transparent}
-.pl:hover{color:var(--accent);border-bottom-color:var(--accent)}
-.priv-note{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;color:rgba(255,179,71,.65);background:rgba(255,179,71,.04);border:1px dashed rgba(255,179,71,.18);border-radius:5px;padding:.5rem .7rem;margin-top:auto}
-#certificados{padding:100px 0}
-.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
-.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.35rem;display:flex;align-items:flex-start;gap:.9rem;text-decoration:none;transition:all .2s}
-.cc:hover{border-color:var(--bh);transform:translateX(4px)}
-.ci{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}
-.cinfo h4{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.25rem;line-height:1.4}
-.cinfo span{font-family:var(--mono);font-size:.7rem;color:var(--dim)}
-#contato{padding:100px 0 140px;text-align:center}
-.con-wrap{max-width:580px;margin:0 auto}
-.con-top{font-family:var(--mono);color:var(--accent);font-size:.88rem;margin-bottom:1rem}
-.con-h{font-size:clamp(1.9rem,5vw,3rem);font-weight:800;margin-bottom:1.2rem}
-.con-p{color:var(--dim);margin-bottom:2.5rem;line-height:1.85;font-size:.97rem}
-.con-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
-.clink{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.83rem;color:var(--dim);text-decoration:none;transition:color .2s;padding-bottom:.12rem;border-bottom:1px solid transparent}
-.clink:hover{color:var(--accent);border-bottom-color:var(--accent)}
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:1.4rem clamp(1.5rem,5vw,4rem);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.72rem;color:var(--dim);flex-wrap:wrap;gap:1rem}
-footer a{color:var(--accent);text-decoration:none}
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
-.rv.vis{opacity:1;transform:none}
-[data-lang="en"] .pt{display:none!important}
-[data-lang="pt"] .en{display:none!important}
-@media(max-width:780px){.about-g{grid-template-columns:1fr}.acard{position:static}nav ul{display:none}.feat{grid-template-columns:1fr}.feat-l{border-right:none;border-bottom:1px solid var(--border)}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>João Moura | Desenvolvedor Full Stack</title>
+  <meta name="description" content="Portfólio de João Moura — Desenvolvedor Full Stack focado em sistemas reais de negócio, automação, integrações, APIs, WhatsApp, Docker, PostgreSQL e deploy em VPS." />
+  <meta name="author" content="João Moura" />
+  <meta name="keywords" content="João Moura, Desenvolvedor Full Stack, Node.js, Docker, PostgreSQL, Prisma, WhatsApp Bot, Asaas, APIs REST, VPS, DevOps, Portfólio" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://joaomoura.dev.br/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="João Moura | Desenvolvedor Full Stack" />
+  <meta property="og:description" content="Sistemas reais de negócio, automação, integrações WhatsApp, pagamentos, APIs e infraestrutura em produção." />
+  <meta property="og:url" content="https://joaomoura.dev.br/" />
+  <meta property="og:site_name" content="João Moura Portfolio" />
+  <meta property="og:image" content="https://joaomoura.dev.br/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="João Moura | Desenvolvedor Full Stack" />
+  <meta name="twitter:description" content="Full Stack Developer focado em sistemas reais, automação, integrações e infraestrutura em produção." />
+  <meta name="twitter:image" content="https://joaomoura.dev.br/og-image.png" />
+
+  <meta name="theme-color" content="#090e1a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "João Moura",
+    "url": "https://joaomoura.dev.br/",
+    "email": "mailto:joao.luan@hotmail.com",
+    "jobTitle": "Desenvolvedor Full Stack",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Novo Hamburgo",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://github.com/joaoluan",
+      "https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245"
+    ],
+    "knowsAbout": [
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma ORM",
+      "Docker",
+      "WhatsApp automation",
+      "REST APIs",
+      "Linux VPS",
+      "Business automation"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #090e1a;
+      --bg-2: #0d1525;
+      --bg-3: #10182c;
+      --card: rgba(16, 24, 44, .92);
+      --card-2: rgba(13, 21, 37, .74);
+      --accent: #4dffc3;
+      --accent-2: #7c6bff;
+      --warning: #ffb347;
+      --ok: #34d399;
+      --text: #ccd6f6;
+      --text-strong: #edf4ff;
+      --dim: #8892b0;
+      --muted: #5e6b86;
+      --border: rgba(77, 255, 195, .13);
+      --border-strong: rgba(77, 255, 195, .34);
+      --shadow: 0 22px 60px rgba(0, 0, 0, .34);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Syne', sans-serif;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --max: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(77, 255, 195, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77, 255, 195, .022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .25));
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      transform: translateY(-160%);
+      z-index: 999;
+      background: var(--accent);
+      color: #061018;
+      font-family: var(--mono);
+      font-size: .8rem;
+      padding: .65rem .9rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: transform .2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .blob {
+      position: fixed;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      opacity: .33;
+    }
+
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      top: -230px;
+      right: -210px;
+      background: rgba(77, 255, 195, .09);
+    }
+
+    .blob-2 {
+      width: 520px;
+      height: 520px;
+      bottom: -190px;
+      left: -160px;
+      background: rgba(124, 107, 255, .08);
+    }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: 68px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 14, 26, .78);
+      backdrop-filter: blur(20px) saturate(1.5);
+    }
+
+    .nav {
+      width: min(100% - 2rem, 1220px);
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .logo {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .95rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--dim);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.55rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .32rem;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .74rem;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .nav-link .n {
+      color: var(--accent);
+      font-size: .68rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+
+    .lang-btn,
+    .menu-btn {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--dim);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--mono);
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .lang-btn {
+      min-width: 46px;
+      padding: .32rem .62rem;
+      font-size: .72rem;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+    }
+
+    .lang-btn:hover,
+    .menu-btn:hover {
+      color: var(--accent);
+      border-color: var(--border-strong);
+      background: rgba(77, 255, 195, .05);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 118px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .88rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      color: var(--text-strong);
+      font-size: clamp(2.6rem, 7vw, 5.7rem);
+      font-weight: 800;
+      line-height: .98;
+      letter-spacing: -.06em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title-line {
+      display: block;
+      color: var(--dim);
+    }
+
+    .hero-desc {
+      max-width: 690px;
+      color: var(--dim);
+      font-size: clamp(.98rem, 1.5vw, 1.08rem);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc strong,
+    .rich strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 43px;
+      padding: .7rem 1.15rem;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: .78rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+
+    .btn-primary {
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      background: rgba(77, 255, 195, .04);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: rgba(77, 255, 195, .09);
+      box-shadow: 0 10px 28px rgba(77, 255, 195, .08);
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255, 255, 255, .1);
+      color: var(--dim);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, .22);
+      color: var(--text-strong);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(16, 24, 44, .94), rgba(13, 21, 37, .86));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 1.35rem;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: .42rem;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .terminal {
+      font-family: var(--mono);
+      font-size: .74rem;
+      line-height: 1.8;
+      color: var(--dim);
+    }
+
+    .terminal .cmd {
+      color: var(--accent);
+    }
+
+    .terminal .value {
+      color: var(--text-strong);
+    }
+
+    .terminal .comment {
+      color: var(--muted);
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .85rem;
+      margin-top: 2rem;
+    }
+
+    .proof {
+      min-height: 96px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: rgba(16, 24, 44, .58);
+      border-radius: var(--radius);
+    }
+
+    .proof strong {
+      display: block;
+      color: var(--text-strong);
+      font-family: var(--mono);
+      font-size: 1rem;
+      margin-bottom: .2rem;
+    }
+
+    .proof span {
+      display: block;
+      color: var(--dim);
+      font-size: .82rem;
+      line-height: 1.45;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .section-label h2 {
+      color: var(--text-strong);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .section-label .n {
+      margin-right: .24rem;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .82em;
+      font-weight: 500;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: clamp(2rem, 6vw, 4rem);
+      align-items: start;
+    }
+
+    .rich p {
+      color: var(--dim);
+      font-size: .98rem;
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .side-card {
+      position: sticky;
+      top: 88px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, .18);
+    }
+
+    .info-row {
+      display: flex;
+      gap: .7rem;
+      padding: .72rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .76rem;
+      line-height: 1.5;
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row .icon {
+      flex: 0 0 auto;
+      color: var(--accent);
+    }
+
+    .info-row a {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .info-row a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px dashed rgba(77, 255, 195, .22);
+      background: rgba(77, 255, 195, .045);
+      border-radius: var(--radius);
+      color: var(--dim);
+      font-size: .92rem;
+      line-height: 1.75;
+    }
+
+    .skills-section {
+      background: linear-gradient(to bottom, transparent, rgba(13, 21, 37, .58), transparent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .skill-card,
+    .project-card,
+    .cert-card,
+    .case-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .skill-card {
+      padding: 1.25rem;
+    }
+
+    .skill-card:hover,
+    .project-card:hover,
+    .cert-card:hover,
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .24);
+    }
+
+    .skill-card h3 {
+      margin-bottom: .9rem;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .42rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: .28rem .58rem;
+      border: 1px solid rgba(77, 255, 195, .13);
+      background: rgba(77, 255, 195, .055);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.25;
+    }
+
+    .tag.learning {
+      color: #d7d1ff;
+      border-color: rgba(124, 107, 255, .26);
+      background: rgba(124, 107, 255, .07);
+    }
+
+    .subsection-title {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin: 2.7rem 0 1.1rem;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .76rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .subsection-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .subsection-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .case-card {
+      overflow: hidden;
+      border-color: var(--border-strong);
+      background: linear-gradient(135deg, rgba(16, 24, 44, .96), rgba(13, 21, 37, .92));
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+    }
+
+    .case-main,
+    .case-aside {
+      padding: clamp(1.25rem, 3vw, 2.1rem);
+    }
+
+    .case-main {
+      border-right: 1px solid var(--border);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: .38rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: .2rem .5rem;
+      font-family: var(--mono);
+      font-size: .6rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .badge.live {
+      color: var(--accent);
+      border: 1px solid rgba(77, 255, 195, .24);
+      background: rgba(77, 255, 195, .08);
+    }
+
+    .badge.private {
+      color: var(--warning);
+      border: 1px solid rgba(255, 179, 71, .22);
+      background: rgba(255, 179, 71, .08);
+    }
+
+    .badge.stack {
+      color: #d7d1ff;
+      border: 1px solid rgba(124, 107, 255, .23);
+      background: rgba(124, 107, 255, .08);
+    }
+
+    .badge.ok {
+      color: var(--ok);
+      border: 1px solid rgba(52, 211, 153, .21);
+      background: rgba(52, 211, 153, .075);
+    }
+
+    .project-title {
+      color: var(--text-strong);
+      font-size: 1.16rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: .55rem;
+    }
+
+    .case-card .project-title {
+      font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    }
+
+    .project-desc {
+      color: var(--dim);
+      font-size: .9rem;
+      line-height: 1.78;
+    }
+
+    .case-blocks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .8rem;
+      margin-top: 1.2rem;
+    }
+
+    .case-block {
+      padding: .9rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: rgba(9, 14, 26, .32);
+    }
+
+    .case-block h4,
+    .case-aside h4 {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .45rem;
+    }
+
+    .case-block p {
+      color: var(--dim);
+      font-size: .82rem;
+      line-height: 1.65;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: .55rem;
+      margin-bottom: 1.1rem;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: .5rem;
+      color: var(--dim);
+      font-size: .84rem;
+      line-height: 1.58;
+    }
+
+    .feature-list li::before {
+      content: '▸';
+      flex: 0 0 auto;
+      color: var(--accent);
+      margin-top: .02rem;
+    }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .34rem;
+      margin-top: 1rem;
+    }
+
+    .stack-item {
+      display: inline-flex;
+      padding: .18rem .45rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .66rem;
+      line-height: 1.35;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1.15rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem;
+      color: var(--dim);
+      border-bottom: 1px solid transparent;
+      font-family: var(--mono);
+      font-size: .72rem;
+      text-decoration: none;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .project-card {
+      position: relative;
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      padding: 1.3rem;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .project-card.private-card::before {
+      background: linear-gradient(90deg, var(--warning), transparent);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-card.private-card {
+      border-color: rgba(255, 179, 71, .14);
+    }
+
+    .project-card.private-card:hover {
+      border-color: rgba(255, 179, 71, .36);
+    }
+
+    .private-note {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      margin-top: auto;
+      padding: .55rem .65rem;
+      border: 1px dashed rgba(255, 179, 71, .2);
+      border-radius: 8px;
+      background: rgba(255, 179, 71, .045);
+      color: rgba(255, 179, 71, .78);
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.55;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    .cert-card {
+      display: flex;
+      gap: .78rem;
+      align-items: flex-start;
+      padding: 1rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .cert-card:hover {
+      transform: translateX(4px);
+    }
+
+    .cert-icon {
+      flex: 0 0 auto;
+      font-size: 1.35rem;
+      line-height: 1;
+      margin-top: .15rem;
+    }
+
+    .cert-title {
+      color: var(--text-strong);
+      font-size: .86rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: .2rem;
+    }
+
+    .cert-meta {
+      display: block;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.45;
+    }
+
+    .contact {
+      padding-bottom: 132px;
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-small {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .86rem;
+      margin-bottom: .95rem;
+    }
+
+    .contact h2 {
+      color: var(--text-strong);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      color: var(--dim);
+      font-size: .98rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 0;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: .72rem;
+    }
+
+    .footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-main {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero-card,
+      .side-card {
+        position: static;
+      }
+
+      .proof-strip,
+      .skills-grid,
+      .projects-grid,
+      .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        height: 64px;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 64px 0 auto 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: .75rem 1rem 1rem;
+        border-bottom: 1px solid var(--border);
+        background: rgba(9, 14, 26, .96);
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        border-bottom: 1px solid rgba(77, 255, 195, .08);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: 0;
+      }
+
+      .nav-link {
+        width: 100%;
+        padding: .92rem .25rem;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding-top: 104px;
+      }
+
+      .proof-strip,
+      .skills-grid,
+      .projects-grid,
+      .cert-grid,
+      .case-blocks {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label::after {
+        min-width: 45px;
+      }
+    }
+  </style>
 </head>
-<body data-lang="pt">
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
 
-<nav>
-  <a href="#" class="nav-logo">joão<span>.dev</span></a>
-  <ul>
-    <li><a href="#sobre"><span class="n">01.</span><span class="pt">Sobre</span><span class="en">About</span></a></li>
-    <li><a href="#habilidades"><span class="n">02.</span>Skills</a></li>
-    <li><a href="#projetos"><span class="n">03.</span><span class="pt">Projetos</span><span class="en">Projects</span></a></li>
-    <li><a href="#certificados"><span class="n">04.</span>Certs</a></li>
-    <li><a href="#contato"><span class="n">05.</span><span class="pt">Contato</span><span class="en">Contact</span></a></li>
-    <li><button class="lang-btn" id="langBtn">EN</button></li>
-  </ul>
-</nav>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
 
-<header id="hero">
-  <div>
-    <p class="hi"><span class="pt">👋 Olá, me chamo</span><span class="en">👋 Hi, my name is</span></p>
-    <h1 class="hname">João Moura.</h1>
-    <h2 class="htitle"><span class="pt">Desenvolvedor Full Stack</span><span class="en">Full Stack Developer</span></h2>
-    <p class="hdesc">
-      <span class="pt">Estudante de ADS na UNISINOS. Construo sistemas reais em produção — de e-commerce com gateway de pagamento a <strong>bots de WhatsApp</strong> e APIs REST com <strong>Node.js, Docker e Prisma ORM</strong>. 15+ anos de liderança me ensinaram o que nenhum framework ensina: entender o negócio por completo.</span>
-      <span class="en">Systems Analysis student at UNISINOS. I build real production systems — from e-commerce with payment gateways to <strong>WhatsApp bots</strong> and REST APIs using <strong>Node.js, Docker and Prisma ORM</strong>. 15+ years of leadership taught me what no framework can: fully understanding the business.</span>
-    </p>
-    <div class="hcta">
-      <a href="#projetos" class="btn btn-a"><span class="pt">Ver Projetos →</span><span class="en">View Projects →</span></a>
-      <a href="curriculo.pdf" class="btn btn-g" download><span class="pt">📄 Baixar CV</span><span class="en">📄 Download CV</span></a>
-    </div>
-  </div>
-</header>
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#hero" class="logo" aria-label="Ir para o início">joão<span>.dev</span></a>
 
-<section id="sobre">
-  <div class="wrap">
-    <div class="sec-label rv"><h2><span class="n">01.</span><span class="pt">Sobre mim</span><span class="en">About me</span></h2></div>
-    <div class="about-g rv">
-      <div class="about-text">
-        <p class="pt">Sou João Moura, de Novo Hamburgo/RS. Tecnologia sempre foi minha maior paixão — desde adolescente. Hoje, estou transformando isso em carreira profissional como desenvolvedor full-stack.</p>
-        <p class="en">I'm João Moura from Novo Hamburgo/RS, Brazil. Technology has always been my greatest passion — since my teenage years. Today, I'm turning that passion into a professional career as a full-stack developer.</p>
-        <p class="pt">Desenvolvo sistemas reais em produção: a <strong>Donilla</strong> é minha própria loja online, com backend Node.js completo, gateway de pagamento Asaas, bot de WhatsApp para notificações automáticas, painel admin com atualizações em tempo real via SSE e deploy com Docker em VPS própria. Não é projeto de faculdade — é um negócio rodando de verdade.</p>
-        <p class="en">I build real production systems: <strong>Donilla</strong> is my own online store with a complete Node.js backend, Asaas payment gateway, WhatsApp bot for automatic notifications, real-time admin panel via SSE, and Docker deployment on a personal VPS. Not a college project — a real running business.</p>
-        <p class="pt"><strong>O que me diferencia:</strong> 15+ anos gerenciando equipes, custos e indicadores no setor de alimentação. Quando desenvolvo, entendo o lado do negócio — sei perguntar as perguntas certas e me comunicar com clareza tanto com times técnicos quanto com stakeholders. Inglês C1 avançado.</p>
-        <p class="en"><strong>What sets me apart:</strong> 15+ years managing teams, costs and KPIs in the food industry. When I develop, I understand the business side — I ask the right questions and communicate clearly with both technical teams and stakeholders. Advanced English (C1).</p>
-      </div>
-      <div class="acard">
-        <div class="aline"><span class="ic">📍</span><span>Novo Hamburgo, RS</span></div>
-        <div class="aline"><span class="ic">🎓</span><span class="pt">ADS · UNISINOS · 2026</span><span class="en">Sys. Dev · UNISINOS · 2026</span></div>
-        <div class="aline"><span class="ic">🌐</span><span class="pt">Inglês C1 · Avançado</span><span class="en">English C1 · Advanced</span></div>
-        <div class="aline"><span class="ic">🚀</span><span class="pt">Em produção:</span><span class="en">Live system:</span>&nbsp;<a href="https://github.com/joaoluan/donilla-app" target="_blank">donilla-app</a></div>
-        <div class="aline"><span class="ic">🐙</span><a href="https://github.com/joaoluan" target="_blank">github.com/joaoluan</a></div>
-        <div class="aline"><span class="ic">💼</span><a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank">LinkedIn</a></div>
-        <div class="aline"><span class="ic">✉️</span><a href="mailto:joao.luan@hotmail.com">joao.luan@hotmail.com</a></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre" class="nav-link"><span class="n">01.</span><span data-i18n="nav.about">Sobre</span></a></li>
+        <li><a href="#habilidades" class="nav-link"><span class="n">02.</span><span data-i18n="nav.skills">Habilidades</span></a></li>
+        <li><a href="#projetos" class="nav-link"><span class="n">03.</span><span data-i18n="nav.projects">Projetos</span></a></li>
+        <li><a href="#certificados" class="nav-link"><span class="n">04.</span><span data-i18n="nav.certs">Certificados</span></a></li>
+        <li><a href="#contato" class="nav-link"><span class="n">05.</span><span data-i18n="nav.contact">Contato</span></a></li>
+      </ul>
 
-<section id="habilidades">
-  <div class="wrap">
-    <div class="sec-label rv"><h2><span class="n">02.</span><span class="pt">Habilidades</span><span class="en">Skills</span></h2></div>
-    <div class="sk-g">
-      <div class="sk-cat rv">
-        <h3>⚡ <span class="pt">Linguagens</span><span class="en">Languages</span></h3>
-        <div class="tags"><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SQL</span><span class="tag">Bash</span></div>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">EN</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">☰</button>
       </div>
-      <div class="sk-cat rv">
-        <h3>🚂 Backend / APIs</h3>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST API</span><span class="tag">SSE</span><span class="tag">Webhooks</span><span class="tag">JWT / Auth</span><span class="tag">CORS</span></div>
-      </div>
-      <div class="sk-cat rv">
-        <h3>🗄️ <span class="pt">Banco de Dados</span><span class="en">Databases</span></h3>
-        <div class="tags"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Prisma ORM</span><span class="tag">Triggers</span><span class="tag">Migrations</span></div>
-      </div>
-      <div class="sk-cat rv">
-        <h3>⚙️ DevOps / <span class="pt">Infra</span><span class="en">Infra</span></h3>
-        <div class="tags"><span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Linux Debian</span><span class="tag">SSH</span><span class="tag">VPS</span><span class="tag">Git / GitHub</span></div>
-      </div>
-      <div class="sk-cat rv">
-        <h3>🔌 <span class="pt">Integrações</span><span class="en">Integrations</span></h3>
-        <div class="tags"><span class="tag">WhatsApp (WPPConnect)</span><span class="tag">Evolution API</span><span class="tag">Asaas Checkout</span><span class="tag">Home Assistant</span><span class="tag">Bitwarden BWS</span></div>
-      </div>
-      <div class="sk-cat rv">
-        <h3>📚 <span class="pt">Estudando</span><span class="en">Learning</span></h3>
-        <div class="tags"><span class="tag new">React</span><span class="tag new">Spring Boot</span><span class="tag new">Playwright</span><span class="tag new">Redis Pub/Sub</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </nav>
+  </header>
 
-<section id="projetos">
-  <div class="wrap">
-    <div class="sec-label rv"><h2><span class="n">03.</span><span class="pt">Projetos</span><span class="en">Projects</span></h2></div>
-
-    <div class="subsec rv"><span>⭐ <span class="pt">Projeto principal em produção</span><span class="en">Main production project</span></span></div>
-    <div class="pg">
-      <div class="feat rv">
-        <div class="feat-l">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <span style="font-size:2rem">🛒</span>
-            <div class="badges"><span class="badge bl">Live</span><span class="badge bw"><span class="pt">Produção</span><span class="en">Production</span></span></div>
+  <main id="conteudo">
+    <section class="hero" id="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Olá, me chamo João Moura</p>
+          <h1>
+            <span data-i18n="hero.h1a">Desenvolvedor Full Stack.</span>
+            <span class="hero-title-line" data-i18n="hero.h1b">Sistemas reais para negócios reais.</span>
+          </h1>
+          <p class="hero-desc" data-i18n-html="hero.desc">
+            Construo APIs, painéis administrativos, bots de WhatsApp, integrações com pagamento e deploys em VPS usando <strong>Node.js, Docker, PostgreSQL, Prisma e Linux</strong>. Trago 15+ anos de experiência em operação, liderança e indicadores no setor de alimentação — por isso desenvolvo pensando no problema real do negócio, não só no código.
+          </p>
+          <div class="cta-row">
+            <a href="#projetos" class="btn btn-primary" data-i18n="hero.ctaProjects">Ver projetos →</a>
+            <a href="curriculo-joao-moura-pt.pdf" class="btn btn-ghost" download data-i18n="hero.ctaCv">📄 Baixar CV PT-BR</a>
+            <a href="https://github.com/joaoluan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub ↗</a>
           </div>
-          <div>
-            <h3 class="ptitle" style="font-size:1.3rem;margin-bottom:.4rem">Donilla App</h3>
-            <p class="pdesc">
-              <span class="pt">Backend completo de e-commerce construído do zero para minha loja online. API REST com Node.js, gateway de pagamento Asaas, bot WhatsApp nativo para notificações de pedidos, painel admin com SSE em tempo real, auditoria completa por pedido, autenticação e deploy em VPS via Docker com segredos gerenciados pelo Bitwarden.</span>
-              <span class="en">Complete e-commerce backend built from scratch for my online store. Node.js REST API, Asaas payment gateway, native WhatsApp bot for order notifications, real-time SSE admin panel, full per-order audit trail, authentication, and VPS deployment via Docker with Bitwarden-managed secrets.</span>
-            </p>
+
+          <div class="proof-strip" aria-label="Destaques profissionais">
+            <div class="proof"><strong data-i18n="proof.p1n">Produção</strong><span data-i18n="proof.p1d">Sistema real rodando em VPS com Docker</span></div>
+            <div class="proof"><strong>15+</strong><span data-i18n="proof.p2d">anos em liderança, operação e indicadores</span></div>
+            <div class="proof"><strong data-i18n="proof.p3n">Integrações</strong><span data-i18n="proof.p3d">WhatsApp, Asaas, webhooks e automações</span></div>
+            <div class="proof"><strong>C1</strong><span data-i18n="proof.p4d">inglês avançado para documentação e comunicação</span></div>
           </div>
-          <div class="pstack"><span class="st">Node.js</span><span class="st">Express</span><span class="st">Prisma ORM</span><span class="st">PostgreSQL</span><span class="st">Docker</span><span class="st">Asaas</span><span class="st">SSE</span><span class="st">WPPConnect</span><span class="st">Playwright</span><span class="st">Bitwarden</span></div>
-          <div class="plinks"><a href="https://github.com/joaoluan/donilla-app" target="_blank" class="pl">⌥ <span class="pt">Ver código</span><span class="en">View code</span></a></div>
         </div>
-        <div class="feat-r">
-          <h4><span class="pt">Funcionalidades</span><span class="en">Features</span></h4>
-          <ul>
-            <li><span class="pt">Checkout hospedado via Asaas com webhook validado server-to-server</span><span class="en">Hosted Asaas Checkout with validated server-to-server webhook</span></li>
-            <li><span class="pt">Bot WhatsApp (WPPConnect) para notificações automáticas e consulta de pedidos</span><span class="en">WhatsApp bot (WPPConnect) for automatic notifications and order queries</span></li>
-            <li><span class="pt">Painel admin com SSE — novos pedidos em tempo real sem polling</span><span class="en">Admin panel with SSE — real-time new orders without polling</span></li>
-            <li><span class="pt">Trilha de auditoria completa por pedido (criação, checkout, webhook, status)</span><span class="en">Full audit trail per order (creation, checkout, webhook, status)</span></li>
-            <li><span class="pt">Gestão de segredos de produção com Bitwarden Secrets Manager</span><span class="en">Production secrets via Bitwarden Secrets Manager</span></li>
-            <li><span class="pt">Smoke tests automatizados com Playwright em container isolado</span><span class="en">Automated smoke tests with Playwright in isolated container</span></li>
-            <li><span class="pt">Agendamento de horários de funcionamento da loja</span><span class="en">Store hours and schedule management</span></li>
-          </ul>
+
+        <aside class="hero-card reveal" aria-label="Resumo técnico">
+          <div class="terminal-top" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="terminal">
+            <div><span class="cmd">$</span> whoami</div>
+            <div class="value">joao_moura</div>
+            <div><span class="cmd">$</span> focus</div>
+            <div class="value" data-i18n="terminal.focus">fullstack + automação + negócio</div>
+            <div><span class="cmd">$</span> production</div>
+            <div class="value">donilla-app · docker · vps</div>
+            <div><span class="cmd">$</span> stack</div>
+            <div class="value">node · postgres · prisma · whatsapp</div>
+            <div class="comment" data-i18n="terminal.comment"># resolvendo problema real, não só fazendo tela bonita</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap">
+        <div class="section-label reveal"><h2><span class="n">01.</span><span data-i18n="about.title">Sobre mim</span></h2></div>
+        <div class="about-grid">
+          <div class="rich reveal">
+            <p data-i18n-html="about.p1">Sou João Moura, de Novo Hamburgo/RS. Tecnologia sempre foi minha maior paixão. Hoje, transformo essa paixão em carreira como <strong>desenvolvedor full stack</strong>, com foco em sistemas úteis, integrações e automações que resolvem problemas de operação.</p>
+            <p data-i18n-html="about.p2">Minha principal vitrine técnica é a <strong>Donilla</strong>, uma loja online própria com backend Node.js, checkout Asaas, bot de WhatsApp, painel administrativo, eventos em tempo real via SSE, auditoria de pedidos e deploy em VPS com Docker. É um sistema real, criado para um negócio real.</p>
+            <p data-i18n-html="about.p3">O que me diferencia é a combinação entre código e vivência prática: depois de 15+ anos gerenciando equipes, custos, atendimento, vendas e indicadores no setor de alimentação, eu entendo o impacto do software na ponta. Sei conversar com usuários, levantar problema, priorizar entrega e traduzir necessidade operacional em solução técnica.</p>
+            <div class="highlight-box" data-i18n-html="about.highlight">Meu posicionamento: <strong>não sou só um estudante fazendo projetos; eu construo sistemas reais para operação real.</strong></div>
+          </div>
+
+          <aside class="side-card reveal" aria-label="Dados de contato e perfil">
+            <div class="info-row"><span class="icon">📍</span><span>Novo Hamburgo, RS · Brasil</span></div>
+            <div class="info-row"><span class="icon">🎓</span><span data-i18n="about.infoStudy">ADS · UNISINOS · 2026</span></div>
+            <div class="info-row"><span class="icon">🌐</span><span data-i18n="about.infoEnglish">Inglês C1 · Avançado</span></div>
+            <div class="info-row"><span class="icon">🚀</span><span><span data-i18n="about.infoLive">Sistema em produção:</span> <a href="https://github.com/joaoluan/donilla-app" target="_blank" rel="noopener noreferrer">donilla-app</a></span></div>
+            <div class="info-row"><span class="icon">🐙</span><a href="https://github.com/joaoluan" target="_blank" rel="noopener noreferrer">github.com/joaoluan</a></div>
+            <div class="info-row"><span class="icon">💼</span><a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+            <div class="info-row"><span class="icon">✉️</span><a href="mailto:joao.luan@hotmail.com">joao.luan@hotmail.com</a></div>
+          </aside>
         </div>
       </div>
+    </section>
+
+    <section id="habilidades" class="skills-section">
+      <div class="wrap">
+        <div class="section-label reveal"><h2><span class="n">02.</span><span data-i18n="skills.title">Stack real que uso</span></h2></div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="wrap">
+        <div class="section-label reveal"><h2><span class="n">03.</span><span data-i18n="projects.title">Projetos</span></h2></div>
+
+        <div class="subsection-title reveal"><span data-i18n="projects.mainLabel">⭐ Case principal em produção</span></div>
+        <article class="case-card reveal" id="mainCase"></article>
+
+        <div class="subsection-title reveal"><span data-i18n="projects.realLabel">🧠 Projetos aplicados a negócios reais</span></div>
+        <div class="projects-grid" id="realProjectsGrid"></div>
+
+        <div class="subsection-title reveal"><span data-i18n="projects.publicLabel">🟢 Projetos públicos e acadêmicos</span></div>
+        <div class="projects-grid" id="publicProjectsGrid"></div>
+      </div>
+    </section>
+
+    <section id="certificados">
+      <div class="wrap">
+        <div class="section-label reveal"><h2><span class="n">04.</span><span data-i18n="certs.title">Certificados</span></h2></div>
+        <div class="cert-grid" id="certGrid"></div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="wrap contact-box">
+        <p class="contact-small reveal" data-i18n="contact.small">05. Vamos conversar?</p>
+        <h2 class="reveal" data-i18n="contact.title">Busco oportunidade como Full Stack Júnior ou Estágio.</h2>
+        <p class="reveal" data-i18n-html="contact.desc">Tenho interesse em times que valorizem <strong>backend, integrações, automação, dados, produto e operação</strong>. Já coloquei sistema real em produção e trago uma visão forte de negócio, principalmente para restaurantes, vendas, atendimento e processos internos.</p>
+        <div class="cta-row reveal" style="justify-content:center">
+          <a href="mailto:joao.luan@hotmail.com" class="btn btn-primary" data-i18n="contact.email">✉️ Enviar e-mail</a>
+          <a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn ↗</a>
+          <a href="https://github.com/joaoluan" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span><span data-i18n="footer.built">Desenvolvido por</span> <a href="#hero">João Moura</a> · <span id="year">2026</span></span>
+      <span>joaomoura.dev.br</span>
     </div>
+  </footer>
 
-    <div class="subsec rv"><span>🟢 <span class="pt">Projetos públicos</span><span class="en">Public projects</span></span></div>
-    <div class="pg">
-      <div class="pc rv">
-        <div class="pt2"><span class="picon">💼</span><div class="badges"><span class="badge bs">Full Stack</span></div></div>
-        <h3 class="ptitle">Freela</h3>
-        <p class="pdesc"><span class="pt">Aplicação web full-stack para listagem e busca de vagas freelancer. Estrutura frontend/backend separados com Node.js, pronto para autenticação e publicação de oportunidades.</span><span class="en">Full-stack web app for freelance job listings and search. Separate frontend/backend with Node.js, ready for authentication and opportunity posting.</span></p>
-        <div class="pstack"><span class="st">Node.js</span><span class="st">JavaScript</span><span class="st">CSS</span><span class="st">HTML</span></div>
-        <div class="plinks"><a href="https://github.com/joaoluan/freela" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
-      </div>
-      <div class="pc rv">
-        <div class="pt2"><span class="picon">📡</span><div class="badges"><span class="badge bl">Live Demo</span></div></div>
-        <h3 class="ptitle"><span class="pt">Vigilância Solidária</span><span class="en">Neighborhood Watch</span></h3>
-        <p class="pdesc"><span class="pt">Sistema web de monitoramento comunitário integrado ao Home Assistant. Câmeras, alertas automáticos e registro de eventos de segurança em tempo real.</span><span class="en">Community monitoring web system integrated with Home Assistant. Cameras, automatic alerts and real-time security event logging.</span></p>
-        <div class="pstack"><span class="st">Node.js</span><span class="st">Express</span><span class="st">jQuery</span><span class="st">Bootstrap</span><span class="st">Home Assistant</span></div>
-        <div class="plinks"><a href="https://github.com/joaoluan/vs-melhorado" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a><a href="https://vs.joaomoura.dev.br/" target="_blank" class="pl">↗ Demo</a></div>
-      </div>
-      <div class="pc rv">
-        <div class="pt2"><span class="picon">🚗</span><div class="badges"><span class="badge bs">Database</span></div></div>
-        <h3 class="ptitle"><span class="pt">Sistema de Locadora</span><span class="en">Car Rental System</span></h3>
-        <p class="pdesc"><span class="pt">Banco de dados relacional para gestão de locadora com triggers para automação de cálculos de locação, controle de status de frota e relatórios.</span><span class="en">Relational database for car rental management with triggers for automated calculations, fleet status control and reports.</span></p>
-        <div class="pstack"><span class="st">MySQL</span><span class="st">SQL</span><span class="st">Triggers</span><span class="st">Stored Procedures</span></div>
-        <div class="plinks"><a href="https://github.com/joaoluan/locadora" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
-      </div>
-      <div class="pc rv">
-        <div class="pt2"><span class="picon">🧩</span><div class="badges"><span class="badge bs">Algorithm</span></div></div>
-        <h3 class="ptitle"><span class="pt">Labirinto com Recursão</span><span class="en">Maze with Recursion</span></h3>
-        <p class="pdesc"><span class="pt">Simulação em Java demonstrando algoritmos de recursão e arrays 2D para resolução de labirintos. Foco em lógica de programação e estrutura de dados.</span><span class="en">Java simulation demonstrating recursion algorithms and 2D arrays for maze solving. Focus on programming logic and data structures.</span></p>
-        <div class="pstack"><span class="st">Java</span><span class="st">Recursion</span><span class="st">Arrays 2D</span><span class="st">Data Structures</span></div>
-        <div class="plinks"><a href="https://github.com/joaoluan/Labirinto" target="_blank" class="pl">⌥ <span class="pt">Código</span><span class="en">Code</span></a></div>
-      </div>
-    </div>
+  <script>
+    const state = {
+      lang: localStorage.getItem('portfolio-lang') || 'pt'
+    };
 
-    <div class="subsec rv"><span>🔒 <span class="pt">Projetos privados — código disponível mediante solicitação</span><span class="en">Private projects — code available upon request</span></span></div>
-    <div class="pg">
-      <div class="pc priv rv">
-        <div class="pt2"><span class="picon">🤖</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Bot</span></div></div>
-        <h3 class="ptitle">Kira Bot</h3>
-        <p class="pdesc"><span class="pt">Bot de WhatsApp em JavaScript integrado ao ecossistema Donilla. Responde automaticamente perguntas sobre pedidos, status de entrega e catálogo de produtos via WPPConnect, sem necessidade de atendimento humano.</span><span class="en">JavaScript WhatsApp bot integrated with the Donilla ecosystem. Automatically answers questions about orders, delivery status and product catalog via WPPConnect, eliminating the need for manual support.</span></p>
-        <div class="pstack"><span class="st">JavaScript</span><span class="st">WPPConnect</span><span class="st">Node.js</span><span class="st">WhatsApp API</span></div>
-        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
-      </div>
-      <div class="pc priv rv">
-        <div class="pt2"><span class="picon">📲</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">TypeScript</span></div></div>
-        <h3 class="ptitle">Donilla WPPConnect Server</h3>
-        <p class="pdesc"><span class="pt">Servidor WhatsApp dedicado em TypeScript usando WPPConnect. Mantém sessão ativa, processa webhooks recebidos e dispara notificações automáticas para clientes em eventos de pedido (criação, atualização de status, pagamento confirmado).</span><span class="en">Dedicated WhatsApp server in TypeScript using WPPConnect. Maintains active session, processes incoming webhooks and sends automatic notifications to customers on order events (creation, status update, payment confirmed).</span></p>
-        <div class="pstack"><span class="st">TypeScript</span><span class="st">WPPConnect</span><span class="st">Webhooks</span><span class="st">Docker</span></div>
-        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
-      </div>
-      <div class="pc priv rv">
-        <div class="pt2"><span class="picon">🍺</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Router</span></div></div>
-        <h3 class="ptitle">Taphouse Router</h3>
-        <p class="pdesc"><span class="pt">Serviço de roteamento em JavaScript para sistema de gestão de taphouse (bar/chopp). Gerencia o tráfego de requisições entre serviços internos, funcionando como gateway de API para os módulos do sistema.</span><span class="en">JavaScript routing service for a taphouse (bar) management system. Manages request traffic between internal services, acting as an API gateway for system modules.</span></p>
-        <div class="pstack"><span class="st">JavaScript</span><span class="st">Node.js</span><span class="st">API Gateway</span><span class="st">Routing</span></div>
-        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
-      </div>
-      <div class="pc priv rv">
-        <div class="pt2"><span class="picon">⚡</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">API</span></div></div>
-        <h3 class="ptitle">Evolution API Integration</h3>
-        <p class="pdesc"><span class="pt">Integração com a Evolution API como alternativa e complemento ao WPPConnect no ecossistema Donilla. Permite múltiplas instâncias WhatsApp com estratégia de failover entre servidores de mensageria.</span><span class="en">Evolution API integration as an alternative and complement to WPPConnect in the Donilla ecosystem. Supports multiple WhatsApp instances with failover strategy across messaging servers.</span></p>
-        <div class="pstack"><span class="st">Evolution API</span><span class="st">WhatsApp</span><span class="st">Node.js</span><span class="st">REST</span><span class="st">Failover</span></div>
-        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
-      </div>
-      <div class="pc priv rv">
-        <div class="pt2"><span class="picon">🗄️</span><div class="badges"><span class="badge bp">🔒 Privado</span><span class="badge bs">Database</span></div></div>
-        <h3 class="ptitle">Donilla DB</h3>
-        <p class="pdesc"><span class="pt">Schema e migrations do banco de dados da plataforma Donilla. Cobre pedidos com auditoria, clientes, catálogo de produtos, configurações da loja, agendamentos de horário e tabela de eventos de webhook do gateway de pagamento.</span><span class="en">Database schema and migrations for the Donilla platform. Covers orders with audit trail, customers, product catalog, store settings, schedule configuration, and payment gateway webhook events table.</span></p>
-        <div class="pstack"><span class="st">PostgreSQL</span><span class="st">Prisma</span><span class="st">SQL Migrations</span><span class="st">Audit Trail</span></div>
-        <div class="priv-note">🔐 <span class="pt">Código privado — disponível em entrevistas</span><span class="en">Private code — available in interviews</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+    const i18n = {
+      pt: {
+        meta: {
+          title: 'João Moura | Desenvolvedor Full Stack',
+          description: 'Portfólio de João Moura — Desenvolvedor Full Stack focado em sistemas reais de negócio, automação, integrações, APIs, WhatsApp, Docker, PostgreSQL e deploy em VPS.'
+        },
+        nav: {
+          about: 'Sobre',
+          skills: 'Habilidades',
+          projects: 'Projetos',
+          certs: 'Certificados',
+          contact: 'Contato'
+        },
+        hero: {
+          eyebrow: 'Olá, me chamo João Moura',
+          h1a: 'Desenvolvedor Full Stack.',
+          h1b: 'Sistemas reais para negócios reais.',
+          desc: 'Construo APIs, painéis administrativos, bots de WhatsApp, integrações com pagamento e deploys em VPS usando <strong>Node.js, Docker, PostgreSQL, Prisma e Linux</strong>. Trago 15+ anos de experiência em operação, liderança e indicadores no setor de alimentação — por isso desenvolvo pensando no problema real do negócio, não só no código.',
+          ctaProjects: 'Ver projetos →',
+          ctaCv: '📄 Baixar CV PT-BR'
+        },
+        proof: {
+          p1n: 'Produção',
+          p1d: 'Sistema real rodando em VPS com Docker',
+          p2d: 'anos em liderança, operação e indicadores',
+          p3n: 'Integrações',
+          p3d: 'WhatsApp, Asaas, webhooks e automações',
+          p4d: 'inglês avançado para documentação e comunicação'
+        },
+        terminal: {
+          focus: 'fullstack + automação + negócio',
+          comment: '# resolvendo problema real, não só fazendo tela bonita'
+        },
+        about: {
+          title: 'Sobre mim',
+          p1: 'Sou João Moura, de Novo Hamburgo/RS. Tecnologia sempre foi minha maior paixão. Hoje, transformo essa paixão em carreira como <strong>desenvolvedor full stack</strong>, com foco em sistemas úteis, integrações e automações que resolvem problemas de operação.',
+          p2: 'Minha principal vitrine técnica é a <strong>Donilla</strong>, uma loja online própria com backend Node.js, checkout Asaas, bot de WhatsApp, painel administrativo, eventos em tempo real via SSE, auditoria de pedidos e deploy em VPS com Docker. É um sistema real, criado para um negócio real.',
+          p3: 'O que me diferencia é a combinação entre código e vivência prática: depois de 15+ anos gerenciando equipes, custos, atendimento, vendas e indicadores no setor de alimentação, eu entendo o impacto do software na ponta. Sei conversar com usuários, levantar problema, priorizar entrega e traduzir necessidade operacional em solução técnica.',
+          highlight: 'Meu posicionamento: <strong>não sou só um estudante fazendo projetos; eu construo sistemas reais para operação real.</strong>',
+          infoStudy: 'ADS · UNISINOS · 2026',
+          infoEnglish: 'Inglês C1 · Avançado',
+          infoLive: 'Sistema em produção:'
+        },
+        skills: { title: 'Stack real que uso' },
+        projects: {
+          title: 'Projetos',
+          mainLabel: '⭐ Case principal em produção',
+          realLabel: '🧠 Projetos aplicados a negócios reais',
+          publicLabel: '🟢 Projetos públicos e acadêmicos',
+          features: 'Funcionalidades',
+          problem: 'Problema',
+          solution: 'Solução',
+          links: 'Links',
+          code: 'Código',
+          privateNote: 'Código privado ou sanitizado — disponível para explicar arquitetura e decisões técnicas em entrevista.',
+          demoRemoved: 'Demo removida temporariamente para evitar link fora do ar.'
+        },
+        certs: { title: 'Certificados' },
+        contact: {
+          small: '05. Vamos conversar?',
+          title: 'Busco oportunidade como Full Stack Júnior ou Estágio.',
+          desc: 'Tenho interesse em times que valorizem <strong>backend, integrações, automação, dados, produto e operação</strong>. Já coloquei sistema real em produção e trago uma visão forte de negócio, principalmente para restaurantes, vendas, atendimento e processos internos.',
+          email: '✉️ Enviar e-mail'
+        },
+        footer: { built: 'Desenvolvido por' }
+      },
+      en: {
+        meta: {
+          title: 'João Moura | Full Stack Developer',
+          description: 'João Moura portfolio — Full Stack Developer focused on real business systems, automation, integrations, APIs, WhatsApp, Docker, PostgreSQL and VPS deployments.'
+        },
+        nav: {
+          about: 'About',
+          skills: 'Skills',
+          projects: 'Projects',
+          certs: 'Certificates',
+          contact: 'Contact'
+        },
+        hero: {
+          eyebrow: 'Hi, my name is João Moura',
+          h1a: 'Full Stack Developer.',
+          h1b: 'Real systems for real businesses.',
+          desc: 'I build APIs, admin panels, WhatsApp bots, payment integrations and VPS deployments using <strong>Node.js, Docker, PostgreSQL, Prisma and Linux</strong>. I bring 15+ years of experience in operations, leadership and business KPIs in the food industry — so I build with the real business problem in mind, not just the code.',
+          ctaProjects: 'View projects →',
+          ctaCv: '📄 Download Resume EN'
+        },
+        proof: {
+          p1n: 'Production',
+          p1d: 'Real system running on VPS with Docker',
+          p2d: 'years in leadership, operations and KPIs',
+          p3n: 'Integrations',
+          p3d: 'WhatsApp, Asaas, webhooks and automations',
+          p4d: 'advanced English for documentation and communication'
+        },
+        terminal: {
+          focus: 'fullstack + automation + business',
+          comment: '# solving real problems, not just building pretty screens'
+        },
+        about: {
+          title: 'About me',
+          p1: 'I am João Moura from Novo Hamburgo/RS, Brazil. Technology has always been my biggest passion. Today, I am turning that passion into a professional career as a <strong>full stack developer</strong>, focused on useful systems, integrations and automations that solve operational problems.',
+          p2: 'My strongest technical showcase is <strong>Donilla</strong>, my own online store with a Node.js backend, Asaas checkout, WhatsApp bot, admin panel, real-time SSE events, order audit trail and Docker deployment on a VPS. It is a real system built for a real business.',
+          p3: 'What sets me apart is the combination of code and practical business experience: after 15+ years managing teams, costs, customer service, sales and KPIs in the food industry, I understand the impact of software on real operations. I can talk to users, identify problems, prioritize delivery and translate operational needs into technical solutions.',
+          highlight: 'My positioning: <strong>I am not just a student building projects; I build real systems for real operations.</strong>',
+          infoStudy: 'Systems Analysis · UNISINOS · 2026',
+          infoEnglish: 'English C1 · Advanced',
+          infoLive: 'Production system:'
+        },
+        skills: { title: 'Production-oriented stack' },
+        projects: {
+          title: 'Projects',
+          mainLabel: '⭐ Main production case',
+          realLabel: '🧠 Projects applied to real businesses',
+          publicLabel: '🟢 Public and academic projects',
+          features: 'Features',
+          problem: 'Problem',
+          solution: 'Solution',
+          links: 'Links',
+          code: 'Code',
+          privateNote: 'Private or sanitized code — available to explain architecture and technical decisions in interviews.',
+          demoRemoved: 'Demo temporarily removed to avoid an offline link.'
+        },
+        certs: { title: 'Certificates' },
+        contact: {
+          small: '05. Let’s talk?',
+          title: 'Looking for a Junior Full Stack or Internship opportunity.',
+          desc: 'I am interested in teams that value <strong>backend, integrations, automation, data, product and operations</strong>. I have shipped a real production system and bring a strong business perspective, especially for restaurants, sales, customer service and internal processes.',
+          email: '✉️ Send email'
+        },
+        footer: { built: 'Built by' }
+      }
+    };
 
-<section id="certificados">
-  <div class="wrap">
-    <div class="sec-label rv"><h2><span class="n">04.</span><span class="pt">Certificados</span><span class="en">Certificates</span></h2></div>
-    <div class="cg">
-      <a href="#" class="cc rv"><span class="ci">🏆</span><div class="cinfo"><h4>Exploring Data Modeling with SAP Solutions</h4><span>SAP · Record of Achievement</span></div></a>
-      <a href="analise e anotomia de ataques ciberneticos.pdf" class="cc rv" target="_blank"><span class="ci">🔐</span><div class="cinfo"><h4><span class="pt">Segurança Ofensiva</span><span class="en">Offensive Security</span></h4><span class="pt">Análise e Anatomia de Ataques · LabTools</span><span class="en">Cyber Attack Analysis · LabTools</span></div></a>
-      <a href="certificado CNV.pdf" class="cc rv" target="_blank"><span class="ci">🗣️</span><div class="cinfo"><h4><span class="pt">Comunicação Não Violenta</span><span class="en">Nonviolent Communication</span></h4><span>LabTools</span></div></a>
-      <a href="#" class="cc rv"><span class="ci">💡</span><div class="cinfo"><h4><span class="pt">Empreendedorismo: Problemas, Ideias e Oportunidades</span><span class="en">Entrepreneurship: Problems, Ideas & Opportunities</span></h4><span>LabTools</span></div></a>
-      <a href="#" class="cc rv"><span class="ci">🌐</span><div class="cinfo"><h4><span class="pt">Inglês: Participação em Reuniões</span><span class="en">English: Participating in Meetings</span></h4><span>LabTools</span></div></a>
-      <a href="#" class="cc rv"><span class="ci">✉️</span><div class="cinfo"><h4><span class="pt">Inglês: E-mails Profissionais</span><span class="en">English: Professional E-mails</span></h4><span>LabTools</span></div></a>
-    </div>
-  </div>
-</section>
+    const data = {
+      skills: {
+        pt: [
+          { title: '⚡ Linguagens', tags: ['JavaScript', 'TypeScript', 'Java', 'HTML5', 'CSS3', 'SQL', 'Bash'] },
+          { title: '🚂 Backend / APIs', tags: ['Node.js', 'Express', 'REST API', 'SSE', 'Webhooks', 'JWT / Auth', 'CORS'] },
+          { title: '🗄️ Banco de Dados', tags: ['PostgreSQL', 'MySQL', 'Prisma ORM', 'Migrations', 'Triggers', 'Audit Trail'] },
+          { title: '⚙️ DevOps / Infra', tags: ['Docker', 'Docker Compose', 'Linux Debian', 'SSH', 'VPS', 'Tailscale', 'Git / GitHub'] },
+          { title: '🔌 Integrações', tags: ['WhatsApp / WPPConnect', 'Evolution API', 'Asaas Checkout', 'Home Assistant', 'Bitwarden BWS'] },
+          { title: '📚 Estudando', learning: true, tags: ['React', 'Spring Boot', 'Playwright', 'Redis Pub/Sub'] }
+        ],
+        en: [
+          { title: '⚡ Languages', tags: ['JavaScript', 'TypeScript', 'Java', 'HTML5', 'CSS3', 'SQL', 'Bash'] },
+          { title: '🚂 Backend / APIs', tags: ['Node.js', 'Express', 'REST API', 'SSE', 'Webhooks', 'JWT / Auth', 'CORS'] },
+          { title: '🗄️ Databases', tags: ['PostgreSQL', 'MySQL', 'Prisma ORM', 'Migrations', 'Triggers', 'Audit Trail'] },
+          { title: '⚙️ DevOps / Infra', tags: ['Docker', 'Docker Compose', 'Linux Debian', 'SSH', 'VPS', 'Tailscale', 'Git / GitHub'] },
+          { title: '🔌 Integrations', tags: ['WhatsApp / WPPConnect', 'Evolution API', 'Asaas Checkout', 'Home Assistant', 'Bitwarden BWS'] },
+          { title: '📚 Learning', learning: true, tags: ['React', 'Spring Boot', 'Playwright', 'Redis Pub/Sub'] }
+        ]
+      },
+      mainCase: {
+        pt: {
+          icon: '🛒',
+          title: 'Donilla App',
+          badges: ['Live', 'Produção', 'Full Stack'],
+          description: 'Backend completo de e-commerce construído do zero para minha loja online. API REST com Node.js, gateway de pagamento Asaas, bot WhatsApp para notificações, painel admin com atualizações em tempo real via SSE, auditoria completa por pedido, autenticação e deploy em VPS via Docker com segredos gerenciados pelo Bitwarden.',
+          problem: 'Criar uma operação de venda online própria com pedidos, pagamento, notificação ao cliente e acompanhamento administrativo sem depender de plataforma pronta.',
+          solution: 'API Node.js modular, banco PostgreSQL com Prisma, checkout Asaas, webhooks, bot WhatsApp e deploy Docker em VPS própria.',
+          features: [
+            'Checkout hospedado via Asaas com webhook validado server-to-server.',
+            'Bot WhatsApp com WPPConnect para notificações automáticas e consulta de pedidos.',
+            'Painel admin com SSE: novos pedidos em tempo real sem polling.',
+            'Trilha de auditoria por pedido: criação, checkout, webhook e status.',
+            'Gestão de segredos de produção com Bitwarden Secrets Manager.',
+            'Smoke tests com Playwright em container isolado antes de deploy.',
+            'Configuração de horários de funcionamento da loja.'
+          ],
+          stack: ['Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'Docker', 'Asaas', 'SSE', 'WPPConnect', 'Playwright', 'Bitwarden'],
+          links: [{ label: 'Ver código', href: 'https://github.com/joaoluan/donilla-app' }]
+        },
+        en: {
+          icon: '🛒',
+          title: 'Donilla App',
+          badges: ['Live', 'Production', 'Full Stack'],
+          description: 'Complete e-commerce backend built from scratch for my online store. Node.js REST API, Asaas payment gateway, WhatsApp bot for notifications, real-time SSE admin panel, full per-order audit trail, authentication and VPS deployment via Docker with Bitwarden-managed secrets.',
+          problem: 'Build an owned online sales operation with orders, payment, customer notifications and admin tracking without depending on a ready-made platform.',
+          solution: 'Modular Node.js API, PostgreSQL database with Prisma, Asaas checkout, webhooks, WhatsApp bot and Docker deployment on a personal VPS.',
+          features: [
+            'Hosted Asaas Checkout with server-to-server validated webhook.',
+            'WhatsApp bot with WPPConnect for automatic notifications and order queries.',
+            'Admin panel with SSE: real-time new orders without polling.',
+            'Order audit trail: creation, checkout, webhook and status changes.',
+            'Production secrets managed with Bitwarden Secrets Manager.',
+            'Smoke tests with Playwright in an isolated container before deployment.',
+            'Store hours and schedule configuration.'
+          ],
+          stack: ['Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'Docker', 'Asaas', 'SSE', 'WPPConnect', 'Playwright', 'Bitwarden'],
+          links: [{ label: 'View code', href: 'https://github.com/joaoluan/donilla-app' }]
+        }
+      },
+      realProjects: {
+        pt: [
+          {
+            icon: '📊',
+            title: 'Automação Restaurante & BI de Leads',
+            badges: ['Privado', 'Operação'],
+            private: true,
+            description: 'Sistema de apoio à operação de restaurante com automações de WhatsApp, organização de leads, relatórios e indicadores para acompanhar vendas, canais e tomada de decisão.',
+            stack: ['Node.js', 'WhatsApp', 'BI', 'Relatórios', 'VPS']
+          },
+          {
+            icon: '🏠',
+            title: 'Homelab & Infra Pessoal',
+            badges: ['Infra', 'DevOps'],
+            private: true,
+            description: 'Ambiente com VPS, Raspberry Pi, Orange Pi, Tailscale, backup, serviços internos e monitoramento. Usado como laboratório real para rede, Linux, automação e deploy.',
+            stack: ['Linux', 'Docker', 'Tailscale', 'Raspberry Pi', 'Orange Pi', 'Backup']
+          },
+          {
+            icon: '📲',
+            title: 'Donilla WPPConnect Server',
+            badges: ['Privado', 'TypeScript'],
+            private: true,
+            description: 'Servidor WhatsApp dedicado em TypeScript para manter sessão ativa, processar webhooks e disparar notificações automáticas em eventos de pedido.',
+            stack: ['TypeScript', 'WPPConnect', 'Webhooks', 'Docker']
+          },
+          {
+            icon: '⚡',
+            title: 'Evolution API Integration',
+            badges: ['Privado', 'API'],
+            private: true,
+            description: 'Integração com Evolution API como alternativa/complemento ao WPPConnect, com múltiplas instâncias WhatsApp e estratégia de failover para mensageria.',
+            stack: ['Evolution API', 'WhatsApp', 'Node.js', 'REST', 'Failover']
+          },
+          {
+            icon: '📡',
+            title: 'Vigilância Solidária',
+            badges: ['Monitoramento', 'Home Assistant'],
+            private: false,
+            description: 'Sistema web de monitoramento comunitário integrado ao Home Assistant, com câmeras, alertas automáticos e registro de eventos de segurança.',
+            stack: ['Node.js', 'Express', 'jQuery', 'Bootstrap', 'Home Assistant'],
+            links: [{ label: 'Código', href: 'https://github.com/joaoluan/vs-melhorado' }],
+            note: 'Demo removida temporariamente para evitar link fora do ar.'
+          },
+          {
+            icon: '🍺',
+            title: 'Taphouse Router',
+            badges: ['API Gateway', 'Node.js'],
+            private: true,
+            description: 'Serviço de roteamento em JavaScript para sistema de gestão de taphouse/bar, atuando como gateway entre serviços internos e módulos do sistema.',
+            stack: ['JavaScript', 'Node.js', 'API Gateway', 'Routing']
+          }
+        ],
+        en: [
+          {
+            icon: '📊',
+            title: 'Restaurant Automation & Lead BI',
+            badges: ['Private', 'Operations'],
+            private: true,
+            description: 'Restaurant operations support system with WhatsApp automation, lead organization, reports and KPIs to track sales, channels and decisions.',
+            stack: ['Node.js', 'WhatsApp', 'BI', 'Reports', 'VPS']
+          },
+          {
+            icon: '🏠',
+            title: 'Homelab & Personal Infrastructure',
+            badges: ['Infra', 'DevOps'],
+            private: true,
+            description: 'Environment with VPS, Raspberry Pi, Orange Pi, Tailscale, backups, internal services and monitoring. Used as a real lab for networking, Linux, automation and deployment.',
+            stack: ['Linux', 'Docker', 'Tailscale', 'Raspberry Pi', 'Orange Pi', 'Backup']
+          },
+          {
+            icon: '📲',
+            title: 'Donilla WPPConnect Server',
+            badges: ['Private', 'TypeScript'],
+            private: true,
+            description: 'Dedicated WhatsApp server in TypeScript to keep sessions active, process webhooks and send automatic notifications on order events.',
+            stack: ['TypeScript', 'WPPConnect', 'Webhooks', 'Docker']
+          },
+          {
+            icon: '⚡',
+            title: 'Evolution API Integration',
+            badges: ['Private', 'API'],
+            private: true,
+            description: 'Evolution API integration as an alternative/complement to WPPConnect, with multiple WhatsApp instances and failover strategy for messaging.',
+            stack: ['Evolution API', 'WhatsApp', 'Node.js', 'REST', 'Failover']
+          },
+          {
+            icon: '📡',
+            title: 'Neighborhood Watch',
+            badges: ['Monitoring', 'Home Assistant'],
+            private: false,
+            description: 'Community monitoring web system integrated with Home Assistant, with cameras, automatic alerts and security event logging.',
+            stack: ['Node.js', 'Express', 'jQuery', 'Bootstrap', 'Home Assistant'],
+            links: [{ label: 'Code', href: 'https://github.com/joaoluan/vs-melhorado' }],
+            note: 'Demo temporarily removed to avoid an offline link.'
+          },
+          {
+            icon: '🍺',
+            title: 'Taphouse Router',
+            badges: ['API Gateway', 'Node.js'],
+            private: true,
+            description: 'JavaScript routing service for a taphouse/bar management system, acting as a gateway between internal services and modules.',
+            stack: ['JavaScript', 'Node.js', 'API Gateway', 'Routing']
+          }
+        ]
+      },
+      publicProjects: {
+        pt: [
+          {
+            icon: '💼',
+            title: 'Freela',
+            badges: ['Full Stack'],
+            description: 'Aplicação web full-stack para listagem e busca de vagas freelancer. Estrutura frontend/backend separados com Node.js, pronta para autenticação e publicação de oportunidades.',
+            stack: ['Node.js', 'JavaScript', 'CSS', 'HTML'],
+            links: [{ label: 'Código', href: 'https://github.com/joaoluan/freela' }]
+          },
+          {
+            icon: '🚗',
+            title: 'Sistema de Locadora',
+            badges: ['Database'],
+            description: 'Banco de dados relacional para gestão de locadora com triggers para automação de cálculos de locação, controle de status de frota e relatórios.',
+            stack: ['MySQL', 'SQL', 'Triggers', 'Stored Procedures'],
+            links: [{ label: 'Código', href: 'https://github.com/joaoluan/locadora' }]
+          },
+          {
+            icon: '🧩',
+            title: 'Labirinto com Recursão',
+            badges: ['Algorithm'],
+            description: 'Simulação em Java demonstrando recursão e arrays 2D para resolução de labirintos. Foco em lógica de programação e estrutura de dados.',
+            stack: ['Java', 'Recursion', 'Arrays 2D', 'Data Structures'],
+            links: [{ label: 'Código', href: 'https://github.com/joaoluan/Labirinto' }]
+          }
+        ],
+        en: [
+          {
+            icon: '💼',
+            title: 'Freela',
+            badges: ['Full Stack'],
+            description: 'Full-stack web app for freelance job listings and search. Separate frontend/backend structure with Node.js, ready for authentication and opportunity posting.',
+            stack: ['Node.js', 'JavaScript', 'CSS', 'HTML'],
+            links: [{ label: 'Code', href: 'https://github.com/joaoluan/freela' }]
+          },
+          {
+            icon: '🚗',
+            title: 'Car Rental System',
+            badges: ['Database'],
+            description: 'Relational database for car rental management with triggers for automated rental calculations, fleet status control and reports.',
+            stack: ['MySQL', 'SQL', 'Triggers', 'Stored Procedures'],
+            links: [{ label: 'Code', href: 'https://github.com/joaoluan/locadora' }]
+          },
+          {
+            icon: '🧩',
+            title: 'Maze with Recursion',
+            badges: ['Algorithm'],
+            description: 'Java simulation demonstrating recursion and 2D arrays for maze solving. Focus on programming logic and data structures.',
+            stack: ['Java', 'Recursion', 'Arrays 2D', 'Data Structures'],
+            links: [{ label: 'Code', href: 'https://github.com/joaoluan/Labirinto' }]
+          }
+        ]
+      },
+      certs: {
+        pt: [
+          { icon: '🏆', title: 'Exploring Data Modeling with SAP Solutions', meta: 'SAP · Record of Achievement', href: 'certificados/sap-data-modeling.pdf' },
+          { icon: '🔐', title: 'Segurança Ofensiva', meta: 'Análise e Anatomia de Ataques · LabTools', href: 'certificados/certificado-seguranca-ofensiva.pdf' },
+          { icon: '🗣️', title: 'Comunicação Não Violenta', meta: 'LabTools', href: 'certificados/certificado-cnv.pdf' },
+          { icon: '💡', title: 'Empreendedorismo: Problemas, Ideias e Oportunidades', meta: 'LabTools', href: 'certificados/certificado-empreendedorismo.pdf' },
+          { icon: '🌐', title: 'Inglês: Participação em Reuniões', meta: 'LabTools', href: 'certificados/certificado-ingles-reunioes.pdf' },
+          { icon: '✉️', title: 'Inglês: E-mails Profissionais', meta: 'LabTools', href: 'certificados/certificado-ingles-emails.pdf' }
+        ],
+        en: [
+          { icon: '🏆', title: 'Exploring Data Modeling with SAP Solutions', meta: 'SAP · Record of Achievement', href: 'certificados/sap-data-modeling.pdf' },
+          { icon: '🔐', title: 'Offensive Security', meta: 'Cyber Attack Analysis · LabTools', href: 'certificados/certificado-seguranca-ofensiva.pdf' },
+          { icon: '🗣️', title: 'Nonviolent Communication', meta: 'LabTools', href: 'certificados/certificado-cnv.pdf' },
+          { icon: '💡', title: 'Entrepreneurship: Problems, Ideas & Opportunities', meta: 'LabTools', href: 'certificados/certificado-empreendedorismo.pdf' },
+          { icon: '🌐', title: 'English: Participating in Meetings', meta: 'LabTools', href: 'certificados/certificado-ingles-reunioes.pdf' },
+          { icon: '✉️', title: 'English: Professional E-mails', meta: 'LabTools', href: 'certificados/certificado-ingles-emails.pdf' }
+        ]
+      }
+    };
 
-<section id="contato">
-  <div class="wrap">
-    <div class="con-wrap">
-      <p class="con-top rv"><span class="pt">05. E agora?</span><span class="en">05. What's next?</span></p>
-      <h2 class="con-h rv"><span class="pt">Vamos conversar!</span><span class="en">Let's talk!</span></h2>
-      <p class="con-p rv"><span class="pt">Estou buscando minha primeira oportunidade como desenvolvedor. Se você tem uma vaga de estágio ou júnior, ou quer trocar uma ideia — minha caixa de entrada está aberta.</span><span class="en">I'm looking for my first developer opportunity. If you have an internship or junior opening, or just want to chat — my inbox is always open.</span></p>
-      <div class="con-links rv">
-        <a href="mailto:joao.luan@hotmail.com" class="btn btn-a"><span class="pt">✉️ Enviar e-mail</span><span class="en">✉️ Send email</span></a>
-        <a href="https://www.linkedin.com/in/joão-luan-mendonca-moura-64027a245" class="clink" target="_blank">LinkedIn ↗</a>
-        <a href="https://github.com/joaoluan" class="clink" target="_blank">GitHub ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
+    const getNested = (obj, path) => path.split('.').reduce((acc, key) => acc && acc[key], obj);
 
-<footer>
-  <span><span class="pt">Desenvolvido por</span><span class="en">Built by</span> <a href="#">João Moura</a> · 2025</span>
-  <span style="font-size:.68rem;color:rgba(136,146,176,.4)">joaomoura.dev.br</span>
-</footer>
+    const badgeClass = (label, isPrivate = false) => {
+      const normalized = String(label).toLowerCase();
+      if (isPrivate || normalized.includes('privado') || normalized.includes('private')) return 'private';
+      if (normalized.includes('live') || normalized.includes('produção') || normalized.includes('production')) return 'live';
+      if (normalized.includes('full') || normalized.includes('api') || normalized.includes('type') || normalized.includes('database') || normalized.includes('devops')) return 'stack';
+      return 'ok';
+    };
 
-<script>
-const btn=document.getElementById('langBtn');
-btn.addEventListener('click',()=>{const e=document.body.dataset.lang==='en';document.body.dataset.lang=e?'pt':'en';btn.textContent=e?'EN':'PT'});
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const s=[...e.target.parentElement.querySelectorAll('.rv:not(.vis)')];setTimeout(()=>e.target.classList.add('vis'),Math.min(s.indexOf(e.target),5)*75);obs.unobserve(e.target)})},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-const secs=document.querySelectorAll('section[id],header[id]');
-const nas=document.querySelectorAll('nav a[href^="#"]');
-window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-110)c=s.id});nas.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'var(--accent)':''})},{passive:true});
-</script>
+    const stackItems = (items) => items.map(item => `<span class="stack-item">${item}</span>`).join('');
+
+    const badgeItems = (items, isPrivate = false) => items.map(item => `<span class="badge ${badgeClass(item, isPrivate)}">${item}</span>`).join('');
+
+    function renderStaticText() {
+      const dict = i18n[state.lang];
+      document.documentElement.lang = state.lang === 'pt' ? 'pt-BR' : 'en';
+      document.title = dict.meta.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', dict.meta.description);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', dict.meta.title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', dict.meta.description);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', dict.meta.title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', dict.meta.description);
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const value = getNested(dict, el.dataset.i18n);
+        if (value) el.textContent = value;
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const value = getNested(dict, el.dataset.i18nHtml);
+        if (value) el.innerHTML = value;
+      });
+
+      document.getElementById('langBtn').textContent = state.lang === 'pt' ? 'EN' : 'PT';
+      document.getElementById('langBtn').setAttribute('aria-label', state.lang === 'pt' ? 'Mudar idioma para inglês' : 'Change language to Portuguese');
+      document.querySelector('.skip-link').textContent = state.lang === 'pt' ? 'Pular para o conteúdo' : 'Skip to content';
+      document.getElementById('menuBtn').setAttribute('aria-label', state.lang === 'pt' ? 'Abrir menu' : 'Open menu');
+    }
+
+    function renderSkills() {
+      const grid = document.getElementById('skillsGrid');
+      grid.innerHTML = data.skills[state.lang].map(group => `
+        <article class="skill-card reveal">
+          <h3>${group.title}</h3>
+          <div class="tags">
+            ${group.tags.map(tag => `<span class="tag ${group.learning ? 'learning' : ''}">${tag}</span>`).join('')}
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderMainCase() {
+      const dict = i18n[state.lang].projects;
+      const project = data.mainCase[state.lang];
+      const links = project.links.map(link => `<a class="project-link" href="${link.href}" target="_blank" rel="noopener noreferrer">⌥ ${link.label}</a>`).join('');
+
+      document.getElementById('mainCase').innerHTML = `
+        <div class="case-grid">
+          <div class="case-main">
+            <div class="card-top">
+              <span class="project-icon" aria-hidden="true">${project.icon}</span>
+              <div class="badges">${badgeItems(project.badges)}</div>
+            </div>
+            <h3 class="project-title">${project.title}</h3>
+            <p class="project-desc">${project.description}</p>
+
+            <div class="case-blocks">
+              <div class="case-block">
+                <h4>${dict.problem}</h4>
+                <p>${project.problem}</p>
+              </div>
+              <div class="case-block">
+                <h4>${dict.solution}</h4>
+                <p>${project.solution}</p>
+              </div>
+            </div>
+
+            <div class="stack-row">${stackItems(project.stack)}</div>
+            <div class="project-links">${links}</div>
+          </div>
+
+          <aside class="case-aside">
+            <h4>${dict.features}</h4>
+            <ul class="feature-list">
+              ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+          </aside>
+        </div>
+      `;
+    }
+
+    function renderProjectGrid(gridId, projects) {
+      const dict = i18n[state.lang].projects;
+      const grid = document.getElementById(gridId);
+
+      grid.innerHTML = projects.map(project => {
+        const links = project.links?.length
+          ? `<div class="project-links">${project.links.map(link => `<a class="project-link" href="${link.href}" target="_blank" rel="noopener noreferrer">⌥ ${link.label}</a>`).join('')}</div>`
+          : '';
+
+        const privateNote = project.private
+          ? `<div class="private-note">🔐 <span>${dict.privateNote}</span></div>`
+          : '';
+
+        const note = project.note
+          ? `<div class="private-note">⚠️ <span>${project.note}</span></div>`
+          : '';
+
+        return `
+          <article class="project-card ${project.private ? 'private-card' : ''} reveal">
+            <div class="card-top">
+              <span class="project-icon" aria-hidden="true">${project.icon}</span>
+              <div class="badges">${badgeItems(project.badges, project.private)}</div>
+            </div>
+            <h3 class="project-title">${project.title}</h3>
+            <p class="project-desc">${project.description}</p>
+            <div class="stack-row">${stackItems(project.stack)}</div>
+            ${links}
+            ${note}
+            ${privateNote}
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderCerts() {
+      const certs = data.certs[state.lang];
+      const grid = document.getElementById('certGrid');
+
+      grid.innerHTML = certs.map(cert => `
+        <a class="cert-card reveal" href="${cert.href}" target="_blank" rel="noopener noreferrer">
+          <span class="cert-icon" aria-hidden="true">${cert.icon}</span>
+          <span>
+            <strong class="cert-title">${cert.title}</strong>
+            <span class="cert-meta">${cert.meta}</span>
+          </span>
+        </a>
+      `).join('');
+    }
+
+    function applyRevealObserver() {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const elements = document.querySelectorAll('.reveal:not(.visible)');
+
+      if (reduced) {
+        elements.forEach(el => el.classList.add('visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: .08, rootMargin: '0px 0px -45px 0px' });
+
+      elements.forEach(el => observer.observe(el));
+    }
+
+    function render() {
+      renderStaticText();
+      renderSkills();
+      renderMainCase();
+      renderProjectGrid('realProjectsGrid', data.realProjects[state.lang]);
+      renderProjectGrid('publicProjectsGrid', data.publicProjects[state.lang]);
+      renderCerts();
+      requestAnimationFrame(applyRevealObserver);
+    }
+
+    const langBtn = document.getElementById('langBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navAnchors = document.querySelectorAll('.nav-link');
+
+    langBtn.addEventListener('click', () => {
+      state.lang = state.lang === 'pt' ? 'en' : 'pt';
+      localStorage.setItem('portfolio-lang', state.lang);
+      render();
+    });
+
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+
+    navAnchors.forEach(anchor => {
+      anchor.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = 'hero';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 130) current = section.id;
+      });
+
+      navAnchors.forEach(anchor => {
+        anchor.classList.toggle('active', anchor.getAttribute('href') === `#${current}`);
+      });
+    }, { passive: true });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    render();
+  </script>
 </body>
 </html>
