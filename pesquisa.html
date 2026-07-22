@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesquisa para Restaurantes | João Moura</title>
+  <meta name="description" content="Pesquisa acadêmica sobre gestão de restaurantes e validação de uma plataforma SaaS para o setor.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://joaomoura.dev.br/pesquisa.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Pesquisa sobre gestão de restaurantes">
+  <meta property="og:description" content="Ajude a validar uma plataforma de gestão para restaurantes. A pesquisa leva cerca de 5 minutos.">
+  <meta property="og:url" content="https://joaomoura.dev.br/pesquisa.html">
+  <meta name="theme-color" content="#090e1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090e1a;
+      --bg-2: #0d1525;
+      --card: rgba(16, 24, 44, .94);
+      --accent: #4dffc3;
+      --accent-2: #7c6bff;
+      --text: #ccd6f6;
+      --strong: #edf4ff;
+      --dim: #98a3bd;
+      --border: rgba(77, 255, 195, .15);
+      --border-strong: rgba(77, 255, 195, .38);
+      --danger: #ff8a9a;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 90% 5%, rgba(77, 255, 195, .08), transparent 28rem),
+        radial-gradient(circle at 5% 85%, rgba(124, 107, 255, .08), transparent 30rem),
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(77,255,195,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(77,255,195,.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(100% - 2rem, 860px); margin-inline: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 14, 26, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    nav { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .logo { color: var(--accent); font-family: var(--mono); font-size: .95rem; text-decoration: none; }
+    .logo span { color: var(--dim); }
+    .back { color: var(--dim); font-family: var(--mono); font-size: .76rem; text-decoration: none; }
+    .back:hover { color: var(--accent); }
+
+    main { padding: clamp(3.2rem, 8vw, 6rem) 0 5rem; }
+    .eyebrow { color: var(--accent); font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: .65rem 0 1rem; color: var(--strong); font-size: clamp(2rem, 7vw, 4.1rem); line-height: 1.08; letter-spacing: -.04em; }
+    .intro { max-width: 740px; margin: 0; color: var(--dim); font-size: clamp(.98rem, 2vw, 1.08rem); }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .pill { border: 1px solid var(--border); border-radius: 999px; padding: .35rem .7rem; color: var(--dim); font-family: var(--mono); font-size: .7rem; background: rgba(77,255,195,.035); }
+
+    .progress-shell { position: sticky; top: 68px; z-index: 9; padding: .7rem 0; background: rgba(9,14,26,.9); }
+    .progress-info { display: flex; justify-content: space-between; margin-bottom: .35rem; color: var(--dim); font-family: var(--mono); font-size: .68rem; }
+    .progress-track { height: 5px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.07); }
+    .progress-bar { width: 25%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .2s ease; }
+
+    form { display: grid; gap: 1.25rem; }
+    fieldset {
+      margin: 0;
+      padding: clamp(1.15rem, 4vw, 2rem);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, var(--card), rgba(13,21,37,.9));
+      box-shadow: 0 20px 55px rgba(0,0,0,.2);
+    }
+    legend { padding: 0 .45rem; color: var(--strong); font-size: 1.05rem; font-weight: 800; }
+    .section-number { display: block; margin-bottom: .15rem; color: var(--accent); font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+    .question { margin: 1.35rem 0 0; }
+    .question:first-of-type { margin-top: .65rem; }
+    .question-title { display: block; margin-bottom: .55rem; color: var(--strong); font-weight: 600; }
+    .hint { display: block; margin: -.25rem 0 .55rem; color: var(--dim); font-size: .78rem; }
+    .required { color: var(--danger); }
+
+    select, input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 9px;
+      outline: none;
+      padding: .78rem .85rem;
+      color: var(--strong);
+      background: rgba(9,14,26,.72);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    select:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(77,255,195,.08);
+    }
+    select option { color: #111827; background: white; }
+    textarea { min-height: 110px; resize: vertical; }
+
+    .choices { display: grid; gap: .5rem; }
+    .choices.columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      padding: .65rem .72rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 9px;
+      color: var(--dim);
+      cursor: pointer;
+      background: rgba(9,14,26,.34);
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .choice:hover, .choice:has(input:checked) { border-color: var(--border-strong); color: var(--strong); background: rgba(77,255,195,.055); }
+    input[type="radio"], input[type="checkbox"] { width: 1rem; height: 1rem; margin: .23rem 0 0; accent-color: var(--accent); flex: 0 0 auto; }
+
+    .rating-list { display: grid; gap: .85rem; }
+    .rating-row { display: grid; grid-template-columns: minmax(180px, 1fr) auto; align-items: center; gap: 1rem; }
+    .rating-row > span { color: var(--dim); font-size: .9rem; }
+    .rating-options { display: flex; gap: .3rem; }
+    .rating-options label { cursor: pointer; }
+    .rating-options input { position: absolute; opacity: 0; pointer-events: none; }
+    .rating-options span { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 7px; color: var(--dim); font-family: var(--mono); font-size: .72rem; }
+    .rating-options input:checked + span { border-color: var(--accent); color: #061018; background: var(--accent); font-weight: 700; }
+
+    .privacy { color: var(--dim); font-size: .78rem; }
+    .submit-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: .35rem; }
+    .submit-row p { margin: 0; color: var(--dim); font-size: .76rem; }
+    button[type="submit"] { min-height: 48px; border: 1.5px solid var(--accent); border-radius: 10px; padding: .75rem 1.3rem; color: #061018; background: var(--accent); font-family: var(--mono); font-size: .78rem; font-weight: 700; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+    button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(77,255,195,.15); }
+
+    footer { padding: 1.5rem 0 2.5rem; border-top: 1px solid var(--border); color: var(--dim); text-align: center; font-family: var(--mono); font-size: .7rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 650px) {
+      .choices.columns { grid-template-columns: 1fr; }
+      .rating-row { grid-template-columns: 1fr; gap: .45rem; }
+      .rating-options { justify-content: space-between; }
+      .rating-options label { flex: 1; }
+      .rating-options span { width: 100%; }
+      .submit-row { align-items: stretch; flex-direction: column; }
+      button[type="submit"] { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Navegação">
+      <a class="logo" href="index.html">joão<span>.dev</span></a>
+      <a class="back" href="index.html">← voltar ao portfólio</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <p class="eyebrow">TCC · Pesquisa de mercado</p>
+      <h1>Ajude a construir uma gestão melhor para restaurantes.</h1>
+      <p class="intro">Estou desenvolvendo uma plataforma SaaS para reunir atendimento, clientes, reservas, campanhas, cardápio e indicadores em um só lugar. Sua experiência ajudará a definir o que realmente importa para o setor.</p>
+      <div class="meta" aria-label="Informações da pesquisa">
+        <span class="pill">⏱ cerca de 5 minutos</span>
+        <span class="pill">🔒 uso acadêmico</span>
+        <span class="pill">✓ contato opcional</span>
+      </div>
+    </div>
+
+    <div class="progress-shell" aria-hidden="true">
+      <div class="wrap">
+        <div class="progress-info"><span>Progresso</span><span id="progressText">0%</span></div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+    </div>
+
+    <form class="wrap" id="surveyForm" action="https://formsubmit.co/joao.luan@hotmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nova resposta — Pesquisa SaaS para Restaurantes">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://joaomoura.dev.br/pesquisa.html?enviado=1">
+      <input type="hidden" name="_url" value="https://joaomoura.dev.br/pesquisa.html">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+
+      <fieldset data-step>
+        <legend><span class="section-number">01 · Perfil</span>Sobre o estabelecimento</legend>
+
+        <div class="question">
+          <label class="question-title" for="cargo">Qual é o seu cargo? <span class="required">*</span></label>
+          <select id="cargo" name="01_cargo" required>
+            <option value="">Selecione uma opção</option>
+            <option>Proprietário(a) ou sócio(a)</option><option>Gerente</option><option>Administrador(a)</option><option>Funcionário(a)</option><option>Consultor(a)</option><option>Outro</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label class="question-title" for="tipo">Qual é o tipo principal do estabelecimento? <span class="required">*</span></label>
+          <select id="tipo" name="02_tipo_estabelecimento" required>
+            <option value="">Selecione uma opção</option>
+            <option>Restaurante</option><option>Pizzaria</option><option>Hamburgueria</option><option>Bar ou pub</option><option>Cafeteria</option><option>Delivery</option><option>Padaria ou confeitaria</option><option>Outro</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <span class="question-title">Quantas pessoas trabalham no estabelecimento? <span class="required">*</span></span>
+          <div class="choices columns">
+            <label class="choice"><input type="radio" name="03_tamanho_equipe" value="1 a 5" required>1 a 5</label>
+            <label class="choice"><input type="radio" name="03_tamanho_equipe" value="6 a 15">6 a 15</label>
+            <label class="choice"><input type="radio" name="03_tamanho_equipe" value="16 a 30">16 a 30</label>
+            <label class="choice"><input type="radio" name="03_tamanho_equipe" value="Mais de 30">Mais de 30</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset data-step>
+        <legend><span class="section-number">02 · Cenário atual</span>Gestão e dificuldades</legend>
+
+        <div class="question">
+          <span class="question-title">Quais ferramentas são usadas atualmente? <span class="required">*</span></span>
+          <span class="hint">Selecione todas que se aplicam.</span>
+          <div class="choices columns">
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="WhatsApp">WhatsApp</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Planilhas">Planilhas</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Sistema de gestão/ERP">Sistema de gestão / ERP</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Agenda de papel">Agenda de papel</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Aplicativo de delivery">Aplicativo de delivery</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="CRM">CRM</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Nenhuma">Nenhuma</label>
+            <label class="choice"><input type="checkbox" name="04_ferramentas[]" value="Outra">Outra</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <span class="question-title">Quais são as maiores dificuldades hoje? <span class="required">*</span></span>
+          <span class="hint">Escolha no máximo 3 opções.</span>
+          <div class="choices columns" id="difficulties">
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Atrair novos clientes">Atrair novos clientes</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Fidelizar clientes">Fazer clientes retornarem</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Atendimento no WhatsApp">Organizar o WhatsApp</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Reservas">Controlar reservas</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Promoções">Divulgar promoções</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Cardápio">Atualizar o cardápio</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Avaliações">Acompanhar avaliações</label>
+            <label class="choice"><input type="checkbox" name="05_dificuldades[]" value="Dados e relatórios">Obter dados e relatórios</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <span class="question-title">Quanto tempo por semana é gasto nessas atividades? <span class="required">*</span></span>
+          <div class="choices columns">
+            <label class="choice"><input type="radio" name="06_tempo_semanal" value="Menos de 2 horas" required>Menos de 2 horas</label>
+            <label class="choice"><input type="radio" name="06_tempo_semanal" value="2 a 5 horas">2 a 5 horas</label>
+            <label class="choice"><input type="radio" name="06_tempo_semanal" value="6 a 10 horas">6 a 10 horas</label>
+            <label class="choice"><input type="radio" name="06_tempo_semanal" value="Mais de 10 horas">Mais de 10 horas</label>
+            <label class="choice"><input type="radio" name="06_tempo_semanal" value="Não sei informar">Não sei informar</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset data-step>
+        <legend><span class="section-number">03 · Produto</span>O que faria diferença?</legend>
+        <div class="question">
+          <span class="question-title">Avalie a importância de cada recurso <span class="required">*</span></span>
+          <span class="hint">1 = nada importante · 5 = muito importante</span>
+          <div class="rating-list" id="ratingList"></div>
+        </div>
+
+        <div class="question">
+          <label class="question-title" for="mais-importante">Qual funcionalidade seria a mais importante? <span class="required">*</span></label>
+          <select id="mais-importante" name="16_funcionalidade_mais_importante" required>
+            <option value="">Selecione uma opção</option>
+            <option>CRM e cadastro de clientes</option><option>Atendimento pelo WhatsApp</option><option>Chatbot</option><option>Campanhas e promoções</option><option>Gestão de reservas</option><option>Cardápio digital</option><option>Avaliações de clientes</option><option>Histórico de atendimentos</option><option>Relatórios e indicadores</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <span class="question-title">Você utilizaria uma plataforma que reunisse esses recursos? <span class="required">*</span></span>
+          <div class="choices columns">
+            <label class="choice"><input type="radio" name="17_interesse" value="Sim" required>Sim</label>
+            <label class="choice"><input type="radio" name="17_interesse" value="Talvez">Talvez</label>
+            <label class="choice"><input type="radio" name="17_interesse" value="Não">Não</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <span class="question-title">Quanto faria sentido pagar por mês? <span class="required">*</span></span>
+          <div class="choices columns">
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="Até R$ 49" required>Até R$ 49</label>
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="R$ 50 a R$ 99">R$ 50 a R$ 99</label>
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="R$ 100 a R$ 199">R$ 100 a R$ 199</label>
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="R$ 200 a R$ 399">R$ 200 a R$ 399</label>
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="R$ 400 ou mais">R$ 400 ou mais</label>
+            <label class="choice"><input type="radio" name="18_investimento_mensal" value="Não pagaria">Não pagaria</label>
+          </div>
+        </div>
+
+        <div class="question">
+          <label class="question-title" for="comentario">Existe algum problema ou recurso que não foi mencionado?</label>
+          <textarea id="comentario" name="19_comentario" placeholder="Conte um pouco sobre sua experiência (opcional)"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset data-step>
+        <legend><span class="section-number">04 · Opcional</span>Teste da primeira versão</legend>
+        <div class="question">
+          <span class="question-title">Gostaria de testar gratuitamente uma versão inicial?</span>
+          <div class="choices columns">
+            <label class="choice"><input type="radio" name="20_interesse_em_teste" value="Sim">Sim, tenho interesse</label>
+            <label class="choice"><input type="radio" name="20_interesse_em_teste" value="Talvez">Talvez, quero saber mais</label>
+            <label class="choice"><input type="radio" name="20_interesse_em_teste" value="Não">Não neste momento</label>
+          </div>
+        </div>
+        <div class="question"><label class="question-title" for="nome">Nome</label><input id="nome" name="21_nome" type="text" autocomplete="name" placeholder="Seu nome (opcional)"></div>
+        <div class="question"><label class="question-title" for="contato">WhatsApp ou e-mail</label><input id="contato" name="22_contato" type="text" autocomplete="email" placeholder="Seu contato (opcional)"></div>
+        <div class="question">
+          <label class="choice"><input type="checkbox" name="23_consentimento_contato" value="Autorizado">Autorizo o contato sobre a pesquisa e possíveis testes do produto.</label>
+          <p class="privacy">Os dados serão utilizados para fins acadêmicos e de validação do produto, sem compartilhamento com terceiros. O contato é totalmente opcional.</p>
+        </div>
+        <div class="submit-row">
+          <p>Ao enviar, você contribui diretamente para o desenvolvimento do TCC.</p>
+          <button type="submit">Enviar pesquisa →</button>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer><div class="wrap">Pesquisa desenvolvida por <a href="index.html">João Moura</a> · TCC UNISINOS</div></footer>
+
+  <script>
+    const features = [
+      ['07_crm_clientes', 'CRM e cadastro de clientes'],
+      ['08_whatsapp', 'Atendimento centralizado pelo WhatsApp'],
+      ['09_chatbot', 'Chatbot para dúvidas e atendimento'],
+      ['10_campanhas', 'Campanhas e promoções'],
+      ['11_reservas', 'Gestão de reservas'],
+      ['12_cardapio', 'Cardápio digital'],
+      ['13_avaliacoes', 'Coleta e acompanhamento de avaliações'],
+      ['14_historico', 'Histórico de atendimentos'],
+      ['15_relatorios', 'Relatórios e indicadores']
+    ];
+
+    const ratingList = document.getElementById('ratingList');
+    ratingList.innerHTML = features.map(([name, label]) => `
+      <div class="rating-row">
+        <span>${label}</span>
+        <div class="rating-options" role="radiogroup" aria-label="${label}">
+          ${[1,2,3,4,5].map(value => `<label title="Nota ${value}"><input type="radio" name="${name}" value="${value}" required><span>${value}</span></label>`).join('')}
+        </div>
+      </div>`).join('');
+
+    const form = document.getElementById('surveyForm');
+    const requiredControls = [...form.querySelectorAll('[required]')];
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    function updateProgress() {
+      const names = [...new Set(requiredControls.map(control => control.name))];
+      const completed = names.filter(name => {
+        const controls = [...form.elements].filter(control => control.name === name);
+        return controls.some(control => control.type === 'radio' || control.type === 'checkbox' ? control.checked : control.value.trim());
+      }).length;
+      const percent = Math.round((completed / names.length) * 100);
+      progressBar.style.width = `${percent}%`;
+      progressText.textContent = `${percent}%`;
+    }
+
+    form.addEventListener('input', updateProgress);
+    form.addEventListener('change', updateProgress);
+
+    const difficultyInputs = [...document.querySelectorAll('#difficulties input')];
+    difficultyInputs.forEach(input => input.addEventListener('change', () => {
+      const checked = difficultyInputs.filter(item => item.checked);
+      difficultyInputs.forEach(item => { item.disabled = checked.length >= 3 && !item.checked; });
+    }));
+
+    form.addEventListener('submit', event => {
+      const toolsSelected = form.querySelectorAll('input[name="04_ferramentas[]"]:checked').length;
+      const difficultiesSelected = form.querySelectorAll('input[name="05_dificuldades[]"]:checked').length;
+      if (!toolsSelected || !difficultiesSelected) {
+        event.preventDefault();
+        alert('Selecione pelo menos uma ferramenta utilizada e uma dificuldade atual.');
+        const target = !toolsSelected ? form.querySelector('input[name="04_ferramentas[]"]') : form.querySelector('input[name="05_dificuldades[]"]');
+        target.closest('.question').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    if (new URLSearchParams(location.search).get('enviado') === '1') {
+      document.querySelector('main').innerHTML = `<div class="wrap" style="min-height:65vh;display:grid;place-content:center;text-align:center"><p class="eyebrow">Resposta recebida</p><h1 style="font-size:clamp(2rem,7vw,3.6rem)">Muito obrigado pela colaboração!</h1><p class="intro" style="margin-inline:auto">Sua experiência ajudará a construir uma solução mais útil para o setor de restaurantes.</p><p style="margin-top:2rem"><a class="back" href="index.html">← voltar ao portfólio</a></p></div>`;
+    }
+
+    updateProgress();
+  </script>
+</body>
+</html>
