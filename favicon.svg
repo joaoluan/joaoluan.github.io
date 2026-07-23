@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">João Moura</title>
+  <rect width="64" height="64" rx="18" fill="#17251f"/>
+  <path d="M15 13h34v38H15z" fill="#f5f2ea"/>
+  <path d="M15 22h34M15 42h34" stroke="#c9d4ce" stroke-dasharray="3 3"/>
+  <text x="32" y="37" text-anchor="middle" fill="#d64f3a" font-family="Arial, sans-serif" font-size="17" font-weight="700">JM</text>
+</svg>
